@@ -20,26 +20,20 @@
             >
               <div class="card card-plain">
                 <div class="card-header pb-0 text-left">
-                  <h4 class="font-weight-bolder">Sign Up</h4>
-                  <p class="mb-0">Enter your email and password to register</p>
+                  <h4 class="font-weight-bolder">登录</h4>
+                  <p class="mb-0">请输入用户名和密码登录</p>
+                  <p class="mb-0">Enter your username and password to register</p>
                 </div>
                 <div class="card-body pb-3">
                   <form role="form">
-                    <label>Name</label>
+                    <label>用户名(username)</label>
                     <soft-input
                       id="name"
                       type="text"
                       placeholder="Name"
                       aria-label="Name"
                     />
-                    <label>Email</label>
-                    <soft-input
-                      id="email"
-                      type="email"
-                      placeholder="Email"
-                      aria-label="Email"
-                    />
-                    <label>Password</label>
+                    <label>密码(Password)</label>
                     <soft-input
                       id="password"
                       type="password"
@@ -57,24 +51,25 @@
                         >Terms and Conditions</a
                       >
                     </soft-checkbox>
-                    <div class="text-center">
+                    <div class="text-center"  >
                       <soft-button
                         color="success"
                         variant="gradient"
                         full-width
                         class="w-100 mt-4 mb-0"
-                        >Sign up</soft-button
+                        @click="signinclik"
+                        >登录</soft-button
                       >
                     </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-sm-4 px-1">
                   <p class="mb-4 mx-auto">
-                    Already have an account?
+                    还没有账户？
                     <router-link
                       :to="{ name: 'Signin Illustration' }"
                       class="text-success text-gradient font-weight-bold"
-                      >Sign in
+                      >注册
                     </router-link>
                   </p>
                 </div>
@@ -91,19 +86,17 @@
                   alt="pattern-lines"
                   class="position-absolute opacity-4 start-0"
                 />
-                <div class="position-relative">
-                  <img
-                    class="max-width-500 w-100 position-relative z-index-2"
-                    src="../../../assets/img/illustrations/rocket-white.png"
-                    alt="rocket"
-                  />
-                </div>
                 <h4 class="mt-5 text-white font-weight-bolder">
-                  Your journey starts here
+                  文渊-论文管理系统
                 </h4>
                 <p class="text-white">
-                  >Just as it takes a company to sustain a product, it takes a
-                  community to sustain a protocol.
+                  Wenyuan Paper Management System
+                </p>
+                <p class="text-white">
+                  &nbsp; &nbsp; &nbsp; &nbsp;你的私人知识财产管理系统，通过智能化的分类和搜索功能，轻松整理和管理文献、笔记和研究成果。安全加密技术保障您的数据安全，不用担心泄露和丢失。
+                </p>
+                <p class="text-white">
+                  &nbsp; &nbsp; &nbsp; &nbsp;高度可定制的界面和功能，满足个性化需求。文渊不仅是一款工具，更是您知识创造和管理的得力助手。让文渊与您并肩，开启知识管理新纪元。
                 </p>
               </div>
             </div>
@@ -142,6 +135,9 @@ export default {
   },
   methods: {
     ...mapMutations(["toggleEveryDisplay", "toggleHideConfig"]),
+    signinclik(){
+      
+    }
   },
 };
 </script>

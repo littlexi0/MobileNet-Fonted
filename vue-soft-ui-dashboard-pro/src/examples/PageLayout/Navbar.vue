@@ -1297,7 +1297,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Docs
+              相关论文系统
               <img
                 :src="downArrWhite"
                 alt="down-arrow"
@@ -1320,7 +1320,7 @@
                   <li class="p-0 border-0 nav-item list-group-item">
                     <a
                       class="py-2 dropdown-item ps-3 border-radius-md"
-                      href="https://www.creative-tim.com/learning-lab/vue/overview/soft-ui-dashboard/"
+                      href="https://libdbnav.fudan.edu.cn/database/navigation#/home"
                     >
                       <div class="d-flex">
                         <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1330,11 +1330,10 @@
                           <h6
                             class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                           >
-                            Getting Started
+                            复旦数据库
                           </h6>
                           <span class="text-sm">
-                            All about overview, quick start, license and
-                            contents
+                            Fudan Datebases
                           </span>
                         </div>
                       </div>
@@ -1343,7 +1342,7 @@
                   <li class="p-0 border-0 nav-item list-group-item">
                     <a
                       class="py-2 dropdown-item ps-3 border-radius-md"
-                      href="https://www.creative-tim.com/learning-lab/vue/colors/soft-ui-dashboard/"
+                      href="https://www.cnki.net/"
                     >
                       <div class="d-flex">
                         <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1357,10 +1356,10 @@
                           <h6
                             class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                           >
-                            Foundation
+                            中国知网
                           </h6>
                           <span class="text-sm"
-                            >See our colors, icons and typography</span
+                            >China kownledge</span
                           >
                         </div>
                       </div>
@@ -1369,7 +1368,7 @@
                   <li class="p-0 border-0 nav-item list-group-item">
                     <a
                       class="py-2 dropdown-item ps-3 border-radius-md"
-                      href="https://www.creative-tim.com/learning-lab/vue/alerts/soft-ui-dashboard/"
+                      href="https://www.lib.pku.edu.cn/portal/"
                     >
                       <div class="d-flex">
                         <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1383,10 +1382,10 @@
                           <h6
                             class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                           >
-                            Components
+                            北京大学图书馆
                           </h6>
                           <span class="text-sm">
-                            Explore our collection of fully designed components
+                            Library of Peking university
                           </span>
                         </div>
                       </div>
@@ -1395,7 +1394,7 @@
                   <li class="p-0 border-0 nav-item list-group-item">
                     <a
                       class="py-2 dropdown-item ps-3 border-radius-md"
-                      href="https://www.creative-tim.com/learning-lab/vue/utilities/soft-ui-dashboard/"
+                      href="https://lib.tsinghua.edu.cn/"
                     >
                       <div class="d-flex">
                         <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1409,11 +1408,10 @@
                           <h6
                             class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                           >
-                            Utility Classes
+                            清华图书馆
                           </h6>
                           <span class="text-sm">
-                            For those who want flexibility, use our utility
-                            classes
+                            Tsing Hua library
                           </span>
                         </div>
                       </div>
@@ -1425,7 +1423,7 @@
                 <div class="col-md-12 g-0">
                   <a
                     class="py-2 dropdown-item ps-3 border-radius-md"
-                    href="https://www.creative-tim.com/learning-lab/vue/overview/soft-ui-dashboard/"
+                    href="https://libdbnav.fudan.edu.cn/database/navigation#/home"
                   >
                     <div class="d-flex">
                       <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1435,17 +1433,17 @@
                         <h6
                           class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                         >
-                          Getting Started
+                            复旦数据库
                         </h6>
                         <span class="text-sm">
-                          All about overview, quick start, license and contents
+                          Fudan Datebases
                         </span>
                       </div>
                     </div>
                   </a>
                   <a
                     class="py-2 dropdown-item ps-3 border-radius-md"
-                    href="https://www.creative-tim.com/learning-lab/vue/colors/soft-ui-dashboard/"
+                    href="https://www.cnki.net/"
                   >
                     <div class="d-flex">
                       <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1459,17 +1457,17 @@
                         <h6
                           class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                         >
-                          Foundation
+                            中国知网
                         </h6>
                         <span class="text-sm"
-                          >See our colors, icons and typography</span
+                          >China kownledge</span
                         >
                       </div>
                     </div>
                   </a>
                   <a
                     class="py-2 dropdown-item ps-3 border-radius-md"
-                    href="https://www.creative-tim.com/learning-lab/vue/alerts/soft-ui-dashboard/"
+                    href="https://www.lib.pku.edu.cn/portal/"
                   >
                     <div class="d-flex">
                       <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1483,17 +1481,17 @@
                         <h6
                           class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                         >
-                          Components
+                          北京大学图书馆
                         </h6>
                         <span class="text-sm">
-                          Explore our collection of fully designed components
+                          Library of Peking university
                         </span>
                       </div>
                     </div>
                   </a>
                   <a
                     class="py-2 dropdown-item ps-3 border-radius-md"
-                    href="https://www.creative-tim.com/learning-lab/vue/utilities/soft-ui-dashboard/"
+                    href="https://lib.tsinghua.edu.cn/"
                   >
                     <div class="d-flex">
                       <div class="h-10 mt-1 icon me-3 d-flex">
@@ -1507,10 +1505,10 @@
                         <h6
                           class="p-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                         >
-                          Utility Classes
+                          清华图书馆
                         </h6>
                         <span class="text-sm">
-                          All about overview, quick start, license and contents
+                          Tsing Hua library
                         </span>
                       </div>
                     </div>
@@ -1518,18 +1516,6 @@
                 </div>
               </div>
             </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav d-lg-block d-none">
-          <li class="nav-item">
-            <a
-              href="https://www.creative-tim.com/product/vue-soft-ui-dashboard-pro"
-              target="_blank"
-              class="mb-0 btn btn-sm btn-round me-1"
-              :class="btnBackground ? btnBackground : 'bg-white'"
-              onclick="smoothToPricing('pricing-soft-ui')"
-              >Buy Now</a
-            >
           </li>
         </ul>
       </div>

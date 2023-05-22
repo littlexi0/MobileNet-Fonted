@@ -7,6 +7,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="d-flex flex-column h-100">
+                  
                   <h2 class="mb-0 font-weight-bolder">文献库数据</h2>
                   <a-cascader :options="options" placeholder="Please select" @change="onChange" />
                   <a-input placeholder="Basic usage" />
@@ -76,33 +77,8 @@
         </div>
         <div class="row">
           <sales-table
-            title="Sales by Country"
-            :rows="[
-              {
-                country: [US, 'United States'],
-                sales: 2500,
-                value: '$230,900',
-                bounce: '29.9%',
-              },
-              {
-                country: [DE, 'Germany'],
-                sales: '3.900',
-                value: '$440,000',
-                bounce: '40.22%',
-              },
-              {
-                country: [GB, 'Great Britain'],
-                sales: '1.400',
-                value: '$190,700',
-                bounce: '23.44%',
-              },
-              {
-                country: [BR, 'Brasil'],
-                sales: 562,
-                value: '$143,960',
-                bounce: '32.14%',
-              },
-            ]"
+            title="论文热榜"
+            :rows=hotpapers
           />
         </div>
       </div>
@@ -113,7 +89,7 @@
           <div class="p-3 card-body">
             <reports-bar-chart
               id="chart-bar"
-              title="active Users"
+              title="用户活跃度"
               description="(<strong>+23%</strong>) than last week"
               :chart="{
                 labels: [
@@ -129,7 +105,7 @@
                 ],
                 datasets: {
                   label: 'Sales',
-                  data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+                  data: [40, 200, 100, 220, 500, 100, 400, 230, 500],
                 },
               }"
               :items="[
@@ -185,11 +161,11 @@
               datasets: [
                 {
                   label: 'Mobile Apps',
-                  data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                  data: [500, 40, 300, 220, 500, 250, 400, 230, 500],
                 },
                 {
                   label: 'Websites',
-                  data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+                  data: [300, 90, 40, 140, 290, 290, 340, 230, 400],
                 },
               ],
             }"
@@ -197,6 +173,7 @@
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-12">
         <!-- globe -->
@@ -243,6 +220,35 @@ export default {
       DE,
       BR,
       GB,
+      hotpapers:[
+        {
+          papertitle:'三体三体三体三三体三三体三',
+          author: '250570',
+          publisher: '$230,900',
+          bounce: '29.9%',
+        },
+        {
+          papertitle:'三体',
+
+          author: '3.900',
+          publisher: '$440,000',
+          bounce: '40.22%',
+        },
+        {
+          papertitle:'三体',
+
+          author: '1.400',
+          publisher: '$190,700',
+          bounce: '23.44%',
+        },
+        {
+          papertitle:'三体2',
+
+          author: '52262',
+          publisher: '$143,960',
+          bounce: '32.14%',
+        },
+      ]
     };
   },
 };

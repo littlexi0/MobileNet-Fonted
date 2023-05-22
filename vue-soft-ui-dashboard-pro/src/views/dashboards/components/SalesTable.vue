@@ -10,35 +10,33 @@
         <table class="table align-items-center">
           <tbody>
             <tr
-              v-for="({ country, sales, value, bounce }, index) of rows"
+              v-for="({ papertitle, author, publisher, bounce }, index) of rows"
               :key="index"
             >
               <td class="w-30">
                 <div class="px-2 py-1 d-flex align-items-center">
-                  <div>
-                    <img :src="country[0]" alt="Country flag" />
-                  </div>
                   <div class="ms-4">
-                    <p class="mb-0 text-xs font-weight-bold">Country:</p>
-                    <h6 class="mb-0 text-sm">{{ country[1] }}</h6>
+                    <p class="mb-0 text-xs font-weight-bold">标题</p>
+                    <h6 class="mb-0 text-sm" ><div style="overflow: hidden; width: 70px;float: left;">{{ papertitle }}</div></h6>
                   </div>
                 </div>
               </td>
               <td>
                 <div class="text-center">
-                  <p class="mb-0 text-xs font-weight-bold">Sales:</p>
-                  <h6 class="mb-0 text-sm">{{ sales }}</h6>
+                  <p class="mb-0 text-xs font-weight-bold">作者</p>
+                  <h6 class="mb-0 text-sm">{{ author }}</h6>
                 </div>
               </td>
               <td>
                 <div class="text-center">
-                  <p class="mb-0 text-xs font-weight-bold">Value:</p>
-                  <h6 class="mb-0 text-sm">{{ value }}</h6>
+                  <p class="mb-0 text-xs font-weight-bold">出版社</p>
+                  <h6 class="mb-0 text-sm">{{ publisher }}</h6>
+                  <!-- <h6 class="mb-0 text-sm" ><div style="overflow: hidden; width: 70px;float: left;">{{ publisher }}</div></h6> -->
                 </div>
               </td>
               <td class="text-sm align-middle">
                 <div class="text-center col">
-                  <p class="mb-0 text-xs font-weight-bold">Bounce:</p>
+                  <p class="mb-0 text-xs font-weight-bold">点击量</p>
                   <h6 class="mb-0 text-sm">{{ bounce }}</h6>
                 </div>
               </td>
@@ -58,14 +56,13 @@ export default {
       default: "",
     },
     rows: {
-      type: Array,
+      // type: Array,
       required: true,
-      sales: [Number, String],
-      value: String,
+      papertitle: String,
+      author: String,
+      publisher: String,
       bounce: String,
-      country: {
-        type: Array,
-      },
+
     },
   },
 };

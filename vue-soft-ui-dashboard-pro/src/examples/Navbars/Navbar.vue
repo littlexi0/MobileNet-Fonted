@@ -49,9 +49,10 @@
             <input
               type="text"
               class="form-control"
-              :placeholder="isRTL ? 'أكتب هنا...' : 'Type here...'"
+              :placeholder="isRTL ? 'أكتب هنا...' : '请输入查询信息...'"
             />
           </div>
+          
         </div>
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">

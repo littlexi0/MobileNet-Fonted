@@ -10,7 +10,7 @@
       <div class="pt-3 pb-0 bg-transparent card-header">
         <div class="float-start">
           <h5 class="mt-3 mb-0">文渊</h5>
-          <p>See our dashboard options.</p>
+          <p>界面设置</p>
         </div>
         <div class="mt-4 float-end" @click="toggle">
           <button class="p-0 btn btn-link text-dark fixed-plugin-close-button">
@@ -23,7 +23,7 @@
       <div class="pt-0 card-body pt-sm-3">
         <!-- Sidebar Backgrounds -->
         <div>
-          <h6 class="mb-0">Sidebar Colors</h6>
+          <h6 class="mb-0">主题颜色</h6>
         </div>
         <a href="#" class="switch-trigger background-color">
           <div
@@ -64,8 +64,8 @@
         </a>
         <!-- Sidenav Type -->
         <div class="mt-3">
-          <h6 class="mb-0">Sidenav Type</h6>
-          <p class="text-sm">Choose between 2 different sidenav types.</p>
+          <h6 class="mb-0">侧边栏背景</h6>
+          <!-- <p class="text-sm">Choose between 2 different sidenav types.</p> -->
         </div>
         <div class="d-flex">
           <button
@@ -90,7 +90,7 @@
         </p>
         <!-- Navbar Fixed -->
         <div class="mt-3">
-          <h6 class="mb-0">Navbar Fixed</h6>
+          <h6 class="mb-0">固定导航栏</h6>
         </div>
         <div class="form-check form-switch ps-0">
           <input
@@ -104,7 +104,7 @@
         </div>
         <hr class="mb-1 horizontal dark" />
         <div class="mt-2">
-          <h6 class="mb-0">Sidenav Mini</h6>
+          <h6 class="mb-0">隐藏侧边栏描述</h6>
         </div>
         <div class="form-check form-switch ps-0">
           <input
@@ -119,43 +119,34 @@
         <hr class="horizontal dark my-sm-4" />
         <a
           class="btn bg-gradient-info w-100"
-          href="https://www.creative-tim.com/product/vue-soft-ui-dashboard-pro"
-          >Buy now</a
+          href="https://github.com/littlexi0"
+          >联系我们</a
         >
         <a
           class="btn bg-gradient-dark w-100"
           href="https://demos.creative-tim.com/vue-soft-ui-dashboard/"
-          >Free demo</a
+          >关于我们</a
         >
         <a
           class="btn btn-outline-dark w-100"
-          href="https://www.creative-tim.com/learning-lab/vue/overview/soft-ui-dashboard/"
-          >View documentation</a
+          href="https://www.littlexi.love/"
+          >更多</a
         >
         <div class="text-center w-100">
+          <h6 class="mt-3">感谢分享</h6>
           <a
-            class="github-button"
-            href="https://github.com/creativetimofficial/ct-vue-soft-ui-dashboard-pro"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub"
-            >Star</a
-          >
-          <h6 class="mt-3">Thank you for sharing!</h6>
-          <a
-            href="https://twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20PRO%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard-pro"
+            href="https://qzone.qq.com/"
             class="mb-0 btn btn-dark me-2"
             target="_blank"
           >
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+            <i class="fab fa-qq me-1" aria-hidden="true"></i> QQ
           </a>
           <a
-            href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard-pro"
+            href="https://wx.qq.com/index.php"
             class="mb-0 btn btn-dark me-2"
             target="_blank"
           >
-            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+            <i class="fab fa-weixin me-1" aria-hidden="true"></i> 微信
           </a>
         </div>
       </div>
