@@ -7,7 +7,7 @@
       <li class="nav-item">
         <sidenav-collapse
           collapse-ref="dashboardsExamples"
-          nav-text="Dashboards"
+          nav-text="面板"
           :class="getRoute() === 'dashboards' ? 'active' : ''"
         >
           <template #icon>
@@ -19,7 +19,7 @@
               <sidenav-item
                 :to="{ name: 'Default' }"
                 mini-icon="D"
-                text="Default"
+                text="主界面"
               />
               <sidenav-item
                 :to="{ name: 'Automotive' }"

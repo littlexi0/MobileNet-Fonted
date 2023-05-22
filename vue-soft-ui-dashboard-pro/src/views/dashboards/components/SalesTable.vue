@@ -56,7 +56,7 @@ export default {
       default: "",
     },
     rows: {
-      // type: Array,
+      type: Array,
       required: true,
       papertitle: String,
       author: String,
