@@ -11,8 +11,8 @@
         aria-hidden="true"
       ></i>
       <router-link class="m-0 navbar-brand" to="/">
-        <img :src="logo" class="navbar-brand-img h-100" alt="main_logo" />
-        <span class="ms-1 font-weight-bold">Soft UI Dashboard PRO</span>
+        <!-- <img :src="logo" class="navbar-brand-img h-100" alt="main_logo" /> -->
+        <span class="ms-1 font-weight-bold">文渊</span>
       </router-link>
     </div>
     <hr class="mt-0 horizontal dark" />
@@ -44,3 +44,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .font-weight-bold{
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 25px;
+  }
+</style>

@@ -29,6 +29,7 @@
     "@fullcalendar/interaction": "5.10.1",
     "@fullcalendar/timegrid": "5.10.1",
     "@popperjs/core": "2.10.2",
+    "ant-design-vue": "^4.0.0-rc.3",
     "bootstrap": "5.1.3",
     "chart.js": "3.6.0",
     "choices.js": "9.0.1",

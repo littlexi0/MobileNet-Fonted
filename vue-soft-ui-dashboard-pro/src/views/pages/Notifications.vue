@@ -113,7 +113,7 @@
     <div class="position-fixed bottom-1 end-1 z-index-2">
       <soft-snackbar
         v-if="snackbar === 'success'"
-        title="Soft UI Dashboard"
+        title="文渊"
         date="11 mins ago"
         description="Hello, world! This is a notification message."
         :icon="{ component: 'ni ni-check-bold', color: 'success' }"
@@ -122,7 +122,7 @@
       />
       <soft-snackbar
         v-if="snackbar === 'info'"
-        title="Soft UI Dashboard"
+        title="文渊"
         date="11 mins ago"
         description="Hello, world! This is a notification message."
         :icon="{ component: 'ni ni-check-bold', color: 'white' }"
@@ -131,7 +131,7 @@
       />
       <soft-snackbar
         v-if="snackbar === 'warning'"
-        title="Soft UI Dashboard"
+        title="文渊"
         date="11 mins ago"
         description="Hello, world! This is a notification message."
         :icon="{ component: 'ni ni-check-bold', color: 'warning' }"
@@ -140,7 +140,7 @@
       />
       <soft-snackbar
         v-if="snackbar === 'danger'"
-        title="Soft UI Dashboard"
+        title="文渊"
         date="11 mins ago"
         description="Hello, world! This is a notification message."
         :icon="{ component: 'ni ni-check-bold', color: 'danger' }"

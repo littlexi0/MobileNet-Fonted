@@ -7,7 +7,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="d-flex flex-column h-100">
-                  <h2 class="mb-0 font-weight-bolder">General Statistics</h2>
+                  <h2 class="mb-0 font-weight-bolder">文献库数据</h2>
                 </div>
               </div>
             </div>
@@ -16,8 +16,8 @@
         <div class="row">
           <div class="col-lg-5 col-sm-5">
             <mini-statistics-card
-              title="Today's Money"
-              value="$53,000"
+              title="用户数量"
+              value="78,786"
               :percentage="{
                 value: '+55%',
                 color: 'text-success',
@@ -29,7 +29,7 @@
               direction-reverse
             />
             <mini-statistics-card
-              title="Today's Users"
+              title="数据库数量"
               value="2,300"
               :percentage="{
                 value: '+3%',
@@ -44,8 +44,8 @@
           </div>
           <div class="mt-4 col-lg-5 col-sm-5 mt-sm-0">
             <mini-statistics-card
-              title="New Clients"
-              value="+3,462"
+              title="论文数量"
+              value="3,462"
               :percentage="{
                 value: '-2%',
                 color: 'text-danger',

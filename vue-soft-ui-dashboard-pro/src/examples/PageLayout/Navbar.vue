@@ -9,7 +9,7 @@
         class="navbar-brand font-weight-bolder ms-lg-0 ms-3"
         :class="darkMode ? 'text-black' : 'text-white'"
         to="/"
-        >Soft UI Dashboard PRO</router-link>
+        >文渊</router-link>
       <button
         class="shadow-none navbar-toggler ms-2"
         type="button"
