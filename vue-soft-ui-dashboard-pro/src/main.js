@@ -19,14 +19,8 @@ import VueTilt from "vue-tilt.js";
 import VueSweetalert2 from "vue-sweetalert2";
 import SoftUIDashboard from "./soft-ui-dashboard";
 
-//引入antui
-// import Antd from 'ant-design-vue';
-// import 'ant-design-vue/dist/antd.css';
-
-// App.config.productionTip = false;
-
-// App.use(Antd);
-
+// 引入ant-design-ui，在这里加入，然后在下面的行中use
+import { Button,Switch } from 'ant-design-vue';
 
 const appInstance = createApp(App);
 appInstance.use(store);
@@ -34,5 +28,6 @@ appInstance.use(router);
 appInstance.use(VueTilt);
 appInstance.use(VueSweetalert2);
 appInstance.use(SoftUIDashboard);
+appInstance.use(Button);
+appInstance.use(Switch);
 appInstance.mount("#app");
-// appInstance.use(Antd)

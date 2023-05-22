@@ -787,7 +787,7 @@
           :collapse="false"
           url="#"
           :aria-controls="''"
-          collapse-ref="https://github.com/creativetimofficial/ct-soft-ui-dashboard-pro/blob/main/CHANGELOG.md"
+          collapse-ref="https://github.com/littlexi0/MobileNet-Fonted"
         >
           <template #icon>
             <CreditCard />

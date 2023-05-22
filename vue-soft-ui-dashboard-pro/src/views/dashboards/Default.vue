@@ -8,6 +8,8 @@
               <div class="col-lg-6">
                 <div class="d-flex flex-column h-100">
                   <h2 class="mb-0 font-weight-bolder">文献库数据</h2>
+                  <a-cascader :options="options" placeholder="Please select" @change="onChange" />
+                  <a-input placeholder="Basic usage" />
                 </div>
               </div>
             </div>
@@ -58,8 +60,8 @@
             />
 
             <mini-statistics-card
-              title="Sales"
-              value="$103,430"
+              title="论文阅读量"
+              value="103,430"
               :percentage="{
                 value: '+5%',
                 color: 'text-success',
