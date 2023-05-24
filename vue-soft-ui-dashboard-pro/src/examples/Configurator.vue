@@ -1,11 +1,27 @@
 <template>
   <div class="fixed-plugin">
-    <a
+    <!-- <a
       class="px-3 py-2 fixed-plugin-button text-dark position-fixed"
       @click="toggle"
     >
       <i class="py-2 fa fa-cog"> </i>
-    </a>
+    </a> -->
+
+    <a-button type="primary" class="px-3 py-2 fixed-plugin-button text-dark position-fixed" @click="showDrawer" >      <i class="py-2 fa fa-cog"> </i></a-button>
+    <a-drawer
+      title="Basic Drawer"
+      :placement="placement"
+      :closable="false"
+      :visible="visible"
+      @close="onClose"
+    >
+      <input v-model="asktext">
+      <button @click="ask">发送</button>
+      <p>{{ resptext }}</p>
+      <!-- <p>Some contents...</p>
+      <p>Some contents...</p> -->
+    </a-drawer>
+    
     <div class="shadow-lg card blur">
       <div class="pt-3 pb-0 bg-transparent card-header">
         <div class="float-start">
@@ -156,13 +172,24 @@
 
 <script>
 import { mapMutations, mapActions, mapState } from "vuex";
+import axios from 'axios';
 export default {
   name: "Configurator",
+
   props: {
     toggle: {
       type: Function,
       default: null,
     },
+  },
+  data() {
+    return {
+      apiKey:"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",
+      placement:'right',
+      visible:false,
+      asktext:"",
+      resptext:""
+    };
   },
   computed: {
     ...mapState([
@@ -178,6 +205,7 @@ export default {
       return this.sidenavTypeOnResize;
     },
   },
+  
   beforeMount() {
     this.$store.state.isTransparent = "bg-transparent";
     // Deactivate sidenav type buttons on resize and small screens
@@ -217,6 +245,45 @@ export default {
         white.classList.remove("disabled");
       }
     },
+    ask(){
+      // const apiKey = process.env.OPENAI_API_KEY;
+      const model = 'gpt-3.5-turbo';
+      const messages = [{ role: 'user', content: this.asktext }];
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer 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`,
+        },
+      };
+
+      const requestData = {
+        model,
+        messages,
+      };
+      console.log(requestData)
+      axios.post('https://api.openai.com/v1/chat/completions', requestData, config)
+        .then(response => {
+          const completion = response.data.choices[0].message;
+          console.log(completion.content);
+          console.log(completion.role);
+          this.resptext+=completion.content+'\n';
+          this.$message({
+            showClose: true,
+            message: completion.content,
+            type: 'success'
+          });
+        })
+       
+    },
+    // const placement = ref('left');
+    // const visible = ref(false);
+    showDrawer(){
+      this.visible = true;
+    },
+    onClose(){
+      this.visible = false;
+    }
   },
 };
 </script>

@@ -89,6 +89,8 @@
             >
               <i class="cursor-pointer fa fa-cog fixed-plugin-button-nav"></i>
             </a>
+
+
           </li>
           <li
             class="nav-item dropdown d-flex align-items-center"

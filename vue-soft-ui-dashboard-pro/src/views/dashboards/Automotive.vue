@@ -1,107 +1,83 @@
 <template>
-  <div class="py-4 container-fluid">
-    <div class="mt-4 row">
-      <div class="col-12">
-        <card-detail />
-      </div>
-    </div>
-    <div class="mt-4 row">
-      <div class="col-lg-3 col-md-6 col-12">
-        <mini-statistics-card
-          class="bg-gradient-secondary"
-          :title="{
-            text: 'Today\'s Trip',
-            color: 'opacity-7 text-white'
-          }"
-          :value="{
-            text: '145 Km',
-            color: 'text-white'
-          }"
-          :icon="{
-            component: 'text-dark ni ni-money-coins',
-            background: 'bg-white'
-          }"
-          direction-reverse
-        />
-      </div>
-      <div class="mt-4 col-lg-3 col-md-6 col-12 mt-md-0">
-        <mini-statistics-card
-          class="bg-gradient-secondary"
-          :title="{
-            text: 'Battery Health',
-            color: 'opacity-7 text-white'
-          }"
-          :value="{
-            text: '99 %',
-            color: 'text-white'
-          }"
-          :icon="{
-            component: 'text-dark ni ni-controller',
-            background: 'bg-white'
-          }"
-          direction-reverse
-        />
-      </div>
-      <div class="mt-4 col-lg-3 col-md-6 col-12 mt-lg-0">
-        <mini-statistics-card
-          class="bg-gradient-secondary"
-          :title="{
-            text: 'Average Speed',
-            color: 'opacity-7 text-white'
-          }"
-          :value="{
-            text: '56 Km/h',
-            color: 'text-white'
-          }"
-          :icon="{
-            component: 'text-dark ni ni-delivery-fast',
-            background: 'bg-white'
-          }"
-          direction-reverse
-        />
-      </div>
-      <div class="mt-4 col-lg-3 col-md-6 col-12 mt-lg-0">
-        <mini-statistics-card
-          class="bg-gradient-secondary"
-          :title="{
-            text: 'Music Volume',
-            color: 'opacity-7 text-white'
-          }"
-          :value="{
-            text: '15/100',
-            color: 'text-white'
-          }"
-          :icon="{
-            component: 'text-dark ni ni-note-03',
-            background: 'bg-white'
-          }"
-          direction-reverse
-        />
-      </div>
-    </div>
-    <div class="mt-4 row">
-      <div class="col-12">
-        <player-card />
-      </div>
-    </div>
+  <div class="py-4 container-fluid ">
+
+    <button @click="ask">chat</button>
+
+    <!-- <a-button type="primary" class="px-3 py-2 fixed-plugin-button text-dark position-fixed" @click="showDrawer">Open</a-button>
+    <a-drawer
+      title="Basic Drawer"
+      :placement="placement"
+      :closable="false"
+      :visible="visible"
+      @close="onClose"
+    >
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+    </a-drawer> -->
+
   </div>
 </template>
 
 <script>
-import MiniStatisticsCard from "../../examples/Cards/MiniStatisticsCard.vue";
-import PlayerCard from "./components/PlayerCard.vue";
-import CardDetail from "./components/CardDetail.vue";
-import setTooltip from "@/assets/js/tooltip.js";
-
+// import MiniStatisticsCard from "../../examples/Cards/MiniStatisticsCard.vue";
+// import PlayerCard from "./components/PlayerCard.vue";
+// import CardDetail from "./components/CardDetail.vue";
+// import setTooltip from "@/assets/js/tooltip.js";
+// import axios from 'axios';
+// import {  ref } from 'vue';
 export default {
   name: "Automotive",
-  components: {
-    MiniStatisticsCard,
-    PlayerCard,
-    CardDetail
+  // components: {
+  //   MiniStatisticsCard,
+  //   PlayerCard,
+  //   CardDetail
+  // },
+  data() {
+    return {
+      apiKey:"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",
+      placement:'left',
+      visible:false
+    };
   },
   mounted() {
-    setTooltip(this.$store.state.bootstrap);
+    // setTooltip(this.$store.state.bootstrap);
+
+  },
+
+  methods:{
+    // ask(){
+    //   const model = 'gpt-3.5-turbo';
+    //   const messages = [{ role: 'user', content: '用100字写写什么是群？' }];
+
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Authorization': `Bearer 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`,
+    //     },
+    //   };
+
+    //   const requestData = {
+    //     model,
+    //     messages,
+    //   };
+
+    //   axios.post('https://api.openai.com/v1/chat/completions', requestData, config)
+    //     .then(response => {
+    //       const completion = response.data.choices[0].message;
+    //       console.log(completion.content);
+    //       console.log(completion.role);
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // },
+    // showDrawer(){
+    //   this.visible = true;
+    // },
+    // onClose(){
+    //   this.visible = false;
+    // },
   }
 };
 </script>

@@ -3,7 +3,7 @@
     id="sidenav-collapse-main"
     class="w-auto h-auto collapse navbar-collapse max-height-vh-100 h-100"
   >
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="z-index: -1;">
       <li class="nav-item">
         <sidenav-collapse
           collapse-ref="dashboardsExamples"
