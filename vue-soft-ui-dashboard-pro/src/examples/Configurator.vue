@@ -7,9 +7,10 @@
       <i class="py-2 fa fa-cog"> </i>
     </a> -->
 
-    <a-button type="primary" class="px-3 py-2 fixed-plugin-button text-dark position-fixed" @click="showDrawer" >      <i class="py-2 fa fa-cog"> </i></a-button>
+    <div class="px-3 py-2 fixed-plugin-button  position-fixed aibtn"   @click="showDrawer"></div>
     <a-drawer
-      title="Basic Drawer"
+      title="AI小珐"
+      mask=false
       :placement="placement"
       :closable="false"
       :visible="visible"
@@ -18,8 +19,7 @@
       <input v-model="asktext">
       <button @click="ask">发送</button>
       <p>{{ resptext }}</p>
-      <!-- <p>Some contents...</p>
-      <p>Some contents...</p> -->
+
     </a-drawer>
     
     <div class="shadow-lg card blur">
@@ -253,7 +253,7 @@ export default {
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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`,
+          'Authorization': `Bearer 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`,
         },
       };
 
@@ -279,11 +279,25 @@ export default {
     // const placement = ref('left');
     // const visible = ref(false);
     showDrawer(){
+      this.$store.state.showSidenav = !this.$store.state.showSidenav;
       this.visible = true;
     },
     onClose(){
+      this.$store.state.showSidenav = !this.$store.state.showSidenav;
       this.visible = false;
     }
   },
 };
 </script>
+
+<style scoped>
+  .aibtn{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image: url(https://assets.leetcode.cn/aliyun-lc-upload/users/i3lissful-chatelet7bc/avatar_1673756116.png?x-oss-process=image%2Fformat%2Cwebp);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 2px solid skyblue; 
+  }
+</style>
