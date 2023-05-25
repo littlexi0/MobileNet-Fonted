@@ -21,7 +21,55 @@
                 mini-icon="D"
                 text="主界面"
               />
-              <sidenav-item
+              <sidenav-collapse-item
+                refer="productsExample"
+                mini-icon="P"
+                text="文献库"
+              >
+                <template #nav-child-item>
+                  <sidenav-item
+                    :to="{ name: 'New Product' }"
+                    mini-icon="N"
+                    text="新建文献库"
+                  />
+                  <sidenav-item
+                    :to="{ name: 'Edit Product' }"
+                    mini-icon="E"
+                    text="编辑文献库"
+                  />
+                  <!-- <sidenav-item
+                    :to="{ name: 'Product Page' }"
+                    mini-icon="P"
+                    text="Product page"
+                  /> -->
+                  <sidenav-item
+                    :to="{ name: 'Products List' }"
+                    mini-icon="P"
+                    text="文献库列表"
+                  />
+                </template>
+              </sidenav-collapse-item>
+
+              <sidenav-collapse-item
+                refer="ordersExample"
+                mini-icon="O"
+                text="论文"
+              >
+                <template #nav-child-item>
+                  <sidenav-item
+                    :to="{ name: 'Order List' }"
+                    mini-icon="O"
+                    text="论文列表"
+                  />
+                  <sidenav-item
+                    :to="{ name: 'Order Details' }"
+                    mini-icon="O"
+                    text="论文详情"
+                  />
+                </template>
+              </sidenav-collapse-item>
+
+              <!-- <sidenav-item
                 :to="{ name: 'Automotive' }"
                 mini-icon="A"
                 text="Automotive"
@@ -49,7 +97,7 @@
                   />
                 </template>
               </sidenav-collapse-item>
-              <sidenav-item :to="{ name: 'CRM' }" mini-icon="C" text="CRM" />
+              <sidenav-item :to="{ name: 'CRM' }" mini-icon="C" text="CRM" /> -->
             </ul>
           </template>
         </sidenav-collapse>
@@ -262,7 +310,7 @@
                 text="Overview"
               />
 
-              <sidenav-collapse-item
+              <!-- <sidenav-collapse-item
                 refer="productsExample"
                 mini-icon="P"
                 text="Products"
@@ -289,7 +337,7 @@
                     text="Products List"
                   />
                 </template>
-              </sidenav-collapse-item>
+              </sidenav-collapse-item> -->
 
               <sidenav-collapse-item
                 refer="ordersExample"
@@ -799,7 +847,7 @@
   <div class="pt-3 mx-3 mt-3 sidenav-footer">
     <sidenav-card
       :class="cardBg"
-      text-primary="Need Help?"
+      text-primary="关于我们"
       text-secondary="Please check our docs"
       route="https://www.creative-tim.com/learning-lab/vue/overview/soft-ui-dashboard/"
       label="Documentation"

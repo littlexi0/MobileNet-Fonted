@@ -106,16 +106,18 @@
               <table id="products-list" class="table table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th>Product</th>
-                    <th>Category</th>
-                    <th>Price</th>
+                    <th>文献库</th>
+                    <th>主题</th>
+                    <th>论文数目</th>
                     <th>SKU</th>
                     <th>Quantity</th>
                     <th>Status</th>
                     <th>Action</th>
+
                   </tr>
                 </thead>
-                <tbody>
+
+                <!-- <tbody>
                   <tr>
                     <td>
                       <div class="d-flex">
@@ -884,7 +886,113 @@
                       </a>
                     </td>
                   </tr>
+                </tbody> -->
+
+                <tbody v-for="paperbase in paperbases" :key="paperbase.title">
+                    <tr>
+                      <td>
+                        <div class="d-flex">
+                          <div class="my-auto form-check">
+                            <input
+                              id="customCheck23"
+                              class="form-check-input"
+                              type="checkbox"
+                              checked
+                            />
+                          </div>
+                          <img
+                            class="w-10 ms-3"
+                            src="https://book.cass.cn/covers/nocover.jpg"
+                            alt="undercover"
+                          />
+                          <h6 class="my-auto ms-3">{{ paperbase.title }}</h6>
+                        </div>
+                      </td>
+                      <td class="text-sm">{{ paperbase.theme }}</td>
+                      <td class="text-sm">{{ paperbase.hot }}</td>
+                      <td class="text-sm">{{ paperbase.theme }}</td>
+                      <td class="text-sm">{{ paperbase.theme }}</td>
+                      <td>
+                        <span class="badge badge-success badge-sm">{{ paperbase.theme }}</span>
+                      </td>
+                      <td class="text-sm">
+                        <a
+                          href="javascript:;"
+                          data-bs-toggle="tooltip"
+                          data-bs-original-title="Preview product"
+                        >
+                          <i class="fas fa-eye text-secondary"></i>
+                        </a>
+                        <a
+                          href="javascript:;"
+                          class="mx-3"
+                          data-bs-toggle="tooltip"
+                          data-bs-original-title="Edit product"
+                        >
+                          <i class="fas fa-user-edit text-secondary"></i>
+                        </a>
+                        <a
+                          href="javascript:;"
+                          data-bs-toggle="tooltip"
+                          data-bs-original-title="Delete product"
+                        >
+                          <i class="fas fa-trash text-secondary"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  <!-- <tr>
+                    <td>
+                      <div class="d-flex">
+                        <div class="my-auto form-check">
+                          <input
+                            id="customCheck23"
+                            class="form-check-input"
+                            type="checkbox"
+                            checked
+                          />
+                        </div>
+                        <img
+                          class="w-10 ms-3"
+                          src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/undercover.jpg"
+                          alt="undercover"
+                        />
+                        <h6 class="my-auto ms-3">Undercover T-shirt</h6>
+                      </div>
+                    </td>
+                    <td class="text-sm">Shoes</td>
+                    <td class="text-sm">$869</td>
+                    <td class="text-sm">634729</td>
+                    <td class="text-sm">725</td>
+                    <td>
+                      <span class="badge badge-success badge-sm">in Stock</span>
+                    </td>
+                    <td class="text-sm">
+                      <a
+                        href="javascript:;"
+                        data-bs-toggle="tooltip"
+                        data-bs-original-title="Preview product"
+                      >
+                        <i class="fas fa-eye text-secondary"></i>
+                      </a>
+                      <a
+                        href="javascript:;"
+                        class="mx-3"
+                        data-bs-toggle="tooltip"
+                        data-bs-original-title="Edit product"
+                      >
+                        <i class="fas fa-user-edit text-secondary"></i>
+                      </a>
+                      <a
+                        href="javascript:;"
+                        data-bs-toggle="tooltip"
+                        data-bs-original-title="Delete product"
+                      >
+                        <i class="fas fa-trash text-secondary"></i>
+                      </a>
+                    </td>
+                  </tr> -->
                 </tbody>
+
                 <tfoot>
                   <tr>
                     <th>Product</th>
@@ -896,6 +1004,8 @@
                     <th>Action</th>
                   </tr>
                 </tfoot>
+              
+
               </table>
             </div>
           </div>
@@ -911,6 +1021,52 @@ import setTooltip from "@/assets/js/tooltip.js";
 
 export default {
   name: "ProductsList",
+  data(){
+    return{
+      paperbases:[
+        {
+          title:"1",
+          theme:"1",
+          hot:"1"
+        },
+        {
+          title:"2",
+          theme:"2",
+          hot:"2"
+        },
+        {
+          title:"3",
+          theme:"3",
+          hot:"3"
+        },
+        {
+          title:"4",
+          theme:"4",
+          hot:"4"
+        },
+        {
+          title:"1",
+          theme:"1",
+          hot:"1"
+        },
+        {
+          title:"2",
+          theme:"2",
+          hot:"2"
+        },
+        {
+          title:"3",
+          theme:"3",
+          hot:"3"
+        },
+        {
+          title:"4",
+          theme:"4",
+          hot:"4"
+        }
+      ]
+    }
+  },
   mounted() {
     if (document.getElementById("products-list")) {
       const dataTableSearch = new DataTable("#products-list", {
