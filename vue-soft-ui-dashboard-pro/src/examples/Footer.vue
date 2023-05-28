@@ -11,12 +11,12 @@
             {{ new Date().getFullYear() }}, made with
             <i class="fa fa-heart"></i> by
             <a
-              href="https://www.creative-tim.com"
+              href="https://www.littlexi.love/"
               class="font-weight-bold"
               target="_blank"
-              >Creative Tim</a
+              >LittleXi</a
             >
-            for a better web.
+            for 文渊智能管理系统
           </div>
         </div>
         <div class="col-lg-6">
@@ -25,26 +25,26 @@
           >
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com"
+                href="https://www.littlexi.love/"
                 class="nav-link text-muted"
                 target="_blank"
-                >Creative Tim</a
+                >LittleXi</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/presentation"
+                href="https://github.com/littlexi0"
                 class="nav-link text-muted"
                 target="_blank"
-                >About Us</a
+                >关于我</a
               >
             </li>
             <li class="nav-item">
               <a
-                href="https://www.creative-tim.com/blog"
+                href="https://blog.csdn.net/qq_68591679?spm=1000.2115.3001.5343"
                 class="nav-link text-muted"
                 target="_blank"
-                >Blog</a
+                >博客</a
               >
             </li>
             <li class="nav-item">
@@ -52,7 +52,7 @@
                 href="https://www.creative-tim.com/license"
                 class="nav-link pe-0 text-muted"
                 target="_blank"
-                >License</a
+                ></a
               >
             </li>
           </ul>

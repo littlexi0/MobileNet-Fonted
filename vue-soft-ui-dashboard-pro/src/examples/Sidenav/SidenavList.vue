@@ -33,6 +33,11 @@
                     text="新建文献库"
                   />
                   <sidenav-item
+                    :to="{ name: 'Products List' }"
+                    mini-icon="P"
+                    text="文献库列表"
+                  />
+                  <sidenav-item
                     :to="{ name: 'Edit Product' }"
                     mini-icon="E"
                     text="编辑文献库"
@@ -42,11 +47,7 @@
                     mini-icon="P"
                     text="Product page"
                   /> -->
-                  <sidenav-item
-                    :to="{ name: 'Products List' }"
-                    mini-icon="P"
-                    text="文献库列表"
-                  />
+
                 </template>
               </sidenav-collapse-item>
 
@@ -56,6 +57,11 @@
                 text="论文"
               >
                 <template #nav-child-item>
+                  <sidenav-item
+                    :to="{ name: 'New Paper' }"
+                    mini-icon="O"
+                    text="新建论文"
+                  />
                   <sidenav-item
                     :to="{ name: 'Order List' }"
                     mini-icon="O"
@@ -348,7 +354,7 @@
                   <sidenav-item
                     :to="{ name: 'Order List' }"
                     mini-icon="O"
-                    text="Order List"
+                    text="论文列表"
                   />
                   <sidenav-item
                     :to="{ name: 'Order Details' }"

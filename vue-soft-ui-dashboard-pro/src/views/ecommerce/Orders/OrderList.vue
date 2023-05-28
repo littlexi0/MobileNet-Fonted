@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid py-4">
+  <div v-if="false" class="container-fluid py-4" >
     <div class="d-sm-flex justify-content-between">
       <div>
         <soft-button color="success" variant="gradient">New order</soft-button>
@@ -569,6 +569,60 @@
       </div>
     </div>
   </div>
+
+  <a
+      href="./new-product"
+      class="mb-0 btn bg-gradient-success btn-sm"
+      target="_blank"
+      style="float: right;"
+      >+&nbsp; 新建论文</a
+    >
+
+  <a-table :columns="columns" :data-source="data">
+    <template #name="{ text }">
+      <a>{{ text }}</a>
+    </template>
+    <template #customTitle>
+      <span>
+        <smile-outlined />
+        文献库名称
+      </span>
+    </template>
+    <template #tags="{ text: tags }">
+      <span>
+        <a-tag
+          v-for="tag in tags"
+          :key="tag"
+          :color="green"
+        >
+          {{ tag.toUpperCase() }}
+        </a-tag>
+      </span>
+    </template>
+
+    <template #action="{ record }">
+      <span>
+        <a-button
+          type="text"
+          size="small"
+          class="mb-0 btn bg-gradient-success"
+          @click="showModal(record)"
+        >
+          编辑
+        </a-button>
+        <a-button
+          type="text"
+          size="small"
+          class="mb-0 btn bg-gradient-success"
+          style="margin-left: 5px;"
+          @click="showSwal(record)"
+        >
+          删除
+      </a-button>
+      </span>
+    </template>
+  </a-table>
+
 </template>
 
 <script>

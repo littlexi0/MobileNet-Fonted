@@ -1132,7 +1132,7 @@
                         :to="{ name: 'Order List' }"
                         class="dropdown-item border-radius-md"
                       >
-                        <span class="ps-3">Order List</span>
+                        <span class="ps-3">论文列表</span>
                       </router-link>
                       <router-link
                         :to="{ name: 'Order Details' }"
@@ -1224,7 +1224,7 @@
                 <router-link
                   :to="{ name: 'Order List' }"
                   class="dropdown-item border-radius-md"
-                  >Order List</router-link
+                  >论文列表</router-link
                 >
                 <router-link
                   :to="{ name: 'Order Details' }"

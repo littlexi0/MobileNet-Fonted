@@ -6,6 +6,7 @@
       href="./new-product"
       class="mb-0 btn bg-gradient-success btn-sm"
       target="_blank"
+      style="float: right"
       >+&nbsp; 新建文献库</a
     >
 

@@ -8,7 +8,7 @@
         {{ "" }}
         <span class="text-lg ms-n2">{{ suffix }}</span>
       </h1>
-      <h6 class="mb-0 font-weight-bolder">{{ title }}</h6>
+      <!-- <h6 class="mb-0 font-weight-bolder">{{ title }}</h6> -->
       <p class="mb-0 text-sm opacity-8">{{ description }}</p>
     </div>
   </div>
