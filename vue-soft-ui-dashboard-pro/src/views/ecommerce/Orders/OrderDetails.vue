@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid py-4">
+  <div v-if="false" class="container-fluid py-4" >
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <div class="card mb-4">
@@ -208,6 +208,16 @@
       </div>
     </div>
   </div>
+  <a href="../../../assets/pdf/hw7.pdf" target="_blank"><a-button> 点击预览</a-button></a>
+  <!-- <embed src="../../../assets/pdf/hw7.pdf" width="100%" height="600px"> -->
+  <div class="container">
+      <iframe src=https://pchub.littlexi.love/pdf/hw7.pdf  class="pdf_iframe"></iframe>
+  </div>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" />
+  <input type="submit" value="Upload" />
+</form>
+
 </template>
 
 <script>
@@ -227,3 +237,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container {
+  height: 100%;
+  position: relative;
+}
+.pdf_iframe {
+width: 100%;
+height: 900px;
+}
+</style>
