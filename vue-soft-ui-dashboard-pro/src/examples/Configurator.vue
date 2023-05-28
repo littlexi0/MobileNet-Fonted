@@ -9,19 +9,146 @@
 
     <div class="px-3 py-2 fixed-plugin-button  position-fixed aibtn"   @click="showDrawer"></div>
     <a-drawer
-      title="AI小珐"
+      title="珐露珊-机逐封秘"
       mask=false
       :placement="placement"
       :closable="false"
       :visible="visible"
       @close="onClose"
     >
-      <input v-model="asktext">
-      <button @click="ask">发送</button>
-      <p>{{ resptext }}</p>
+    <p>积极求知，是学者不可或缺的品质 。夜晚是能够宁静思考的宝贵时段。知论派的研究涉及大量的古文与字符。</p>
+      <!-- <input v-model="asktext"> -->
+      <!-- <button @click="askclk">发送</button> -->
+      <!-- <p>{{ resptext }}</p> -->
+
+      <!-- <template> -->
+        <!-- <a-comment>
+          <template #actions>
+            <span key="comment-basic-like">sds
+              <a-tooltip title="Like">
+                <template v-if="action === 'liked'">
+                  <LikeFilled @click="like" />
+                </template>
+                <template v-else>
+                  <LikeOutlined @click="like" />
+                </template>
+              </a-tooltip>
+              <span style="padding-left: 8px; cursor: auto">
+                {{ likes }}
+              </span>
+            </span>
+            <span key="comment-basic-dislike">
+              <a-tooltip title="Dislike">
+                <template v-if="action === 'disliked'">
+                  <DislikeFilled @click="dislike" />
+                </template>
+                <template v-else>
+                  <DislikeOutlined @click="dislike" />
+                </template>
+              </a-tooltip>
+              <span style="padding-left: 8px; cursor: auto">
+                {{ dislikes }}
+              </span>
+            </span>
+            <span key="comment-basic-reply-to">Reply to</span>
+          </template>
+          <template #author><a>Han Solo</a></template>
+          <template #avatar>
+            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+          </template>
+          <template #content>
+            <p>
+              We supply a series of design principles, practical patterns and high quality design
+              resources (Sketch and Axure), to help people create their product prototypes beautifully and
+              efficiently.
+            </p>
+          </template>
+          <template #datetime>
+            <a-tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
+              <span>{{ dayjs().fromNow() }}</span>
+            </a-tooltip>
+          </template>
+        </a-comment> -->
+
+        <!-- <template> -->
+      <div>
+        <a-list
+          v-if="comments.length"
+          :data-source="comments"
+          :header="`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`"
+          item-layout="horizontal"
+        >
+          <template #renderItem="{ item }">
+            <a-list-item>
+              <a-comment
+                :author="item.author"
+                :avatar="item.avatar"
+                :content="item.content"
+                :datetime="item.datetime"
+              />
+
+            </a-list-item>
+          </template>
+        </a-list> 
+      </div>
+      <div>
+        <a-comment >
+          <!-- <template #avatar>
+            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+          </template> -->
+          <template #content>
+            <a-textarea v-model:value="askvalue" placeholder="请输入内容..." :rows="4" />
+            <span>&nbsp;</span>
+            <a-form-item style="float: right;">
+              <a-button html-type="submit" :loading="submitting" type="primary" @click="askclk">
+                提问
+              </a-button>
+            </a-form-item>
+          </template>
+        </a-comment>
+      </div>
+    <!-- style="position: absolute; bottom: 0;right: 0;width: 100%;" -->
+
+
+      <!-- <a-comment>
+        <template #actions>
+          <span key="comment-nested-reply-to">Reply to</span>
+        </template>
+        <template #author>
+          <a><div class="aibtn" style="width: 40px; height: 40px;"></div></a>
+        </template>
+        <template #avatar>
+          <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+        </template>
+        <template #content>
+          <p>
+            We supply a series of design principles, practical patterns and high quality design
+            resources (Sketch and Axure).
+          </p>
+        </template>
+        <a-comment>
+          <template #actions>
+            <span key="comment-nested-reply-to">Reply to</span>
+          </template>
+          <template #author>
+            <a><div class="aibtn" style="width: 40px; height: 40px;"></div></a>
+          </template>
+          <template #avatar>
+            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+          </template>
+          <template #content>
+            <p>
+              We supply a series of design principles, practical patterns and high quality design
+              resources (Sketch and Axure).
+            </p>
+          </template>
+        </a-comment>
+      </a-comment> -->
+      
+    <!-- </template> -->
 
     </a-drawer>
-    
+    <!-- <LikeFilled>ss</LikeFilled> -->
     <div class="shadow-lg card blur">
       <div class="pt-3 pb-0 bg-transparent card-header">
         <div class="float-start">
@@ -173,22 +300,75 @@
 <script>
 import { mapMutations, mapActions, mapState } from "vuex";
 import axios from 'axios';
-export default {
-  name: "Configurator",
 
+import { defineComponent } from 'vue';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+// import dayjs from 'dayjs';
+// import { LikeFilled, LikeOutlined, DislikeFilled, DislikeOutlined } from '@ant-design/icons-vue';
+// import { defineComponent, ref } from 'vue';
+// import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
+
+export default defineComponent({
+  name: "Configurator",
+  components: {
+    // LikeFilled,
+    // LikeOutlined,
+    // DislikeFilled,
+    // DislikeOutlined,
+  },
   props: {
     toggle: {
       type: Function,
       default: null,
     },
   },
+  // setup() {
+    // const comments = ref([]);
+    // const submitting = ref(false);
+    // const value = ref('');
+    // const handleSubmit = () => {
+      // if (!value.value) {
+      //   return;
+      // }
+      // submitting.value = true;
+      // setTimeout(() => {
+      //   submitting.value = false;
+      //   comments.value = [{
+      //     author: 'Han Solo',
+      //     avatar: 'https://joeschmoe.io/api/v1/random',
+      //     content: value.value,
+      //     datetime: dayjs().fromNow(),
+      //   }, ...comments.value];
+      //   value.value = '';
+      // }, 1000);
+    // };
+    // return {
+      // comments,
+      // submitting,
+      // value,
+      // handleSubmit,
+    // };
+  // },
   data() {
     return {
       apiKey:"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",
       placement:'right',
       visible:false,
       asktext:"",
-      resptext:""
+      resptext:"",
+      askvalue:"",
+      submitting:false,
+      comments:[
+        {
+          author:"珐露珊",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "你好，我是小助理珐露珊，请问有什么需要帮助的吗？",
+          datetime:"小姐姐"
+        }
+      ]
     };
   },
   computed: {
@@ -212,6 +392,7 @@ export default {
     window.addEventListener("resize", this.sidenavTypeOnResize);
     window.addEventListener("load", this.sidenavTypeOnResize);
   },
+
   methods: {
     ...mapMutations(["navbarMinimize", "sidebarType", "navbarFixed"]),
     ...mapActions(["toggleSidebarColor", "setCardBackground"]),
@@ -245,15 +426,24 @@ export default {
         white.classList.remove("disabled");
       }
     },
-    ask(){
+    askclk(){
       // const apiKey = process.env.OPENAI_API_KEY;
+      this.submitting = true;
+      var newcomment = [{
+        author: "LittleXi",
+        avatar: "https://pchub.littlexi.love/avatar/xi.jpg",
+        content: this.askvalue,
+        datetime: ""
+      }]
+      this.comments.push(...newcomment);
       const model = 'gpt-3.5-turbo';
-      const messages = [{ role: 'user', content: this.asktext }];
+      
+      const messages = [{ role: 'user', content: "假如你是原神中的珐露珊，你需要回答我以下的问题："+this.askvalue }];
 
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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`,
+          'Authorization': `Bearer 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`,
         },
       };
 
@@ -262,32 +452,61 @@ export default {
         messages,
       };
       console.log(requestData)
-      axios.post('https://api.openai.com/v1/chat/completions', requestData, config)
+      const cancelTokenSource = axios.CancelToken.source();
+      axios.post('https://api.openai.com/v1/chat/completions', requestData, config,{ cancelToken: cancelTokenSource.token })
         .then(response => {
+          // if(response.config.request.status)
           const completion = response.data.choices[0].message;
-          console.log(completion.content);
-          console.log(completion.role);
-          this.resptext+=completion.content+'\n';
-          this.$message({
-            showClose: true,
-            message: completion.content,
-            type: 'success'
-          });
-        })
+          // console.log(completion.content);
+          // console.log(completion.role);
+          // this.askvalue=completion.content;
+          this.askvalue='';
+          this.submitting = false;
+          // this.resptext+=completion.content+'\n';
+          var newcomment = [{
+            author: "珐露珊",
+            avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+            content: completion.content,
+            datetime: "小姐姐"
+          }]
+          this.comments.push(...newcomment);
+          // this.$message({
+          //   message: completion.content,
+          //   type: 'success'
+          // });
+        }) .catch(error => {
+        if (axios.isCancel(error)) {
+          // 请求已被取消
+          console.log('请求已取消');
+        } else {
+          // 处理其他错误
+          this.submitting=false;
+          this.$swal({
+              title: "提问失败",
+              text: "派蒙：珐露珊小姐姐在睡觉，我们还是不要打扰她啦",
+              // icon: "error",
+              customClass: {
+                confirmButton: "btn bg-gradient-success",
+              },
+              buttonsStyling: false,
+            });
+          console.log('请求出错', error);
+        }
+      });
        
     },
     // const placement = ref('left');
     // const visible = ref(false);
     showDrawer(){
-      this.$store.state.showSidenav = !this.$store.state.showSidenav;
+      this.$store.state.showSidenav = false;
       this.visible = true;
     },
     onClose(){
-      this.$store.state.showSidenav = !this.$store.state.showSidenav;
+      this.$store.state.showSidenav = true;
       this.visible = false;
     }
   },
-};
+});
 </script>
 
 <style scoped>
@@ -295,7 +514,7 @@ export default {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-image: url(https://assets.leetcode.cn/aliyun-lc-upload/users/i3lissful-chatelet7bc/avatar_1673756116.png?x-oss-process=image%2Fformat%2Cwebp);
+    background-image: url("https://pchub.littlexi.love/avatar/fls.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     border: 2px solid skyblue; 

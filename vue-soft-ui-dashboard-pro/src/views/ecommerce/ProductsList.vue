@@ -19,7 +19,6 @@
         文献库名称
       </span>
     </template>
-
     <template #tags="{ text: tags }">
       <span>
         <a-tag
