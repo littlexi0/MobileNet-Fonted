@@ -17,60 +17,7 @@
       @close="onClose"
     >
     <p>积极求知，是学者不可或缺的品质 。夜晚是能够宁静思考的宝贵时段。知论派的研究涉及大量的古文与字符。</p>
-      <!-- <input v-model="asktext"> -->
-      <!-- <button @click="askclk">发送</button> -->
-      <!-- <p>{{ resptext }}</p> -->
 
-      <!-- <template> -->
-        <!-- <a-comment>
-          <template #actions>
-            <span key="comment-basic-like">sds
-              <a-tooltip title="Like">
-                <template v-if="action === 'liked'">
-                  <LikeFilled @click="like" />
-                </template>
-                <template v-else>
-                  <LikeOutlined @click="like" />
-                </template>
-              </a-tooltip>
-              <span style="padding-left: 8px; cursor: auto">
-                {{ likes }}
-              </span>
-            </span>
-            <span key="comment-basic-dislike">
-              <a-tooltip title="Dislike">
-                <template v-if="action === 'disliked'">
-                  <DislikeFilled @click="dislike" />
-                </template>
-                <template v-else>
-                  <DislikeOutlined @click="dislike" />
-                </template>
-              </a-tooltip>
-              <span style="padding-left: 8px; cursor: auto">
-                {{ dislikes }}
-              </span>
-            </span>
-            <span key="comment-basic-reply-to">Reply to</span>
-          </template>
-          <template #author><a>Han Solo</a></template>
-          <template #avatar>
-            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-          </template>
-          <template #content>
-            <p>
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure), to help people create their product prototypes beautifully and
-              efficiently.
-            </p>
-          </template>
-          <template #datetime>
-            <a-tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
-              <span>{{ dayjs().fromNow() }}</span>
-            </a-tooltip>
-          </template>
-        </a-comment> -->
-
-        <!-- <template> -->
       <div>
         <a-list
           v-if="comments.length"
@@ -107,45 +54,6 @@
           </template>
         </a-comment>
       </div>
-    <!-- style="position: absolute; bottom: 0;right: 0;width: 100%;" -->
-
-
-      <!-- <a-comment>
-        <template #actions>
-          <span key="comment-nested-reply-to">Reply to</span>
-        </template>
-        <template #author>
-          <a><div class="aibtn" style="width: 40px; height: 40px;"></div></a>
-        </template>
-        <template #avatar>
-          <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-        </template>
-        <template #content>
-          <p>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure).
-          </p>
-        </template>
-        <a-comment>
-          <template #actions>
-            <span key="comment-nested-reply-to">Reply to</span>
-          </template>
-          <template #author>
-            <a><div class="aibtn" style="width: 40px; height: 40px;"></div></a>
-          </template>
-          <template #avatar>
-            <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
-          </template>
-          <template #content>
-            <p>
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure).
-            </p>
-          </template>
-        </a-comment>
-      </a-comment> -->
-      
-    <!-- </template> -->
 
     </a-drawer>
     <!-- <LikeFilled>ss</LikeFilled> -->
@@ -354,7 +262,7 @@ export default defineComponent({
   // },
   data() {
     return {
-      apiKey:"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",
+      apiKey:"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",
       placement:'right',
       visible:false,
       asktext:"",
@@ -366,7 +274,7 @@ export default defineComponent({
           author:"珐露珊",
           avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
           content: "你好，我是小助理珐露珊，请问有什么需要帮助的吗？",
-          datetime:"小姐姐"
+          datetime:""
         }
       ]
     };
@@ -443,7 +351,7 @@ export default defineComponent({
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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`,
+          'Authorization': `Bearer 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`
         },
       };
 

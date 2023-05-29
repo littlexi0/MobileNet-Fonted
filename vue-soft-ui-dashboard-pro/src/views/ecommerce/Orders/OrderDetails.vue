@@ -208,15 +208,50 @@
       </div>
     </div>
   </div>
-  <a href="../../../assets/pdf/hw7.pdf" target="_blank"><a-button> 点击预览</a-button></a>
-  <!-- <embed src="../../../assets/pdf/hw7.pdf" width="100%" height="600px"> -->
   <div class="container">
-      <iframe src=https://pchub.littlexi.love/pdf/hw7.pdf  class="pdf_iframe"></iframe>
+    <div class="containerpdf">
+      <iframe src=http://qny.littlexi.love/hw7.pdf  class="pdf_iframe"></iframe>
+    </div>
+
+    <div class="postcomment">
+      <a-comment >
+        <!-- <template #avatar>
+          <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+        </template> -->
+        <template #content>
+          <a-textarea v-model:value="commentvalue" placeholder="哎哟，不错哦，发条评论吧" :rows="4" />
+          <span>&nbsp;</span>
+          <a-form-item style="float: right;">
+            <a-button html-type="submit" :loading="submitting" type="primary" @click="commentclk">
+              发布
+            </a-button>
+          </a-form-item>
+        </template>
+      </a-comment>
+    </div>
+
+    <div class="containercomment">
+      <a-list
+          v-if="comments.length"
+          :data-source="comments"
+          :header="`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`"
+          item-layout="horizontal"
+        >
+          <template #renderItem="{ item }">
+            <a-list-item>
+              <a-comment
+                :author="item.author"
+                :avatar="item.avatar"
+                :content="item.content"
+                :datetime="item.datetime"
+              />
+              <a-button v-if="item.author==this.$store.state.username" type="danger" @click="deleteComment(item)">删除</a-button>
+            </a-list-item>
+          </template>
+        </a-list>
+    </div>
+
   </div>
-  <form action="/upload" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" />
-  <input type="submit" value="Upload" />
-</form>
 
 </template>
 
@@ -233,15 +268,101 @@ export default {
     SoftBadge,
   },
   data() {
-    return {};
+    return {
+      comments: [
+        {
+          author: "小明",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "你好，我有一个问题需要咨询二次元是我的避风港，心情不好的时候会看，心情好的时候也会看，空虚的时候，平静的时候......我生命的每时每刻，他们是有血有肉的生命我始终相信我有一天能打破次元壁去到他们的世界旅行，就算要等到我死去的那一刻，也足了。",
+          datetime: "2012-10-11"
+        },
+        {
+          author: "littlexi",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "这是一个很有用的小助手。",
+          datetime: ""
+        },
+        {
+          author: "Alice",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "非常感谢你的帮助！",
+          datetime: ""
+        },
+        {
+          author: "张三",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "你好，我想知道如何使用这个功能。",
+          datetime: ""
+        },
+        {
+          author: "Jane Smith",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "请问这个功能是否免费？",
+          datetime: ""
+        },
+        {
+          author: "李四",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "非常好的助手，推荐给大家。",
+          datetime: ""
+        },
+        {
+          author: "Lucy",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "我有一个建议，希望能够添加这个功能。",
+          datetime: ""
+        },
+        {
+          author: "Mike",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "非常快速的回答，谢谢！",
+          datetime: ""
+        },
+        {
+          author: "王五",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "请问这个功能是否支持移动设备？",
+          datetime: ""
+        },
+        {
+          author: "Emily",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "非常喜欢这个小助手，非常实用！",
+          datetime: ""
+        }
+      ],
+      commentvalue:"",
+      submitting:false
+    };
   },
+  methods:{
+    commentclk(){
+      console.log(this.$store.state.username);
+    }
+  }
 };
 </script>
 
 <style scoped>
 .container {
-  height: 100%;
-  position: relative;
+  /* height: calc(100vh - 100px); */
+  /* width: 100vh; */
+  /* margin: 0; */
+  /* margin-right: 0; */
+  /* margin-left: 0; */
+  /* position: relative; */
+}
+.containerpdf{
+  /* overflow: hidden;  */
+  width: 100%;
+  /* float: left; */
+}
+.containercomment{
+  /* width: 25vh; */
+  /* height: ; */
+  /* white-space: nowrap;  */
+  overflow-wrap: break-word;
+  /* float: left; */
 }
 .pdf_iframe {
 width: 100%;

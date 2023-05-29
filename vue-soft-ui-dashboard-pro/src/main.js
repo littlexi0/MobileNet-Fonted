@@ -28,4 +28,6 @@ appInstance.use(List);
 appInstance.use(Comment);
 appInstance.use(Form);
 appInstance.use(Input);
+// appInstance.prototype.$http = axios;
+// appInstance.use(axios);
 appInstance.mount("#app");

@@ -10,7 +10,7 @@
       >
         <span class="mask bg-gradient-success opacity-6"></span>
       </div>
-      <div class="mx-4 overflow-hidden card card-body blur shadow-blur mt-n6">
+      <div v-if="false" class="mx-4 overflow-hidden card card-body blur shadow-blur mt-n6">
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
@@ -194,7 +194,7 @@
         </div>
       </div>
     </div>
-    <div class="py-4 container-fluid">
+    <div v-if="false" class="py-4 container-fluid">
       <div class="row">
         <div class="col-12">
           <div class="multisteps-form">
@@ -258,53 +258,91 @@
           </div>
         </div>
       </div>
+    
+    
+    
     </div>
+    <div>
+      <input type="file" @change="handleFileUpload">
+      <button @click="uploadFile">上传图片</button>
+      <!-- <div v-if="imageUrl">
+        <img :src="imageUrl" alt="Uploaded Image">
+      </div> -->
+    </div>
+
   </template>
   
-  <script>
-  import ProductInfo from "../products/components/ProductInfo.vue";
-  import Media from "../products/components/Media.vue";
-  import Socials from "../products/components/Socials.vue";
-  import Pricing from "../products/components/Pricing.vue";
-  
-  import setNavPills from "@/assets/js/nav-pills.js";
-  export default {
-    name: "NewPaper",
-    components: {
-      ProductInfo,
-      Media,
-      Socials,
-      Pricing,
+<script>
+import ProductInfo from "../products/components/ProductInfo.vue";
+import Media from "../products/components/Media.vue";
+import Socials from "../products/components/Socials.vue";
+import Pricing from "../products/components/Pricing.vue";
+import axios from 'axios';
+// import * as qiniu from 'qiniu-js';
+import setNavPills from "@/assets/js/nav-pills.js";
+
+export default {
+  name: "NewPaper",
+  components: {
+    ProductInfo,
+    Media,
+    Socials,
+    Pricing,
+  },
+  data() {
+    return {
+      showMenu: false,
+      activeClass: "js-active position-relative",
+      activeStep: 0,
+      formSteps: 3,
+      file: null,
+      uploadUrl: 'https://upload.qiniup.com', // 替换为实际的上传地址
+      token: this.$store.state.token, // 替换为实际的上传凭证
+    };
+  },
+  mounted() {
+    this.$store.state.isAbsolute = true;
+    // this.getUploadToken();
+    setNavPills();
+  },
+  beforeUnmount() {
+    this.$store.state.isAbsolute = false;
+  },
+  methods: {
+    nextStep() {
+      if (this.activeStep < this.formSteps) {
+        this.activeStep += 1;
+      } else {
+        this.activeStep -= 1;
+      }
     },
-    data() {
-      return {
-        showMenu: false,
-        activeClass: "js-active position-relative",
-        activeStep: 0,
-        formSteps: 3,
-      };
+    prevStep() {
+      if (this.activeStep > 0) {
+        this.activeStep -= 1;
+      }
     },
-    mounted() {
-      this.$store.state.isAbsolute = true;
-      setNavPills();
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
     },
-    beforeUnmount() {
-      this.$store.state.isAbsolute = false;
+    uploadFile() {
+      const formData = new FormData();
+      formData.append('file', this.file);
+      formData.append('token', this.token);
+      console.log("upload")
+      axios
+        .post(this.uploadUrl, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(response => {
+          console.log('文件上传成功', response.data);
+        })
+        .catch(error => {
+          console.error('文件上传失败', error);
+        });
     },
-    methods: {
-      nextStep() {
-        if (this.activeStep < this.formSteps) {
-          this.activeStep += 1;
-        } else {
-          this.activeStep -= 1;
-        }
-      },
-      prevStep() {
-        if (this.activeStep > 0) {
-          this.activeStep -= 1;
-        }
-      },
-    },
-  };
-  </script>
+  }
+};
+</script>
   
