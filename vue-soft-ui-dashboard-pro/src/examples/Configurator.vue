@@ -372,7 +372,7 @@ export default defineComponent({
             author: "珐露珊",
             avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
             content: completion.content,
-            datetime: "小姐姐"
+            datetime: ""
           }]
           this.comments.push(...newcomment);
           // this.$message({

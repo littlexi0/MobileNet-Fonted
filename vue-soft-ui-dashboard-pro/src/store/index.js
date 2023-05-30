@@ -30,7 +30,7 @@ export default createStore({
       country:'中国',
       press:'中国传媒大学文化产业管理学院',
       pressdata:'2021-10-01',
-      url:'http://qny.littlexi.love/FmgyW6rKjpbaA-jeCkpbLKlHgbjB'
+      url:'https://qny.littlexi.love/FmgyW6rKjpbaA-jeCkpbLKlHgbjB'
     },    
     navbarFixed:
       "position-sticky blur shadow-blur left-auto top-1 z-index-sticky px-0 mx-4",

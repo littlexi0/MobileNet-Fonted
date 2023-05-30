@@ -43,14 +43,25 @@
           :class="isRTL ? 'me-md-auto' : 'ms-md-auto'"
         >
           <div class="input-group">
-            <span class="input-group-text text-body"
-              ><i class="fas fa-search" aria-hidden="true"></i
-            ></span>
+            <a-select
+              ref="select"
+              v-model:value="value1"
+              style="width: 120px;height: 30px;border-radius: 0px;"
+              @focus="focus"
+              @change="handleChange"
+            >
+              <a-select-option value="jack">文献库</a-select-option>
+              <a-select-option value="lucy">论文</a-select-option>
+            </a-select>
             <input
               type="text"
               class="form-control"
               :placeholder="isRTL ? 'أكتب هنا...' : '请输入查询信息...'"
             />
+            <span class="input-group-text text-body"
+              ><i class="fas fa-search" aria-hidden="true"></i
+            ></span>
+
           </div>
           
         </div>
@@ -226,8 +237,8 @@
 <script>
 import Breadcrumbs from "../Breadcrumbs.vue";
 import { mapMutations, mapActions, mapState } from "vuex";
-
-export default {
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
   name: "Navbar",
   components: {
     Breadcrumbs,
@@ -241,6 +252,46 @@ export default {
       type: String,
       default: "",
     },
+  },
+  setup() {
+    const options1 = ref([{
+      value: 'jack',
+      label: 'Jack',
+    }, {
+      value: 'lucy',
+      label: 'Lucy',
+    }, {
+      value: 'disabled',
+      label: 'Disabled',
+      disabled: true,
+    }, {
+      value: 'yiminghe',
+      label: 'Yiminghe',
+    }]);
+    const options2 = ref([{
+      value: 'lucy',
+      label: 'Lucy',
+    }]);
+    const options3 = ref([{
+      value: 'lucy',
+      label: 'Lucy',
+    }]);
+    const focus = () => {
+      console.log('focus');
+    };
+    const handleChange = value => {
+      console.log(`selected ${value}`);
+    };
+    return {
+      focus,
+      handleChange,
+      value1: ref('lucy'),
+      value2: ref('lucy'),
+      value3: ref('lucy'),
+      options1,
+      options2,
+      options3,
+    };
   },
   data() {
     return {
@@ -269,5 +320,5 @@ export default {
       this.navbarMinimize();
     },
   },
-};
+});
 </script>
