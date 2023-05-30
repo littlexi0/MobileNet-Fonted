@@ -209,8 +209,16 @@
     </div>
   </div>
   <div class="container">
+    <a-descriptions :title=paper.title>
+      <a-descriptions-item label="文献库">{{ paper.library }}</a-descriptions-item>
+      <a-descriptions-item label="作者">{{ paper.author }}</a-descriptions-item>
+      <a-descriptions-item label="国家">{{ paper.country }}</a-descriptions-item>
+      <a-descriptions-item label="出版社">{{ paper.press }}</a-descriptions-item>
+      <a-descriptions-item label="日期">{{ paper.pressdata }}</a-descriptions-item>
+    </a-descriptions>
+    
     <div class="containerpdf">
-      <iframe src=http://qny.littlexi.love/hw7.pdf  class="pdf_iframe"></iframe>
+      <iframe :src=paper.url  class="pdf_iframe"></iframe>
     </div>
 
     <div class="postcomment">
@@ -245,7 +253,7 @@
                 :content="item.content"
                 :datetime="item.datetime"
               />
-              <a-button v-if="item.author==this.$store.state.username" type="danger" @click="deleteComment(item)">删除</a-button>
+              <a-button v-if="item.author==this.$store.state.username" type="dashed" size="small" danger @click="deleteComment(item)">删除</a-button>
             </a-list-item>
           </template>
         </a-list>
@@ -269,6 +277,7 @@ export default {
   },
   data() {
     return {
+      paper:this.$store.state.paper,
       comments: [
         {
           author: "小明",
@@ -332,7 +341,8 @@ export default {
         }
       ],
       commentvalue:"",
-      submitting:false
+      submitting:false,
+      username:this.$store.state.username,
     };
   },
   methods:{

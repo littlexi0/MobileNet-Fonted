@@ -6,13 +6,15 @@
           backgroundImage:
             'url(' + require('@/assets/img/curved-images/curved14.jpg') + ')',
           backgroundPositionY: '50%',
+          textAlign:center,
         }"
       >
+        <h2 class="title">新建论文</h2>
         <span class="mask bg-gradient-success opacity-6"></span>
       </div>
       <div v-if="false" class="mx-4 overflow-hidden card card-body blur shadow-blur mt-n6">
         <div class="row gx-4">
-          <div class="col-auto">
+          <div v-if="false" class="col-auto">
             <div class="avatar avatar-xl position-relative">
               <img
                 src="../../../assets/img/bruce-mars.jpg"
@@ -262,12 +264,90 @@
     
     
     </div>
-    <div>
-      <input type="file" @change="handleFileUpload">
-      <button @click="uploadFile">上传图片</button>
-      <!-- <div v-if="imageUrl">
-        <img :src="imageUrl" alt="Uploaded Image">
-      </div> -->
+    
+
+
+    <div class="newpaper">
+
+      <a-form
+        :model="formState"
+        name="validate_other"
+        v-bind="formItemLayout"
+        class="formStatecss"
+        @finishFailed="onFinishFailed"
+        @finish="onFinish"
+      >
+        <a-form-item label="论文标题">
+          <a-form-item name="input-number" no-style>
+            <a-input v-model="formState.title"/>
+          </a-form-item>
+        </a-form-item>
+
+        <a-form-item label="所属文献库"  :rules="[{ required: true, message: '文献库不能非空!' }]"> 
+          <a-form-item name="input-number" no-style>
+            <a-input v-model="formState.library"/>
+          </a-form-item>
+        </a-form-item>
+
+        <a-form-item label="论文作者">
+          <a-form-item name="input-number" no-style>
+            <a-input v-model="formState.author"/>
+          </a-form-item>
+        </a-form-item>
+
+        <a-form-item
+          name="select"
+          label="国家"
+          has-feedback
+          :rules="[{ required: true, message: '请选择所属国家!' }]"
+        >
+          <a-select v-model:value="formState.country" placeholder="Please select a country">
+            <a-select-option value="china">China</a-select-option>
+            <a-select-option value="usa">U.S.A</a-select-option>
+            <a-select-option value="usa">Others</a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <a-form-item label="出版社">
+          <a-form-item name="input-number" no-style>
+            <a-input v-model="formState.press"/>
+          </a-form-item>
+        </a-form-item>
+
+        <a-form-item label="发表日期">
+          <a-form-item name="input-number" no-style>
+            <a-input v-model="formState.pressdata"/>
+          </a-form-item>
+        </a-form-item>
+
+        <!-- <a-form-item label="InputNumber">
+          <a-form-item name="input-number" no-style>
+            <a-input-number v-model:value="formState['input-number']" :min="1" :max="10" />
+          </a-form-item>
+          <span class="ant-form-text">machines</span>
+        </a-form-item> -->
+
+
+
+        <a-form-item label="PDF上传">
+          <a-form-item name="dragger" no-style>
+            <input id="inputField" name="inputField" type="file" placeholder="ds" @change="handleFileUpload">
+          </a-form-item>
+        </a-form-item>
+
+        <!-- <a-button type="primary" :size="size" style="float: right;">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+          确认创建
+        </a-button> -->
+      </a-form>
+      <a-button type="primary" size="large" style="float: right;margin-right: 30vh;">
+          <template #icon>
+            <DownloadOutlined />
+          </template>
+          确认创建
+        </a-button>
     </div>
 
   </template>
@@ -279,15 +359,46 @@ import Socials from "../products/components/Socials.vue";
 import Pricing from "../products/components/Pricing.vue";
 import axios from 'axios';
 // import * as qiniu from 'qiniu-js';
+import { message } from 'ant-design-vue';
+import { defineComponent } from 'vue';
+// import { UploadOutlined, InboxOutlined } from '@ant-design/icons-vue';
 import setNavPills from "@/assets/js/nav-pills.js";
 
-export default {
+export default defineComponent({
   name: "NewPaper",
   components: {
     ProductInfo,
     Media,
     Socials,
     Pricing,
+  },
+  setup(){
+    const formItemLayout = {
+      labelCol: {
+        span: 6,
+      },
+      wrapperCol: {
+        span: 14,
+      },
+    };
+    // const formState = reactive({
+    //   'input-number': 3,
+    //   'checkbox-group': ['A', 'B'],
+    //   rate: 3.5,
+    // });
+    const onFinish = values => {
+      console.log('Success:', values);
+    };
+    const onFinishFailed = errorInfo => {
+      console.log('Failed:', errorInfo);
+    };
+
+    return {
+      // formState,
+      onFinish,
+      onFinishFailed,
+      formItemLayout,
+    };
   },
   data() {
     return {
@@ -298,7 +409,20 @@ export default {
       file: null,
       uploadUrl: 'https://upload.qiniup.com', // 替换为实际的上传地址
       token: this.$store.state.token, // 替换为实际的上传凭证
+      avatar:this.$store.state.avatar,
+      formState:{
+        title:'',
+        library:'',
+        author:'',
+        country:'',
+        press:'',
+        pressdata:''
+      }
     };
+  },
+  created(){
+    // const avatar =document.getElementsByClassName('avatarcss');
+    // avatar.style.backgroundImage =this.avatar;
   },
   mounted() {
     this.$store.state.isAbsolute = true;
@@ -323,12 +447,14 @@ export default {
     },
     handleFileUpload(event) {
       this.file = event.target.files[0];
+      this.uploadFile();
     },
     uploadFile() {
       const formData = new FormData();
       formData.append('file', this.file);
       formData.append('token', this.token);
       console.log("upload")
+      
       axios
         .post(this.uploadUrl, formData, {
           headers: {
@@ -336,6 +462,8 @@ export default {
           },
         })
         .then(response => {
+          // console.log
+          message.success("文件上传成功");
           console.log('文件上传成功', response.data);
         })
         .catch(error => {
@@ -343,6 +471,24 @@ export default {
         });
     },
   }
-};
+});
 </script>
   
+
+<style scoped>
+.formStatecss{
+  margin-top: 3vh;
+}
+.newpaper{
+  /* text-align: center; */
+  /* background-color: pink; */
+}
+.title {
+  font-size: 500%;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+</style>

@@ -16,10 +16,21 @@ export default createStore({
     showNavbar: true,
     showFooter: true,
     showMain: true,
+    userid:0,
     username: "littlexi",
-    avatar:"https://avatars.githubusercontent.com/u/133506022?v=4",
+    avatar:"qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
     wenyhub:"https://qny.littlexi.love/",
     token:"n0meldsLEp57rVsgOvp-NXq5pNLFDbwbHPXxkxpG:81vGyDsu-uMaXxCtunpBmkq53Lk=:eyJzY29wZSI6IndlbnlodWIiLCJkZWFkbGluZSI6MjY4NTM2MDk2MywiZGV0ZWN0TWltZSI6MX0=",
+    paper:{
+      id:'',
+      title:'游戏环境下的中国文化输出探索——以《原神》为例',
+      library:'文化',
+      author:'刘姝秀',
+      country:'中国',
+      press:'中国传媒大学文化产业管理学院',
+      pressdata:'2021-10-01',
+      url:'http://qny.littlexi.love/FmgyW6rKjpbaA-jeCkpbLKlHgbjB'
+    },    
     navbarFixed:
       "position-sticky blur shadow-blur left-auto top-1 z-index-sticky px-0 mx-4",
     absolute: "position-absolute px-4 mx-0 w-100 z-index-2",

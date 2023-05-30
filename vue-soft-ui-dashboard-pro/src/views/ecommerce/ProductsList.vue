@@ -5,15 +5,16 @@
     <a
       href="./new-product"
       class="mb-0 btn bg-gradient-success btn-sm"
-      target="_blank"
       style="float: right"
       >+&nbsp; 新建文献库</a
     >
 
   <a-table :columns="columns" :data-source="data">
-    <template #name="{ text }">
+
+
+    <!-- <template #name="{ text }">
       <a>{{ text }}</a>
-    </template>
+    </template> -->
     <template #customTitle>
       <span>
         <smile-outlined />
@@ -31,7 +32,6 @@
         </a-tag>
       </span>
     </template>
-
     <template #action="{ record }">
       <span>
         <a-button
