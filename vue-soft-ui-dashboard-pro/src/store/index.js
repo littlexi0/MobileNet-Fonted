@@ -21,6 +21,7 @@ export default createStore({
     avatar:"qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
     wenyhub:"https://qny.littlexi.love/",
     token:"n0meldsLEp57rVsgOvp-NXq5pNLFDbwbHPXxkxpG:81vGyDsu-uMaXxCtunpBmkq53Lk=:eyJzY29wZSI6IndlbnlodWIiLCJkZWFkbGluZSI6MjY4NTM2MDk2MywiZGV0ZWN0TWltZSI6MX0=",
+    apikey:"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",
     paper:{
       id:'',
       title:'游戏环境下的中国文化输出探索——以《原神》为例',

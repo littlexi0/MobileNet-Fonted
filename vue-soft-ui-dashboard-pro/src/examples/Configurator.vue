@@ -262,7 +262,7 @@ export default defineComponent({
   // },
   data() {
     return {
-      apiKey:"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",
+      // apiKey:this.$store.state.apiKey,
       placement:'right',
       visible:false,
       asktext:"",
@@ -351,7 +351,8 @@ export default defineComponent({
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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`
+          'Authorization': "Bearer "+this.$store.state.apikey,
+          // 'Authorization': `Bearer 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`
         },
       };
 
@@ -361,16 +362,12 @@ export default defineComponent({
       };
       console.log(requestData)
       const cancelTokenSource = axios.CancelToken.source();
+      console.log(config)
       axios.post('https://api.openai.com/v1/chat/completions', requestData, config,{ cancelToken: cancelTokenSource.token })
         .then(response => {
-          // if(response.config.request.status)
           const completion = response.data.choices[0].message;
-          // console.log(completion.content);
-          // console.log(completion.role);
-          // this.askvalue=completion.content;
           this.askvalue='';
           this.submitting = false;
-          // this.resptext+=completion.content+'\n';
           var newcomment = [{
             author: "珐露珊",
             avatar: "https://pchub.littlexi.love/avatar/fls.jpg",

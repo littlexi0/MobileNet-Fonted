@@ -17,16 +17,16 @@
           href="#"
           >لوحات القيادة</a
         >
-        <a v-else :class="textWhite" class="opacity-4" href="#">{{
+        <!-- <a v-else :class="textWhite" class="opacity-4" href="#">{{
           currentDirectory
-        }}</a>
+        }}</a> -->
       </li>
       <li
         class="text-sm breadcrumb-item active"
         :class="textWhite ? 'text-white' : 'text-dark'"
         aria-current="page"
       >
-        {{ currentPage }}
+        <!-- {{ currentPage }} -->
       </li>
     </ol>
     <!-- <h6 class="mb-0 font-weight-bolder" :class="textWhite ? 'text-white' : ''">
