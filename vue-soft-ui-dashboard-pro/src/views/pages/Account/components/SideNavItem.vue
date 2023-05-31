@@ -37,8 +37,16 @@
         <div class="col-6">
           <label class="form-label">姓</label>
           <a-input v-model:value="user.lastname" />
-        </div>
       </div>
+    </div>
+
+    <div class="row">
+      <h5>修改头像</h5>
+    </div>
+    <div class="col-6">
+      <input id="inputField" name="inputField" type="file" placeholder="ds" @change="handleFileUpload">
+    </div>
+
       <div class="row">
         <!-- <div class="col-sm-4 col-6">
           <label class="form-label mt-2">I'm</label>
@@ -566,6 +574,8 @@ import img1 from "../../../../assets/img/small-logos/logo-slack.svg";
 import img2 from "../../../../assets/img/small-logos/logo-spotify.svg";
 import img3 from "../../../../assets/img/small-logos/logo-atlassian.svg";
 import img4 from "../../../../assets/img/small-logos/logo-asana.svg";
+import message from "ant-design-vue/es/message";
+import axios from "axios";
 
 export default {
   name: "SideNavItem",
@@ -584,6 +594,9 @@ export default {
       img3,
       img4,
       user:this.$store.state.user,
+      uploadUrl: 'https://upload.qiniup.com',
+      file:null,
+      token:this.$store.state.token,
     };
   },
   created(){
@@ -684,5 +697,36 @@ export default {
       });
     }
   },
+  methods:{
+    handleFileUpload(event) {
+      console.log(event)
+      this.file = event.target.files[0];
+      console.log(this.file)
+      this.uploadFile();
+    },
+    uploadFile() {
+      const formData = new FormData();
+      formData.append('file', this.file);
+      formData.append('token', this.token);
+      console.log("uploading")
+      
+      axios
+        .post(this.uploadUrl, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then(response => {
+          // console.log
+          console.log(response);
+          message.success("文件上传成功");
+          this.$store.state.user.avatar = "https://qny.littlexi.love/"+response.data.key;
+          console.log('文件上传成功', response.data);
+        })
+        .catch(error => {
+          console.error('文件上传失败', error);
+        });
+    },
+  }
 };
 </script>

@@ -170,6 +170,7 @@ export default {
         console.log(res);
         if (res.data.code == 200) {
           this.$store.state.logined = true;
+          this.$store.state.user = res.data.data; 
           message.success("登录成功");
           this.$router.push({ name: "Default" });
         } else {
