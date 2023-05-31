@@ -208,7 +208,7 @@
                   :class="activeStep >= 0 ? activeClass : ''"
                   @click="activeStep = 0"
                 >
-                  <span>1. Product Info</span>
+                  <span>1. 文献库基本信息</span>
                 </button>
                 <button
                   class="multisteps-form__progress-btn"
@@ -217,7 +217,7 @@
                   :class="activeStep >= 1 ? activeClass : ''"
                   @click="activeStep = 1"
                 >
-                  2. Media
+                  2. 许可证书
                 </button>
                 <button
                   class="multisteps-form__progress-btn"
@@ -226,9 +226,9 @@
                   :class="activeStep >= 2 ? activeClass : ''"
                   @click="activeStep = 2"
                 >
-                  3. Socials
+                  3. 机构/组织
                 </button>
-                <button
+                <!-- <button
                   class="multisteps-form__progress-btn"
                   type="button"
                   title="Pricing"
@@ -236,7 +236,7 @@
                   @click="activeStep = 3"
                 >
                   4. Pricing
-                </button>
+                </button> -->
               </div>
             </div>
           </div>

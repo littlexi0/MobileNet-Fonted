@@ -11,7 +11,7 @@
           <input
             class="multisteps-form__input form-control"
             type="text"
-            placeholder="eg. Off-White"
+            placeholder="毕业论文"
           />
         </div>
         <div class="mt-3 col-12 col-sm-6 mt-sm-0">
@@ -19,7 +19,7 @@
           <input
             class="multisteps-form__input form-control"
             type="text"
-            placeholder="eg. 42"
+            placeholder="论文"
           />
         </div>
       </div>
@@ -27,14 +27,14 @@
         <div class="col-sm-6">
           <label class="mt-4">描述</label>
           <p class="text-xs form-text text-muted ms-1 d-inline">(可选)</p>
-          <!-- <div id="edit-description" class="h-50">
-            <p>Some initial <strong>bold</strong> text</p>
-          </div> -->
-          <input
+          <div id="edit-description" class="h-50">
+            <!-- <p>description...</p> -->
+          </div>
+          <!-- <input
             class="multisteps-form__input form-control"
             type="text"
             placeholder="eg. 42"
-          />
+          /> -->
         </div>
         <div class="mt-4 col-sm-6 mt-sm-0">
           <label class="mt-4">是否公开</label>
@@ -64,7 +64,7 @@
           class="mb-0 ms-auto js-btn-next"
           title="Next"
           @click="this.$parent.nextStep"
-          >Next</soft-button
+          >下一步</soft-button
         >
       </div>
     </div>

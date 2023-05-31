@@ -3,27 +3,27 @@
     class="p-3 bg-white card multisteps-form__panel border-radius-xl"
     data-animation="FadeIn"
   >
-    <h5 class="font-weight-bolder">Socials</h5>
+    <h5 class="font-weight-bolder">机构/组织</h5>
     <div class="multisteps-form__content">
       <div class="mt-3 row">
         <div class="col-12">
-          <label>Shoppify Handle</label>
+          <label>机构/组织名称</label>
           <soft-input
             class="multisteps-form__input"
             type="text"
-            placeholder="@soft"
+            placeholder="复旦大学"
           />
         </div>
         <div class="mt-3 col-12">
-          <label>Facebook Account</label>
+          <label>机构/组织类型</label>
           <soft-input
             class="multisteps-form__input"
             type="text"
-            placeholder="https://..."
+            placeholder="科研机构"
           />
         </div>
         <div class="mt-3 col-12">
-          <label>Instagram Account</label>
+          <label>机构/组织官网链接</label>
           <soft-input
             class="multisteps-form__input"
             type="text"
@@ -39,7 +39,7 @@
             class="mb-0 js-btn-prev"
             title="Prev"
             @click="this.$parent.prevStep"
-            >Prev</soft-button
+            >上一步</soft-button
           >
           <soft-button
             type="button"
@@ -47,8 +47,8 @@
             variant="gradient"
             class="mb-0 ms-auto js-btn-next"
             title="Next"
-            @click="this.$parent.nextStep"
-            >Next</soft-button
+            @click="submit"
+            >提交</soft-button
           >
         </div>
       </div>
@@ -59,12 +59,29 @@
 <script>
 import SoftInput from "@/components/SoftInput.vue";
 import SoftButton from "@/components/SoftButton.vue";
-
+import axios from "axios";
 export default {
   name: "Socials",
   components: {
     SoftInput,
     SoftButton,
+  },
+  methods: {
+    submit() {
+      // 发送提交的axios请求
+      axios
+        .post("/api/organization", {
+          name: this.name,
+          type: this.type,
+          website: this.website,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

@@ -2,11 +2,11 @@
   <div class="py-4 container-fluid">
     <div class="row">
       <div class="col-lg-6">
-        <h4>Make the changes below</h4>
-        <p>
+        <h4>文献库修改</h4>
+        <!-- <p>
           We’re constantly trying to express ourselves and actualize our dreams.
           If you have the opportunity to play.
-        </p>
+        </p> -->
       </div>
       <div
         class="text-right col-lg-6 d-flex flex-column justify-content-center"
@@ -23,16 +23,16 @@
       <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="font-weight-bolder">Product Image</h5>
+            <h5 class="font-weight-bolder">许可证书（不可修改）</h5>
             <div class="row">
               <div class="col-12">
                 <img
                   class="mt-3 shadow-lg w-100 border-radius-lg"
-                  src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                  src="https://qny.littlexi.love/FiQ_Bqmwws98Zec24l2xbChbNx-k"
                   alt="product_image"
                 />
               </div>
-              <div class="mt-4 col-12">
+              <!-- <div class="mt-4 col-12">
                 <div class="d-flex">
                   <button
                     class="mb-0 btn bg-gradient-success btn-sm me-2"
@@ -49,7 +49,7 @@
                     Remove
                   </button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -57,10 +57,10 @@
       <div class="mt-4 col-lg-8 mt-lg-0">
         <div class="card">
           <div class="card-body">
-            <h5 class="font-weight-bolder">Product Information</h5>
+            <h5 class="font-weight-bolder">文献库信息</h5>
             <div class="row">
               <div class="col-12 col-sm-6">
-                <label>Name</label>
+                <label>名字</label>
                 <input
                   class="form-control"
                   type="text"
@@ -68,50 +68,47 @@
                 />
               </div>
               <div class="mt-3 col-12 col-sm-6 mt-sm-0">
-                <label>Weight</label>
+                <label>主题</label>
                 <input class="form-control" type="number" value="2" />
               </div>
             </div>
             <div class="row">
-              <div class="col-3">
+              <!-- <div class="col-3">
                 <label class="mt-4">Collection</label>
                 <input class="form-control" type="text" value="Summer" />
-              </div>
-              <div class="col-3">
+              </div> -->
+              <!-- <div class="col-3">
                 <label class="mt-4">Price</label>
                 <input class="form-control" type="text" value="$90" />
-              </div>
-              <div class="col-3">
+              </div> -->
+              <!-- <div class="col-3">
                 <label class="mt-4">Quantity</label>
                 <input class="form-control" type="number" value="50" />
-              </div>
+              </div> -->
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <label class="mt-4">Description</label>
+                <label class="mt-4">描述</label>
                 <p class="text-xs form-text text-muted ms-1 d-inline">
                   (optional)
                 </p>
                 <div id="edit-description-edit" class="h-50">
-                  Long sleeves black denim jacket with a twisted design.
+                  <!-- Long sleeves black denim jacket with a twisted design.
                   Contrast stitching. Button up closure. White arrow prints on
-                  the back.
+                  the back. -->
                 </div>
               </div>
               <div class="col-sm-6">
-                <label class="mt-4">Category</label>
+                <label class="mt-4">是否公开</label>
                 <select
                   id="choices-category-edit"
                   class="form-control"
                   name="choices-category"
                 >
-                  <option value="Choice 1" selected="">Furniture</option>
-                  <option value="Choice 2">Real Estate</option>
-                  <option value="Choice 3">Electronics</option>
-                  <option value="Choice 4">Clothing</option>
-                  <option value="Choice 5">Others</option>
+                  <option value="Choice 1" selected="">Yes</option>
+                  <option value="Choice 2">No</option>
                 </select>
-                <label>Color</label>
+                <!-- <label>Color</label>
                 <select
                   id="choices-color-edit"
                   class="form-control"
@@ -122,7 +119,7 @@
                   <option value="Choice 3">Blue</option>
                   <option value="Choice 4">Orange</option>
                   <option value="Choice 5">Green</option>
-                </select>
+                </select> -->
               </div>
             </div>
           </div>
@@ -133,19 +130,25 @@
       <div class="col-sm-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="font-weight-bolder">Socials</h5>
-            <label>Shoppify Handle</label>
-            <input class="form-control" type="text" value="@soft" />
-            <label class="mt-4">Facebook Account</label>
-            <input class="form-control" type="text" value="https://" />
-            <label class="mt-4">Instagram Account</label>
-            <input class="form-control" type="text" value="https://" />
+            <h5 class="font-weight-bolder">机构/组织</h5>
+            <label>组织名称</label>
+            <input class="form-control" type="text" :value=library.orgnization_name />
+            <label class="mt-4">组织类型</label>
+            <input class="form-control" type="text" :value=library.orgnization_type />
+            <label class="mt-4">组织官网链接</label>
+            <input class="form-control" type="text" :value=library.orgnization_url />
           </div>
         </div>
       </div>
       <div class="mt-4 col-sm-8 mt-sm-0">
         <div class="card">
-          <div class="card-body">
+          <h3>Tips:</h3>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;1.定期更新内容：确保文献库中的文献内容保持最新和全面。定期检查和添加最新的学术论文、期刊文章和会议论文，以及更新过时的内容。</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;2.统一的标准和格式：使用统一的标准和格式来记录文献的属性，如标题、作者、机构、摘要和关键词。这有助于提高文献的可读性和检索效率。</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;3.精细的分类和标签：为文献库中的文献添加精细的分类和标签，以便用户能够更轻松地浏览和检索相关文献。考虑使用学科分类、主题标签或关键词索引等方法。</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;4.强调核心文献：对于某个特定领域的文献库，将核心文献与其他文献区分开来，并给予其更高的权重和可见性。这有助于用户更快地找到最重要的研究成果。</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;5.提供全文或链接：尽可能提供文献的全文内容或指向在线文献的链接。这使用户能够直接阅读或下载文献，提供更便利的访问体验。</p>
+          <!-- <div class="card-body">
             <div class="row">
               <h5 class="font-weight-bolder">Pricing</h5>
               <div class="col-3">
@@ -188,7 +191,7 @@
                 </select>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -201,7 +204,11 @@ import Choices from "choices.js";
 
 export default {
   name: "EditProduct",
-
+  data(){
+    return{
+      library:this.$store.state.library,
+    }
+  },
   mounted() {
     if (document.getElementById("edit-description-edit")) {
       new Quill("#edit-description-edit", {

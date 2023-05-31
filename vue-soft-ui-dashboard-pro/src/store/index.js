@@ -22,6 +22,16 @@ export default createStore({
     wenyhub:"https://qny.littlexi.love/",
     token:"n0meldsLEp57rVsgOvp-NXq5pNLFDbwbHPXxkxpG:81vGyDsu-uMaXxCtunpBmkq53Lk=:eyJzY29wZSI6IndlbnlodWIiLCJkZWFkbGluZSI6MjY4NTM2MDk2MywiZGV0ZWN0TWltZSI6MX0=",
     apikey:"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",
+    library:{
+      title:"",
+      topic:"",
+      description:"",
+      is_public:true,
+      cignificent:"",
+      orgnization_name:"复旦大学",
+      orgnization_type:"",
+      orgnization_url:"",
+    },
     paper:{
       id:'',
       title:'游戏环境下的中国文化输出探索——以《原神》为例',
@@ -32,6 +42,7 @@ export default createStore({
       pressdata:'2021-10-01',
       url:'https://qny.littlexi.love/FmgyW6rKjpbaA-jeCkpbLKlHgbjB'
     },    
+    
     navbarFixed:
       "position-sticky blur shadow-blur left-auto top-1 z-index-sticky px-0 mx-4",
     absolute: "position-absolute px-4 mx-0 w-100 z-index-2",

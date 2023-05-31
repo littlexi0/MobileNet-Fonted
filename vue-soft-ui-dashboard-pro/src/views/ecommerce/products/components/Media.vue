@@ -3,11 +3,11 @@
     class="p-3 bg-white card multisteps-form__panel border-radius-xl"
     data-animation="FadeIn"
   >
-    <h5 class="font-weight-bolder">Media</h5>
+    <h5 class="font-weight-bolder">文献库证书</h5>
     <div class="multisteps-form__content">
       <div class="mt-3 row">
         <div class="col-12">
-          <label>Product images</label>
+          <label>cignificent</label>
           <form
             id="dropzone"
             action="/file-upload"
@@ -26,7 +26,7 @@
           class="mb-0 js-btn-prev"
           title="Prev"
           @click="this.$parent.prevStep"
-          >Prev</soft-button
+          >上一步</soft-button
         >
         <soft-button
           type="button"
@@ -35,7 +35,7 @@
           class="mb-0 ms-auto js-btn-next"
           title="Next"
           @click="this.$parent.nextStep"
-          >Next</soft-button
+          >下一步</soft-button
         >
       </div>
     </div>
