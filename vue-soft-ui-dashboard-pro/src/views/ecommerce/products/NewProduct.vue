@@ -15,7 +15,7 @@
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
             <img
-              src="../../../assets/img/bruce-mars.jpg"
+              src="../../../assets/img/wenxian.png"
               alt="profile_image"
               class="shadow-sm w-100 border-radius-lg"
             />
@@ -23,11 +23,11 @@
         </div>
         <div class="col-auto my-auto">
           <div class="h-100">
-            <h5 class="mb-1">Alec Thompson</h5>
-            <p class="mb-0 text-sm font-weight-bold">CEO / Co-Founder</p>
+            <h5 class="mb-1">新建文献库</h5>
+            <p class="mb-0 text-sm font-weight-bold">NEW / Library</p>
           </div>
         </div>
-        <div
+        <!-- <div
           class="mx-auto mt-3 col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0"
         >
           <div class="nav-wrapper position-relative end-0">
@@ -190,7 +190,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

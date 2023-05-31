@@ -42,28 +42,29 @@
           class="pe-md-3 d-flex align-items-center"
           :class="isRTL ? 'me-md-auto' : 'ms-md-auto'"
         >
+
           <div class="input-group">
-            <a-select
-              ref="select"
-              v-model:value="value1"
-              style="width: 120px;height: 30px;border-radius: 0px;"
-              @focus="focus"
-              @change="handleChange"
-            >
-              <a-select-option value="jack">文献库</a-select-option>
-              <a-select-option value="lucy">论文</a-select-option>
-            </a-select>
-            <input
-              type="text"
-              class="form-control"
-              :placeholder="isRTL ? 'أكتب هنا...' : '请输入查询信息...'"
-            />
-            <span class="input-group-text text-body"
+            <span class="input-group-text text-body serachcss" @click="searchclk"
               ><i class="fas fa-search" aria-hidden="true"></i
             ></span>
-
           </div>
-          
+        <div v-show="dialogvisible">
+          <a-select
+            ref="select"
+            v-model:value="value1"
+            style="width: 120px;height: 30px;border-radius: 0px;"
+            @focus="focus"
+            @change="handleChange"
+          >
+            <a-select-option value="jack">文献库</a-select-option>
+            <a-select-option value="lucy">论文</a-select-option>
+          </a-select>
+          <input
+            type="text"
+            class="form-control"
+            :placeholder="isRTL ? 'أكتب هنا...' : '请输入...'"
+          />
+        </div>
         </div>
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
@@ -296,6 +297,7 @@ export default defineComponent({
   data() {
     return {
       showMenu: false,
+      dialogvisible: false,
     };
   },
   computed: {
@@ -319,6 +321,16 @@ export default defineComponent({
       this.toggleSidebarColor("bg-white");
       this.navbarMinimize();
     },
+    searchclk(){
+      this.dialogvisible = !this.dialogvisible;
+      console.log("searchclk");
+    }
   },
 });
 </script>
+
+<style scoped>
+.serachcss{
+  cursor: pointer;
+}
+</style>

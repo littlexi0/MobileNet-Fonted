@@ -3,11 +3,11 @@
     class="p-3 bg-white card multisteps-form__panel border-radius-xl"
     data-animation="FadeIn"
   >
-    <h5 class="font-weight-bolder">Product Information</h5>
+    <h5 class="font-weight-bolder">文献库信息</h5>
     <div class="multisteps-form__content">
       <div class="mt-3 row">
         <div class="col-12 col-sm-6">
-          <label>Name</label>
+          <label>名称</label>
           <input
             class="multisteps-form__input form-control"
             type="text"
@@ -15,7 +15,7 @@
           />
         </div>
         <div class="mt-3 col-12 col-sm-6 mt-sm-0">
-          <label>Weight</label>
+          <label>主题</label>
           <input
             class="multisteps-form__input form-control"
             type="text"
@@ -25,33 +25,35 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <label class="mt-4">Description</label>
-          <p class="text-xs form-text text-muted ms-1 d-inline">(optional)</p>
-          <div id="edit-description" class="h-50">
+          <label class="mt-4">描述</label>
+          <p class="text-xs form-text text-muted ms-1 d-inline">(可选)</p>
+          <!-- <div id="edit-description" class="h-50">
             <p>Some initial <strong>bold</strong> text</p>
-          </div>
+          </div> -->
+          <input
+            class="multisteps-form__input form-control"
+            type="text"
+            placeholder="eg. 42"
+          />
         </div>
         <div class="mt-4 col-sm-6 mt-sm-0">
-          <label class="mt-4">Category</label>
+          <label class="mt-4">是否公开</label>
           <select
             id="choices-category"
             class="form-control"
             name="choices-category"
           >
-            <option value="Choice 1" selected="">Clothing</option>
-            <option value="Choice 2">Real Estate</option>
-            <option value="Choice 3">Electronics</option>
-            <option value="Choice 4">Furniture</option>
-            <option value="Choice 5">Others</option>
+            <option value="Choice 1" selected="">Yes</option>
+            <option value="Choice 2">No</option>
           </select>
-          <label>Sizes</label>
+          <!-- <label>Sizes</label>
           <select id="choices-sizes" class="form-control" name="choices-sizes">
             <option value="Choice 1" selected="">Medium</option>
             <option value="Choice 2">Small</option>
             <option value="Choice 3">Large</option>
             <option value="Choice 4">Extra Large</option>
             <option value="Choice 5">Extra Small</option>
-          </select>
+          </select> -->
         </div>
       </div>
       <div class="mt-4 button-row d-flex col-12">
