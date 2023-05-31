@@ -9,6 +9,7 @@
         <div class="col-12 col-sm-6">
           <label>名称</label>
           <input
+            v-model="library.title"
             class="multisteps-form__input form-control"
             type="text"
             placeholder="毕业论文"
@@ -17,6 +18,7 @@
         <div class="mt-3 col-12 col-sm-6 mt-sm-0">
           <label>主题</label>
           <input
+            v-model="library.topic"
             class="multisteps-form__input form-control"
             type="text"
             placeholder="论文"
@@ -26,25 +28,26 @@
       <div class="row">
         <div class="col-sm-6">
           <label class="mt-4">描述</label>
-          <p class="text-xs form-text text-muted ms-1 d-inline">(可选)</p>
+          <!-- <p class="text-xs form-text text-muted ms-1 d-inline">(可选)</p>
           <div id="edit-description" class="h-50">
-            <!-- <p>description...</p> -->
-          </div>
-          <!-- <input
+          </div> -->
+          <input
+            v-model="library.description"
             class="multisteps-form__input form-control"
             type="text"
-            placeholder="eg. 42"
-          /> -->
+            placeholder="描述"
+          />
         </div>
         <div class="mt-4 col-sm-6 mt-sm-0">
           <label class="mt-4">是否公开</label>
           <select
             id="choices-category"
+            v-model="library.is_public"
             class="form-control"
             name="choices-category"
           >
-            <option value="Choice 1" selected="">Yes</option>
-            <option value="Choice 2">No</option>
+            <option value="true" selected="">Yes</option>
+            <option value="false">No</option>
           </select>
           <!-- <label>Sizes</label>
           <select id="choices-sizes" class="form-control" name="choices-sizes">
@@ -63,7 +66,7 @@
           variant="gradient"
           class="mb-0 ms-auto js-btn-next"
           title="Next"
-          @click="this.$parent.nextStep"
+          @click="nextclk"
           >下一步</soft-button
         >
       </div>
@@ -80,6 +83,11 @@ export default {
   name: "ProductInfo",
   components: {
     SoftButton,
+  },
+  data(){
+    return {
+      library:this.$store.state.library,
+    }
   },
   mounted() {
     if (document.getElementById("edit-description")) {
@@ -102,5 +110,16 @@ export default {
       });
     }
   },
+  methods:{
+    // @click="this.$parent.nextStep"
+    nextclk(){
+      this.$parent.nextStep();
+      console.log(this.library);
+      this.$store.state.library.title = this.library.title;
+      this.$store.state.library.topic = this.library.topic;
+      this.$store.state.library.description = this.library.description;
+      this.$store.state.library.is_public = this.library.is_public;
+    }
+  }
 };
 </script>

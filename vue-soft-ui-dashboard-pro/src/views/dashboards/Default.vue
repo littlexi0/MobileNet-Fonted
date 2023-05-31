@@ -10,7 +10,6 @@
                   
                   <h2 class="mb-0 font-weight-bolder">文献库数据</h2>
                   <a-cascader :options="options" placeholder="Please select" @change="onChange" />
-                  <a-input placeholder="Basic usage" />
                 </div>
               </div>
             </div>

@@ -70,13 +70,16 @@
     </a-modal>
   </div>
 
+  <div class="paginationcss">
+    <a-pagination v-model:current="current1" show-quick-jumper :total="50" @change="onChange" />
+  </div>
 
   </div>
 </template>
 
 <script>
-import { DataTable } from "simple-datatables";
-import setTooltip from "@/assets/js/tooltip.js";
+// import { DataTable } from "simple-datatables";
+// import setTooltip from "@/assets/js/tooltip.js";
 import { ref, defineComponent } from 'vue';
 
 export default defineComponent({
@@ -109,8 +112,8 @@ export default defineComponent({
     return{
       pagination: {
       total: 200,
-      current: 1,
-      pageSize: 10
+      current1: 1,
+      pageSize: 10,
       },
       loading: false,
       columns : [
@@ -257,33 +260,33 @@ export default defineComponent({
       ]
     }
   },
-  mounted() {
-    if (document.getElementById("products-list")) {
-      const dataTableSearch = new DataTable("#products-list", {
-        searchable: true,
-        fixedHeight: false,
-        perPage: 7
-      });
+  // mounted() {
+  //   if (document.getElementById("products-list")) {
+  //     const dataTableSearch = new DataTable("#products-list", {
+  //       searchable: true,
+  //       fixedHeight: false,
+  //       perPage: 7
+  //     });
 
-      document.querySelectorAll(".export").forEach(function (el) {
-        el.addEventListener("click", function () {
-          var type = el.dataset.type;
+  //     document.querySelectorAll(".export").forEach(function (el) {
+  //       el.addEventListener("click", function () {
+  //         var type = el.dataset.type;
 
-          var data = {
-            type: type,
-            filename: "soft-ui-" + type
-          };
+  //         var data = {
+  //           type: type,
+  //           filename: "soft-ui-" + type
+  //         };
 
-          if (type === "csv") {
-            data.columnDelimiter = "|";
-          }
+  //         if (type === "csv") {
+  //           data.columnDelimiter = "|";
+  //         }
 
-          dataTableSearch.export(data);
-        });
-      });
-    }
-    setTooltip(this.$store.state.bootstrap);
-  },
+  //         dataTableSearch.export(data);
+  //       });
+  //     });
+  //   }
+  //   setTooltip(this.$store.state.bootstrap);
+  // },
   created(){
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
@@ -334,8 +337,17 @@ export default defineComponent({
             });
           }
         });
-    }
+    },
+
 
   },
 });
 </script>
+
+
+<style scoped> 
+.paginationcss{
+  display: flex;
+  justify-content: center;
+}
+</style>

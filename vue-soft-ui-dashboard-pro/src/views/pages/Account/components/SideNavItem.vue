@@ -727,6 +727,21 @@ export default {
           console.error('文件上传失败', error);
         });
     },
+    changebasicinfosubmitclk(){
+      console.log(1)
+      console.log(this.user);
+      axios.put("http://43.143.73.132:8000/api/user/modify",this.user)
+      .then(resp=>{
+        if(resp.status == 200)
+        {
+          message.success('修改成功');
+        }
+        else
+        {
+          message.error('修改失败');
+        }
+      })
+    },
   }
 };
 </script>

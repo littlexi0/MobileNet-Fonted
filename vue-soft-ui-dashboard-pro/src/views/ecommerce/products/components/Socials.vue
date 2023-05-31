@@ -9,6 +9,7 @@
         <div class="col-12">
           <label>机构/组织名称</label>
           <soft-input
+            v-model="library.orgnization_name"
             class="multisteps-form__input"
             type="text"
             placeholder="复旦大学"
@@ -17,6 +18,7 @@
         <div class="mt-3 col-12">
           <label>机构/组织类型</label>
           <soft-input
+            v-model="library.orgnization_type"
             class="multisteps-form__input"
             type="text"
             placeholder="科研机构"
@@ -25,6 +27,7 @@
         <div class="mt-3 col-12">
           <label>机构/组织官网链接</label>
           <soft-input
+            v-model="library.orgnization_url"
             class="multisteps-form__input"
             type="text"
             placeholder="https://..."
@@ -60,27 +63,53 @@
 import SoftInput from "@/components/SoftInput.vue";
 import SoftButton from "@/components/SoftButton.vue";
 import axios from "axios";
+import message from "ant-design-vue";
+
 export default {
   name: "Socials",
   components: {
     SoftInput,
     SoftButton,
   },
+  data() {
+    return {
+      library:this.$store.state.library,
+    };
+  },
   methods: {
     submit() {
       // 发送提交的axios请求
-      axios
-        .post("/api/organization", {
-          name: this.name,
-          type: this.type,
-          website: this.website,
-        })
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.library.creater_id=this.$store.state.user.id;
+      console.log(this.library)
+      this.$store.state.library=this.library;
+
+      axios.post("http://43.143.73.132:8000/api/library/", this.library).then((res) => {
+        console.log(res);
+        if (res.data.code == 200) {
+          // this.$store.state.logined = true;
+          // this.$store.state.user = res.data.data; 
+          message.success("登录成功");
+          // this.$router.push({ name: "Default" });
+        } else {
+          message.error("登录失败");
+        }
+      });
+      // axios
+      //   .post("http://43.143.73.132:8000/api/library", this.library)
+      //   .then((res) => {
+      //     console.log(res);
+      //     if(res.status == 200)
+      //     {
+      //       message.success('提交成功');
+      //     }
+      //     else
+      //     {
+      //       message.error('提交失败');
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
   },
 };

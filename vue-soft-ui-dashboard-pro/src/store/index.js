@@ -30,13 +30,13 @@ export default createStore({
       phone: "",
       location: "",
     },
-
-
     wenyhub:"https://qny.littlexi.love/",
     token:"n0meldsLEp57rVsgOvp-NXq5pNLFDbwbHPXxkxpG:81vGyDsu-uMaXxCtunpBmkq53Lk=:eyJzY29wZSI6IndlbnlodWIiLCJkZWFkbGluZSI6MjY4NTM2MDk2MywiZGV0ZWN0TWltZSI6MX0=",
     apikey:"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",
     library:{
+      id:"",
       title:"",
+      creater_id:1,
       topic:"",
       description:"",
       is_public:true,
@@ -44,15 +44,18 @@ export default createStore({
       orgnization_name:"复旦大学",
       orgnization_type:"",
       orgnization_url:"",
+      clicktime:0,
+      papernumber:0,
     },
     paper:{
       id:'',
       title:'游戏环境下的中国文化输出探索——以《原神》为例',
-      library:'文化',
+      library_id:0,
+      creater_id:0,
       author:'刘姝秀',
       country:'中国',
       press:'中国传媒大学文化产业管理学院',
-      pressdata:'2021-10-01',
+      pressdate:'2021-10-01',
       url:'https://qny.littlexi.love/FmgyW6rKjpbaA-jeCkpbLKlHgbjB'
     },    
     

@@ -299,11 +299,11 @@ export default {
                 });
                 formItem.parentNode.removeChild(formItem);
               });
-              document.getElementById(
-                "kanban-cancel-item"
-              ).onclick = function () {
-                formItem.parentNode.removeChild(formItem);
-              };
+              // document.getElementById(
+              //   "kanban-cancel-item"
+              // ).onclick = function () {
+              //   formItem.parentNode.removeChild(formItem);
+              // };
             }
           },
           boards: [

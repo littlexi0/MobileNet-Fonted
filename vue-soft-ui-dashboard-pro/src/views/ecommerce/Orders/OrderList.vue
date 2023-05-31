@@ -571,12 +571,10 @@
   </div>
 
   <a
-      href="./new-product"
       class="mb-0 btn bg-gradient-success btn-sm"
-      target="_blank"
       style="float: right;"
-      >+&nbsp; 新建论文</a
-    >
+      @click="newpaperbutton()"
+      >+&nbsp; 新建论文</a>
 
   <a-table :columns="columns" :data-source="data">
     <template #name="{ text }">
@@ -652,6 +650,148 @@ export default {
       img4,
       img5,
       img6,
+      columns : [
+        {
+          dataIndex: 'name',
+          key: 'name',
+          slots: {
+            title: 'customTitle',
+            customRender: 'name',
+          },
+        },
+        {
+          title: '主题',
+          dataIndex: 'age',
+          key: 'age',
+        },
+        {
+          title: '文章数量',
+          dataIndex: 'address',
+          key: 'address',
+        },
+        {
+          title: '热度',
+          key: 'tags',
+          dataIndex: 'tags',
+          slots: {
+            customRender: 'tags',
+          },
+        },
+        {
+          title: '操作',
+          key: 'action',
+          slots: {
+            customRender: 'action',
+          },
+        },
+      ],
+      data : [
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+          tags: ['nice', 'developer'],
+        },
+        {
+          key: '2',
+          name: 'Jim Green',
+          age: 42,
+          address: 'London No. 1 Lake Park',
+          tags: ['loser'],
+        },
+        {
+          key: '3',
+          name: 'Joe Black',
+          age: 32,
+          address: 'Sidney No. 1 Lake Park',
+          tags: ['cool', 'teacher'],
+        },
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+          tags: ['nice', 'developer'],
+        },
+        {
+          key: '2',
+          name: 'Jim Green',
+          age: 42,
+          address: 'London No. 1 Lake Park',
+          tags: ['loser'],
+        },
+        {
+          key: '3',
+          name: 'Joe Black',
+          age: 32,
+          address: 'Sidney No. 1 Lake Park',
+          tags: ['cool', 'teacher'],
+        },
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+          tags: ['nice', 'developer'],
+        },
+        {
+          key: '2',
+          name: 'Jim Green',
+          age: 42,
+          address: 'London No. 1 Lake Park',
+          tags: ['loser'],
+        },
+        {
+          key: '3',
+          name: 'Joe Black',
+          age: 32,
+          address: 'Sidney No. 1 Lake Park',
+          tags: ['cool', 'teacher'],
+        },
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+          tags: ['nice', 'developer'],
+        },
+        {
+          key: '2',
+          name: 'Jim Green',
+          age: 42,
+          address: 'London No. 1 Lake Park',
+          tags: ['loser'],
+        },
+        {
+          key: '3',
+          name: 'Joe Black',
+          age: 32,
+          address: 'Sidney No. 1 Lake Park',
+          tags: ['cool', 'teacher'],
+        },
+        {
+          key: '1',
+          name: 'John Brown',
+          age: 32,
+          address: 'New York No. 1 Lake Park',
+          tags: ['nice', 'developer'],
+        },
+        {
+          key: '2',
+          name: 'Jim Green',
+          age: 42,
+          address: 'London No. 1 Lake Park',
+          tags: ['loser'],
+        },
+        {
+          key: '3',
+          name: 'Joe Black',
+          age: 32,
+          address: 'Sidney No. 1 Lake Park',
+          tags: ['cool', 'teacher'],
+        },
+      ]
     };
   },
   created(){
@@ -684,5 +824,10 @@ export default {
       });
     }
   },
+  methods:{
+    newpaperbutton(){
+      this.$router.push({ name: "New Paper" });
+    },
+  }
 };
 </script>
