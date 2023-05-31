@@ -20,35 +20,46 @@
             >
               <div class="card card-plain">
                 <div class="card-header pb-0 text-left">
-                  <h4 class="font-weight-bolder">登录</h4>
+                  <h4 class="font-weight-bolder">注册</h4>
                   <p class="mb-0">请输入用户名和密码登录</p>
                   <p class="mb-0">Enter your username and password to register</p>
                 </div>
                 <div class="card-body pb-3">
-                  <form role="form">
-                    <label>用户名(username)</label>
-                    <soft-input
-                      id="name"
-                      type="text"
-                      placeholder="Name"
-                      aria-label="Name"
-                    />
-                    <label>密码(Password)</label>
-                    <soft-input
+                  <form >
+                    <label>用户名</label>
+                    <a-input v-model:value="user.username" placeholder="" />
+                    <label>密码</label>
+                    <!-- <soft-input
                       id="password"
+                      v-model=password1
                       type="password"
                       placeholder="Password"
+
                       aria-label="Password"
-                    />
+
+                    /> -->
+                    <a-input v-model:value="password1" placeholder="" />
+                    <label>请再次输入密码</label>
+                    <!-- <soft-input
+                      id="password"
+                      v-model=password2
+                      type="password"
+
+                      placeholder="Password"
+
+                      aria-label="Password"
+
+                    /> -->
+                    <a-input v-model:value="password2" placeholder="" />
                     <soft-checkbox
                       id="flexCheckDefault"
                       class="font-weight-light"
                       name="terms"
                       checked
                     >
-                      I agree the
-                      <a href="#" class="text-dark font-weight-bolder"
-                        >Terms and Conditions</a
+                      我同意
+                      <a href="https://qny.littlexi.love/netxieyi" class="text-dark font-weight-bolder"
+                        >用户须知</a
                       >
                     </soft-checkbox>
                     <div class="text-center"  >
@@ -58,18 +69,19 @@
                         full-width
                         class="w-100 mt-4 mb-0"
                         @click="signinclik"
-                        >登录</soft-button
+                        >注册</soft-button
                       >
+                      <!-- <button @click="signinclik"></button> -->
                     </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-sm-4 px-1">
                   <p class="mb-4 mx-auto">
-                    还没有账户？
+                    已经有账户了？
                     <router-link
                       :to="{ name: 'Signin Illustration' }"
                       class="text-success text-gradient font-weight-bold"
-                      >注册
+                      >登录
                     </router-link>
                   </p>
                 </div>
@@ -92,12 +104,13 @@
                 <p class="text-white">
                   Wenyuan Paper Management System
                 </p>
-                <p class="text-white">
-                  &nbsp; &nbsp; &nbsp; &nbsp;你的私人知识财产管理系统，通过智能化的分类和搜索功能，轻松整理和管理文献、笔记和研究成果。安全加密技术保障您的数据安全，不用担心泄露和丢失。
-                </p>
-                <p class="text-white">
-                  &nbsp; &nbsp; &nbsp; &nbsp;高度可定制的界面和功能，满足个性化需求。文渊不仅是一款工具，更是您知识创造和管理的得力助手。让文渊与您并肩，开启知识管理新纪元。
-                </p>
+                <div class="position-relative">
+                  <img
+                    class="max-width-500 w-100 position-relative z-index-2"
+                    src="@/assets/img/illustrations/danger-chat-ill.png"
+                    alt="chat-img"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -109,35 +122,83 @@
 
 <script>
 import Navbar from "@/examples/PageLayout/Navbar.vue";
-import SoftInput from "@/components/SoftInput.vue";
+// import SoftInput from "@/components/SoftInput.vue";
 import SoftCheckbox from "@/components/SoftCheckbox.vue";
 import SoftButton from "@/components/SoftButton.vue";
 const body = document.getElementsByTagName("body")[0];
+import axios from "axios";
+
 
 import { mapMutations } from "vuex";
+import { message } from "ant-design-vue";
 export default {
   name: "SigninIllustration",
   components: {
     Navbar,
-    SoftInput,
+    // SoftInput,
     SoftCheckbox,
     SoftButton,
+  },
+  data(){
+    return{
+        password1:"",
+        password2:"",
+        user:{
+          id:"",
+          username: "user1",
+          password: "user1user1",
+          avatar:"",
+          firstname: "",
+          gender:"",
+          birth:"",
+          lastname: "",
+          email: "",
+          phone: "",
+          location: "",
+        },
+    }
   },
   created() {
     this.toggleEveryDisplay();
     this.toggleHideConfig();
     body.classList.remove("bg-gray-100");
   },
+
   beforeUnmount() {
     this.toggleEveryDisplay();
     this.toggleHideConfig();
     body.classList.add("bg-gray-100");
   },
+
   methods: {
     ...mapMutations(["toggleEveryDisplay", "toggleHideConfig"]),
-    signinclik(){
-      
+    signinclik(event){
+      event.preventDefault()
+      console.log(this.user)
+      // console.log(1);
+      if(this.password1!=this.password2){
+        message.error("两次密码不一致,请检查重新输入");
+        return;
+      }
+      // console.log(2)
+      console.log(this.user)
+      this.user.password=this.password1;
+      axios.post('http://43.143.73.132:8000/api/user/register', this.user)
+      .then(resp => {
+        console.log(resp)
+        if (resp.data.code === 200) {
+          message.success("注册成功");
+          this.$router.push({ name: "Signin Illustration" });
+        } else {
+          message.error("注册失败");
+        }
+      })
+      .catch(err => {
+        console.log(err)
+        message.error("注册失败");
+      });
+
     }
-  },
+  }
 };
 </script>

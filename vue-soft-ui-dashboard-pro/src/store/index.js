@@ -17,8 +17,21 @@ export default createStore({
     showFooter: true,
     showMain: true,
     userid:0,
-    username: "littlexi",
-    avatar:"qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
+    logined:false,
+    user:{
+      id:"",
+      username: "littlexi",
+      avatar:"qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
+      firstname: "little",
+      gender:"",
+      birth:"",
+      lastname: "xi",
+      email: "",
+      phone: "",
+      location: "",
+    },
+
+
     wenyhub:"https://qny.littlexi.love/",
     token:"n0meldsLEp57rVsgOvp-NXq5pNLFDbwbHPXxkxpG:81vGyDsu-uMaXxCtunpBmkq53Lk=:eyJzY29wZSI6IndlbnlodWIiLCJkZWFkbGluZSI6MjY4NTM2MDk2MywiZGV0ZWN0TWltZSI6MX0=",
     apikey:"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",

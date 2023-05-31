@@ -20,7 +20,8 @@
             >
               <div class="card card-plain">
                 <div class="pb-0 card-header text-start">
-                  <h4 class="font-weight-bolder">Sign In</h4>
+                  <h4 class="font-weight-bolder">登录</h4>
+                  <p class="mb-0">请输入用户名和密码</p>
                   <p class="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div class="card-body">
@@ -44,7 +45,7 @@
                       />
                     </div>
                     <soft-switch id="rememberMe" name="rememberMe">
-                      Remember me
+                      记住我
                     </soft-switch>
 
                     <div class="text-center">
@@ -61,12 +62,12 @@
                 </div>
                 <div class="px-1 pt-0 text-center card-footer px-lg-2">
                   <p class="mx-auto mb-4 text-sm">
-                    Don't have an account?
+                    还没有账户?
                     <router-link
                       :to="{ name: 'Signup Illustration' }"
                       class="text-success text-gradient font-weight-bold"
                     >
-                      Sign up
+                      注册
                     </router-link>
                   </p>
                 </div>
@@ -83,6 +84,20 @@
                   alt="pattern-lines"
                   class="position-absolute opacity-4 start-0"
                 />
+
+                <h4 class="mt-5 text-white font-weight-bolder">
+                  文渊-论文管理系统
+                </h4>
+                <p class="text-white">
+                  Wenyuan Paper Management System
+                </p>
+                <p class="text-white">
+                  &nbsp; &nbsp; &nbsp; &nbsp;你的私人知识财产管理系统，通过智能化的分类和搜索功能，轻松整理和管理文献、笔记和研究成果。安全加密技术保障您的数据安全，不用担心泄露和丢失。
+                </p>
+                <p class="text-white">
+                  &nbsp; &nbsp; &nbsp; &nbsp;高度可定制的界面和功能，满足个性化需求。文渊不仅是一款工具，更是您知识创造和管理的得力助手。让文渊与您并肩，开启知识管理新纪元。
+                </p>
+
                 <div class="position-relative">
                   <img
                     class="max-width-500 w-100 position-relative z-index-2"
@@ -90,13 +105,13 @@
                     alt="chat-img"
                   />
                 </div>
-                <h4 class="mt-5 text-white font-weight-bolder">
+                <!-- <h4 class="mt-5 text-white font-weight-bolder">
                   "Attention is the new currency"
                 </h4>
                 <p class="text-white">
                   The more effortless the writing looks, the more effort the
                   writer actually put into the process.
-                </p>
+                </p> -->
               </div>
             </div>
           </div>

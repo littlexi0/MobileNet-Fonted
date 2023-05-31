@@ -502,7 +502,7 @@
                         id="dropdownSignIn"
                         class="mb-1 dropdown-item border-radius-md ps-3 d-flex align-items-center justify-content-between"
                       >
-                        <span>Sign In</span>
+                        <span>登录</span>
                         <img
                           src="@/assets/img/down-arrow.svg"
                           alt="down-arrow"
@@ -725,7 +725,7 @@
                   <h6
                     class="px-0 dropdown-header text-dark font-weight-bolder d-flex align-items-center"
                   >
-                    Sign In
+                    登录
                   </h6>
                   <router-link
                     :to="{ name: 'Signin Basic' }"

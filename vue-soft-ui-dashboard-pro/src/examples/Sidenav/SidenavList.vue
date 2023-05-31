@@ -388,7 +388,7 @@
               <sidenav-collapse-item
                 refer="signinExample"
                 mini-icon="S"
-                text="Sign In"
+                text="登录"
               >
                 <template #nav-child-item>
                   <sidenav-item
