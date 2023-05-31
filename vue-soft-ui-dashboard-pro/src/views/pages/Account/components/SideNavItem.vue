@@ -12,35 +12,35 @@
       </div>
       <div class="col-sm-auto col-8 my-auto">
         <div class="h-100">
-          <h5 class="mb-1 font-weight-bolder">Alec Thompson</h5>
-          <p class="mb-0 font-weight-bold text-sm">CEO / Co-Founder</p>
+          <h5 class="mb-1 font-weight-bolder">{{ user.username }}</h5>
+          <p class="mb-0 font-weight-bold text-sm">电话号码 : {{ user.phone==""?"未设置":user.phone }}</p>
         </div>
       </div>
       <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
         <label class="form-check-label mb-0 me-2">
-          <small id="profileVisibility">Switch to invisible</small>
+          <!-- <small id="profileVisibility">Switch to invisible</small> -->
         </label>
-        <soft-switch id="profile" name="profileVisibility" checked />
+        <!-- <soft-switch id="profile" name="profileVisibility" checked /> -->
       </div>
     </div>
   </div>
   <div id="basic-info" class="card mt-4">
     <div class="card-header">
-      <h5>Basic Info</h5>
+      <h5>基本信息</h5>
     </div>
     <div class="card-body pt-0">
       <div class="row">
         <div class="col-6">
-          <label class="form-label">First Name</label>
-          <soft-input id="firstName" type="text" placeholder="Alec" />
+          <label class="form-label">名</label>
+          <a-input v-model:value="user.firstname" />
         </div>
         <div class="col-6">
-          <label class="form-label">Last Name</label>
-          <soft-input id="lastName" type="text" placeholder="Thompson" />
+          <label class="form-label">姓</label>
+          <a-input v-model:value="user.lastname" />
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4 col-6">
+        <!-- <div class="col-sm-4 col-6">
           <label class="form-label mt-2">I'm</label>
           <select
             id="choices-gender"
@@ -50,18 +50,19 @@
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
-        </div>
+        </div> -->
         <div class="col-sm-8">
           <div class="row">
             <div class="col-sm-5 col-5">
-              <label class="form-label mt-2">Birth Date</label>
-              <select
+              <label class="form-label mt-2">出生日期</label>
+              <a-input v-model:value="user.birth" />
+              <!-- <select
                 id="choices-month"
                 class="form-control"
                 name="choices-month"
-              ></select>
+              ></select> -->
             </div>
-            <div class="col-sm-4 col-3">
+            <!-- <div class="col-sm-4 col-3">
               <label class="form-label mt-2">&nbsp;</label>
               <select
                 id="choices-day"
@@ -76,39 +77,35 @@
                 class="form-control"
                 name="choices-year"
               ></select>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-6">
-          <label class="form-label mt-2">Email</label>
-          <soft-input id="email" type="email" placeholder="example@email.com" />
+          <label class="form-label mt-2">邮箱</label>
+          <a-input v-model:value="user.email" />
         </div>
-        <div class="col-6">
+        <!-- <div class="col-6">
           <label class="form-label mt-2">Confirmation Email</label>
           <soft-input
             id="confirmEmail"
             type="email"
             placeholder="example@email.com"
           />
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-6">
-          <label class="form-label mt-2">Your location</label>
-          <soft-input id="location" type="text" placeholder="Sydney, A" />
+          <label class="form-label mt-2">地址</label>
+          <a-input v-model:value="user.location" />
         </div>
         <div class="col-6">
-          <label class="form-label mt-2">Phone Number</label>
-          <soft-input
-            id="phoneNumber"
-            type="phone"
-            placeholder="+40 745 765 439"
-          />
+          <label class="form-label mt-2">联系电话</label>
+          <a-input v-model:value="user.phone" />
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-6 align-self-center">
           <label class="form-label mt-2">Language</label>
           <select
@@ -133,29 +130,32 @@
             onfocusout="defocused(this)"
           />
         </div>
-      </div>
+      </div> -->
+      <!-- <div class="row"> -->
+        <a-button type="primary" style="float: right; margin-top: 10px;" @click="changebasicinfosubmitclk">修改信息</a-button>
+      <!-- </div> -->
     </div>
   </div>
   <div id="password" class="card mt-4">
     <div class="card-header">
-      <h5>Change Password</h5>
+      <h5>修改密码</h5>
     </div>
     <div class="card-body pt-0">
-      <label class="form-label">Current password</label>
+      <label class="form-label">当前密码</label>
       <soft-input
         id="currentPassword"
         type="password"
         placeholder="Current Password"
       />
-      <label class="form-label">New password</label>
+      <label class="form-label">新密码</label>
       <soft-input id="newPassword" type="password" placeholder="New Password" />
-      <label class="form-label">Confirm new password</label>
+      <label class="form-label">确定新密码</label>
       <soft-input
         id="confirmPassword"
         type="password"
         placeholder="Confirm password"
       />
-      <h5 class="mt-5">Password requirements</h5>
+      <!-- <h5 class="mt-5">Password requirements</h5>
       <p class="text-muted mb-2">
         Please follow this guide for a strong password:
       </p>
@@ -172,17 +172,11 @@
         <li>
           <span class="text-sm">Change it often</span>
         </li>
-      </ul>
-      <soft-button
-        class="float-end mt-6 mb-0"
-        color="dark"
-        variant="gradient"
-        size="sm"
-        >Update password</soft-button
-      >
+      </ul> -->
+      <a-button type="primary" style="float: right; margin-top: 10px;" @click="changepasswordsubmitclk">修改密码</a-button>
     </div>
   </div>
-  <div id="2fa" class="card mt-4">
+  <!-- <div id="2fa" class="card mt-4">
     <div class="card-header d-flex">
       <h5 class="mb-0">Two-factor authentication</h5>
       <soft-badge color="success" class="ms-auto">Enabled</soft-badge>
@@ -534,12 +528,12 @@
         </a>
       </div>
     </div>
-  </div>
+  </div> -->
   <div id="delete" class="card mt-4">
     <div class="card-header">
-      <h5>Delete Account</h5>
+      <h5>注销账户</h5>
       <p class="text-sm mb-0">
-        Once you delete your account, there is no going back. Please be certain.
+        一旦你注销账户，无法恢复，请考虑清楚
       </p>
     </div>
     <div class="card-body d-sm-flex pt-0">
@@ -551,37 +545,23 @@
           <span class="text-dark font-weight-bold d-block text-sm"
             >Confirm</span
           >
-          <span class="text-xs d-block">I want to delete my account.</span>
+          <span class="text-xs d-block" >我想要注销账户</span>
         </div>
+        
       </div>
-      <soft-button
-        color="secondary"
-        variant="outline"
-        class="mb-0 ms-auto"
-        type="button"
-        name="button"
-        >Deactivate</soft-button
-      >
-      <soft-button
-        color="danger"
-        variant="gradient"
-        class="mb-0 ms-2"
-        type="button"
-        name="button"
-        >Delete Account</soft-button
-      >
+      <a-button type="primary" style="float: right; margin:10px 0 0 70vh;" danger @click="deleteaccountclk">注销账户</a-button>
     </div>
   </div>
 </template>
 
 <script>
 import * as Choices from "choices.js";
-import SoftButton from "@/components/SoftButton.vue";
+// import SoftButton from "@/components/SoftButton.vue";
 import SoftSwitch from "@/components/SoftSwitch.vue";
-import SoftBadge from "@/components/SoftBadge.vue";
+// import SoftBadge from "@/components/SoftBadge.vue";
 import SoftAvatar from "@/components/SoftAvatar.vue";
 import SoftInput from "@/components/SoftInput.vue";
-import img from "../../../../assets/img/bruce-mars.jpg";
+// import img from "../../../../assets/img/bruce-mars.jpg";
 import img1 from "../../../../assets/img/small-logos/logo-slack.svg";
 import img2 from "../../../../assets/img/small-logos/logo-spotify.svg";
 import img3 from "../../../../assets/img/small-logos/logo-atlassian.svg";
@@ -590,20 +570,25 @@ import img4 from "../../../../assets/img/small-logos/logo-asana.svg";
 export default {
   name: "SideNavItem",
   components: {
-    SoftButton,
+    // SoftButton,
     SoftSwitch,
-    SoftBadge,
+    // SoftBadge,
     SoftAvatar,
     SoftInput,
   },
   data() {
     return {
-      img,
+      img:this.$store.state.user.avatar,
       img1,
       img2,
       img3,
       img4,
+      user:this.$store.state.user,
     };
+  },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
   },
   mounted() {
     if (document.getElementById("choices-gender")) {

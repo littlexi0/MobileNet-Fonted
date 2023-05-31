@@ -421,8 +421,8 @@ export default defineComponent({
     };
   },
   created(){
-    // const avatar =document.getElementsByClassName('avatarcss');
-    // avatar.style.backgroundImage =this.avatar;
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
   },
   mounted() {
     this.$store.state.isAbsolute = true;

@@ -29,29 +29,12 @@
                     <label>用户名</label>
                     <a-input v-model:value="user.username" placeholder="" />
                     <label>密码</label>
-                    <!-- <soft-input
-                      id="password"
-                      v-model=password1
-                      type="password"
-                      placeholder="Password"
 
-                      aria-label="Password"
-
-                    /> -->
-                    <a-input v-model:value="password1" placeholder="" />
+                    <a-input-password v-model:value="password1" placeholder="" />
                     <label>请再次输入密码</label>
-                    <!-- <soft-input
-                      id="password"
-                      v-model=password2
-                      type="password"
-
-                      placeholder="Password"
-
-                      aria-label="Password"
-
-                    /> -->
-                    <a-input v-model:value="password2" placeholder="" />
+                    <a-input-password v-model:value="password2" placeholder="" />
                     <soft-checkbox
+                    
                       id="flexCheckDefault"
                       class="font-weight-light"
                       name="terms"

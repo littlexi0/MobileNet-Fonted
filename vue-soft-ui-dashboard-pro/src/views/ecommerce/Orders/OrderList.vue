@@ -654,6 +654,10 @@ export default {
       img6,
     };
   },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
   mounted() {
     if (document.getElementById("order-list")) {
       const dataTableSearch = new DataTable("#order-list", {

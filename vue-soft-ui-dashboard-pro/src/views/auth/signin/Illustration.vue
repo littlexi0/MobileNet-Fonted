@@ -27,23 +27,25 @@
                 <div class="card-body">
                   <form role="form">
                     <div class="mb-3">
-                      <soft-input
+                      <!-- <soft-input
                         id="email"
                         type="email"
                         placeholder="Email"
                         name="email"
                         size="lg"
-                      />
+                      /> -->
+                      <a-input v-model:value="username" placeholder="" />
                     </div>
-                    <div class="mb-3">
-                      <soft-input
+                    <!-- <div class="mb-3"> -->
+                      <!-- <soft-input
                         id="password"
                         type="password"
                         placeholder="Password"
                         name="password"
                         size="lg"
-                      />
-                    </div>
+                      /> -->
+                      <a-input-password v-model:value="password" placeholder="" />
+                    <!-- </div> -->
                     <soft-switch id="rememberMe" name="rememberMe">
                       记住我
                     </soft-switch>
@@ -55,7 +57,8 @@
                         color="success"
                         full-width
                         size="lg"
-                        >Sign in
+                        @click="loginclk"
+                        >登录
                       </soft-button>
                     </div>
                   </form>
@@ -123,21 +126,29 @@
 
 <script>
 import Navbar from "@/examples/PageLayout/Navbar.vue";
-import SoftInput from "@/components/SoftInput.vue";
+// import SoftInput from "@/components/SoftInput.vue";
 import SoftSwitch from "@/components/SoftSwitch.vue";
 import SoftButton from "@/components/SoftButton.vue";
 const body = document.getElementsByTagName("body")[0];
+import axios from "axios";
+import { message } from "ant-design-vue";
 
 import { mapMutations } from "vuex";
+// import { InputPassword } from "ant-design-vue";
 export default {
   name: "SigninIllustration",
   components: {
     Navbar,
-    SoftInput,
+    // SoftInput,
     SoftSwitch,
     SoftButton,
   },
-
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
   created() {
     this.toggleEveryDisplay();
     this.toggleHideConfig();
@@ -150,6 +161,23 @@ export default {
   },
   methods: {
     ...mapMutations(["toggleEveryDisplay", "toggleHideConfig"]),
+    loginclk(event){
+      event.preventDefault()
+      axios.post("http://43.143.73.132:8000/api/user/login", {
+        username: this.username,
+        password: this.password,
+      }).then((res) => {
+        console.log(res);
+        if (res.data.code == 200) {
+          this.$store.state.logined = true;
+          message.success("登录成功");
+          this.$router.push({ name: "Default" });
+        } else {
+          message.error("登录失败");
+        }
+      });
+
+    }
   },
 };
 </script>

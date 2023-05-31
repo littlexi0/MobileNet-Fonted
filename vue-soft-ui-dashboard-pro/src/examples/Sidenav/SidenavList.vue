@@ -892,15 +892,20 @@ export default {
     Spaceship,
     CreditCard,
   },
+  
   props: {
     cardBg: {
       type: String,
       default: "",
     },
   },
-    computed: {
-      ...mapState(["isRTL"]),
-    },
+  computed: {
+    ...mapState(["isRTL"]),
+  },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
   methods: {
     getRoute() {
       const routeArr = this.$route.path.split("/");

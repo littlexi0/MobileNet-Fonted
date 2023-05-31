@@ -345,6 +345,10 @@ export default {
       username:this.$store.state.username,
     };
   },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
   methods:{
     commentclk(){
       console.log(this.$store.state.username);

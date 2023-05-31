@@ -284,6 +284,10 @@ export default {
       formSteps: 3,
     };
   },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
   mounted() {
     this.$store.state.isAbsolute = true;
     setNavPills();

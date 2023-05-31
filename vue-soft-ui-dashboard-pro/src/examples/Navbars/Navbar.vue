@@ -67,7 +67,7 @@
         </div>
         </div>
         <ul class="navbar-nav justify-content-end">
-          <li class="nav-item d-flex align-items-center">
+          <li v-if=!logined class="nav-item d-flex align-items-center">
             <router-link
               :to="{ name: 'Signin Illustration' }"
               class="px-0 nav-link font-weight-bold"
@@ -79,6 +79,32 @@
               <span v-else class="d-sm-inline d-none">登录 </span>
             </router-link>
           </li>
+
+          <li v-if=logined class="nav-item d-flex align-items-center">
+            <router-link
+              :to="{ name: 'Settings' }"
+              class="px-0 nav-link font-weight-bold"
+              :class="textWhite ? textWhite : 'text-body'"
+            >
+            <img :src="avatar" class="avatarcss">
+              <!-- <div class="avatarcss" style="background-image: url(avatar);"></div> -->
+            </router-link>
+          </li>
+          &nbsp;
+          <li v-if="logined" class="nav-item d-flex align-items-center">
+            <router-link
+              :to="{ name: 'Signin Illustration' }"
+              class="px-0 nav-link font-weight-bold"
+              :class="textWhite ? textWhite : 'text-body'"
+              @click="logoutclk"
+            >
+              <login-outlined />
+              <!-- <i class="fa fa-user" :class="isRTL ? 'ms-sm-2' : 'me-sm-1'"></i> -->
+              <!-- <span v-if="isRTL" class="d-sm-inline d-none">يسجل دخول</span> -->
+              <!-- <span  class="d-sm-inline d-none">注销 </span> -->
+            </router-link>
+          </li>
+
           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
             <a
               id="iconNavbarSidenav"
@@ -239,10 +265,13 @@
 import Breadcrumbs from "../Breadcrumbs.vue";
 import { mapMutations, mapActions, mapState } from "vuex";
 import { defineComponent, ref } from 'vue';
+import {LoginOutlined} from '@ant-design/icons-vue';
+
 export default defineComponent({
   name: "Navbar",
   components: {
     Breadcrumbs,
+    LoginOutlined
   },
   props: {
     minNav: {
@@ -298,6 +327,8 @@ export default defineComponent({
     return {
       showMenu: false,
       dialogvisible: false,
+      avatar: this.$store.state.user.avatar,
+      logined: this.$store.state.logined,
     };
   },
   computed: {
@@ -324,6 +355,9 @@ export default defineComponent({
     searchclk(){
       this.dialogvisible = !this.dialogvisible;
       console.log("searchclk");
+    },
+    logoutclk(){
+      this.$store.state.logined = false;
     }
   },
 });
@@ -332,5 +366,11 @@ export default defineComponent({
 <style scoped>
 .serachcss{
   cursor: pointer;
+}
+.avatarcss{
+  width: 4vh;
+  height: 4vh;
+  border-radius: 50%;
+  /* background-color: pink; */
 }
 </style>

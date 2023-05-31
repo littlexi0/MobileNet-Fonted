@@ -284,6 +284,10 @@ export default defineComponent({
     }
     setTooltip(this.$store.state.bootstrap);
   },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
   methods: {
     deleteclk(record){
       console.log(record);

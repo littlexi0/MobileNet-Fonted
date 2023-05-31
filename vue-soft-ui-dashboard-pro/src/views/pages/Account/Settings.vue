@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid mt-4">
-    <div class="row align-items-center">
+    <!-- <div class="row align-items-center">
       <div class="col-lg-4 col-sm-8">
         <nav-pill />
       </div>
-    </div>
+    </div> -->
     <div class="row mb-5">
       <div class="col-lg-3">
         <side-nav />
@@ -17,16 +17,20 @@
 </template>
 
 <script>
-import NavPill from "./components/NavPill.vue";
+// import NavPill from "./components/NavPill.vue";
 import SideNav from "./components/SideNav.vue";
 import SideNavItem from "./components/SideNavItem.vue";
 
 export default {
   name: "Settings",
   components: {
-    NavPill,
+    // NavPill,
     SideNav,
     SideNavItem,
+  },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
   },
 };
 </script>

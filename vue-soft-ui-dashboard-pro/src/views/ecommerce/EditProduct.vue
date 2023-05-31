@@ -244,6 +244,10 @@ export default {
       );
     }
   },
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
   methods: {
     getChoices(id) {
       if (document.getElementById(id)) {

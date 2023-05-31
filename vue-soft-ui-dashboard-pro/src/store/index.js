@@ -21,7 +21,7 @@ export default createStore({
     user:{
       id:"",
       username: "littlexi",
-      avatar:"qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
+      avatar:"https://qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
       firstname: "little",
       gender:"",
       birth:"",

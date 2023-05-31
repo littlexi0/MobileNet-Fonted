@@ -46,7 +46,7 @@
               </g>
             </svg>
           </div>
-          <span class="text-sm">Profile</span>
+          <span class="text-sm">简介</span>
         </a>
       </li>
       <li class="nav-item pt-2">
@@ -85,7 +85,7 @@
               </g>
             </svg>
           </div>
-          <span class="text-sm">Basic Info</span>
+          <span class="text-sm">基本信息</span>
         </a>
       </li>
       <li class="nav-item pt-2">
@@ -129,10 +129,10 @@
               </g>
             </svg>
           </div>
-          <span class="text-sm">Change Password</span>
+          <span class="text-sm">修改密码</span>
         </a>
       </li>
-      <li class="nav-item pt-2">
+      <!-- <li class="nav-item pt-2">
         <a class="nav-link text-body" data-scroll href="#2fa">
           <div class="icon me-2">
             <svg
@@ -170,8 +170,8 @@
           </div>
           <span class="text-sm">2FA</span>
         </a>
-      </li>
-      <li class="nav-item pt-2">
+      </li> -->
+      <!-- <li class="nav-item pt-2">
         <a class="nav-link text-body" data-scroll href="#accounts">
           <div class="icon me-2">
             <svg
@@ -214,8 +214,8 @@
           </div>
           <span class="text-sm">Accounts</span>
         </a>
-      </li>
-      <li class="nav-item pt-2">
+      </li> -->
+      <!-- <li class="nav-item pt-2">
         <a class="nav-link text-body" data-scroll href="#notifications">
           <div class="icon me-2">
             <svg
@@ -258,8 +258,8 @@
           </div>
           <span class="text-sm">Notifications</span>
         </a>
-      </li>
-      <li class="nav-item pt-2">
+      </li> -->
+      <!-- <li class="nav-item pt-2">
         <a class="nav-link text-body" data-scroll href="#sessions">
           <div class="icon me-2">
             <svg
@@ -302,7 +302,7 @@
           </div>
           <span class="text-sm">Sessions</span>
         </a>
-      </li>
+      </li> -->
       <li class="nav-item pt-2">
         <a class="nav-link text-body" data-scroll href="#delete">
           <div class="icon me-2">
@@ -339,7 +339,7 @@
               </g>
             </svg>
           </div>
-          <span class="text-sm">Delete Account</span>
+          <span class="text-sm">注销账户</span>
         </a>
       </li>
     </ul>
@@ -349,5 +349,9 @@
 <script>
 export default {
   name: "SideNav",
+  created(){
+    if(this.$store.state.logined === false)
+      this.$router.push({ name: "Signin Illustration" });
+  },
 };
 </script>
