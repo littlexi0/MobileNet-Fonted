@@ -19,7 +19,7 @@
           <div class="col-lg-5 col-sm-5">
             <mini-statistics-card
               title="用户数量"
-              value="78,786"
+              :value=this.$store.state.user_total
               :percentage="{
                 value: '+55%',
                 color: 'text-success',
@@ -31,8 +31,8 @@
               direction-reverse
             />
             <mini-statistics-card
-              title="数据库数量"
-              value="2,300"
+              title="文献库数量"
+              :value=this.$store.state.library_total
               :percentage="{
                 value: '+3%',
                 color: 'text-success',
@@ -47,7 +47,7 @@
           <div class="mt-4 col-lg-5 col-sm-5 mt-sm-0">
             <mini-statistics-card
               title="论文数量"
-              value="3,462"
+              :value=this.$store.state.paper_total
               :percentage="{
                 value: '-2%',
                 color: 'text-danger',
@@ -61,7 +61,7 @@
 
             <mini-statistics-card
               title="论文阅读量"
-              value="103,430"
+              :value=this.$store.state.click_total
               :percentage="{
                 value: '+5%',
                 color: 'text-success',
@@ -76,7 +76,7 @@
         </div>
         <div class="row">
           <sales-table
-            title="论文热榜"
+            title="公告栏"
             :rows=hotpapers
           />
         </div>

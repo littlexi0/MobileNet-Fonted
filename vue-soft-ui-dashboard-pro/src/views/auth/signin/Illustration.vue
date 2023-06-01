@@ -170,7 +170,11 @@ export default {
         console.log(res);
         if (res.data.code == 200) {
           this.$store.state.logined = true;
-          this.$store.state.user = res.data.data; 
+          this.$store.state.click_total = res.data.data.click_total;
+          this.$store.state.library_total = res.data.data.library_total;
+          this.$store.state.paper_total = res.data.data.paper_total;
+          this.$store.state.user_total = res.data.data.user_total;
+          this.$store.state.user = res.data.data.user_info; 
           message.success("登录成功");
           this.$router.push({ name: "Default" });
         } else {

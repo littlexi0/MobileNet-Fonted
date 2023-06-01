@@ -18,6 +18,10 @@ export default createStore({
     showMain: true,
     userid:0,
     logined:true,
+    click_total: 0,
+    library_total: 0,
+    paper_total: 0,
+    user_total: 0,
     user:{
       id:"",
       username: "littlexi",

@@ -9,7 +9,7 @@
       >+&nbsp; 新建文献库</a
     >
 
-  <a-table :columns="columns" :data-source="data">
+  <a-table :columns="columns" :data-source="data" :pagination="false">
 
 
     <!-- <template #name="{ text }">
@@ -35,6 +35,7 @@
     <template #action="{ record }">
       <span>
         <a-button
+          v-if="record.is_public||record.creater_id === this.$store.state.user_id"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
@@ -43,11 +44,12 @@
           编辑
         </a-button>
         <a-button
+          v-if="record.is_public||record.creater_id === this.$store.state.user_id"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
           style="margin-left: 5px;"
-          @click="showSwal(record)"
+          @click="deleteclk(record)"
         >
           删除
       </a-button>
@@ -117,29 +119,29 @@ export default defineComponent({
       loading: false,
       columns : [
         {
-          dataIndex: 'name',
-          key: 'name',
+          dataIndex: 'title',
+          key: 'title',
           slots: {
             title: 'customTitle',
-            customRender: 'name',
+            customRender: 'title',
           },
         },
         {
           title: '主题',
-          dataIndex: 'age',
-          key: 'age',
+          dataIndex: 'topic',
+          key: 'topic',
         },
         {
           title: '文章数量',
-          dataIndex: 'address',
-          key: 'address',
+          dataIndex: 'papernumber',
+          key: 'papernumber',
         },
         {
           title: '热度',
-          key: 'tags',
-          dataIndex: 'tags',
+          key: 'clicktime',
+          dataIndex: 'clicktime',
           slots: {
-            customRender: 'tags',
+            customRender: 'clicktime',
           },
         },
         {
@@ -150,113 +152,367 @@ export default defineComponent({
           },
         },
       ],
-      data : [
+      data:[
         {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
         {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
         },
         {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
         },
-      ]
+        {
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
+        },
+        {
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 1,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "ababa",
+            "topic": "impart"
+        },
+        {
+            "cignificent": null,
+            "clicktime": 0,
+            "creater_id": 1066771571,
+            "description": null,
+            "id": 2,
+            "is_public": false,
+            "orgnization_name": null,
+            "orgnization_type": null,
+            "orgnization_url": null,
+            "papernumber": 0,
+            "title": "accabca",
+            "topic": "impart"
+        }
+    ],
+      // data : [
+      //   {
+      //     key: '1',
+      //     name: 'John Brown',
+      //     age: 32,
+      //     address: 'New York No. 1 Lake Park',
+      //     tags: ['nice', 'developer'],
+      //   },
+      //   {
+      //     key: '2',
+      //     name: 'Jim Green',
+      //     age: 42,
+      //     address: 'London No. 1 Lake Park',
+      //     tags: ['loser'],
+      //   },
+      //   {
+      //     key: '3',
+      //     name: 'Joe Black',
+      //     age: 32,
+      //     address: 'Sidney No. 1 Lake Park',
+      //     tags: ['cool', 'teacher'],
+      //   },
+      //   {
+      //     key: '1',
+      //     name: 'John Brown',
+      //     age: 32,
+      //     address: 'New York No. 1 Lake Park',
+      //     tags: ['nice', 'developer'],
+      //   },
+      //   {
+      //     key: '2',
+      //     name: 'Jim Green',
+      //     age: 42,
+      //     address: 'London No. 1 Lake Park',
+      //     tags: ['loser'],
+      //   },
+      //   {
+      //     key: '3',
+      //     name: 'Joe Black',
+      //     age: 32,
+      //     address: 'Sidney No. 1 Lake Park',
+      //     tags: ['cool', 'teacher'],
+      //   },
+      //   {
+      //     key: '1',
+      //     name: 'John Brown',
+      //     age: 32,
+      //     address: 'New York No. 1 Lake Park',
+      //     tags: ['nice', 'developer'],
+      //   },
+      //   {
+      //     key: '2',
+      //     name: 'Jim Green',
+      //     age: 42,
+      //     address: 'London No. 1 Lake Park',
+      //     tags: ['loser'],
+      //   },
+      //   {
+      //     key: '3',
+      //     name: 'Joe Black',
+      //     age: 32,
+      //     address: 'Sidney No. 1 Lake Park',
+      //     tags: ['cool', 'teacher'],
+      //   },
+      //   {
+      //     key: '1',
+      //     name: 'John Brown',
+      //     age: 32,
+      //     address: 'New York No. 1 Lake Park',
+      //     tags: ['nice', 'developer'],
+      //   },
+      //   {
+      //     key: '2',
+      //     name: 'Jim Green',
+      //     age: 42,
+      //     address: 'London No. 1 Lake Park',
+      //     tags: ['loser'],
+      //   },
+      //   {
+      //     key: '3',
+      //     name: 'Joe Black',
+      //     age: 32,
+      //     address: 'Sidney No. 1 Lake Park',
+      //     tags: ['cool', 'teacher'],
+      //   },
+      //   {
+      //     key: '1',
+      //     name: 'John Brown',
+      //     age: 32,
+      //     address: 'New York No. 1 Lake Park',
+      //     tags: ['nice', 'developer'],
+      //   },
+      //   {
+      //     key: '2',
+      //     name: 'Jim Green',
+      //     age: 42,
+      //     address: 'London No. 1 Lake Park',
+      //     tags: ['loser'],
+      //   },
+      //   {
+      //     key: '3',
+      //     name: 'Joe Black',
+      //     age: 32,
+      //     address: 'Sidney No. 1 Lake Park',
+      //     tags: ['cool', 'teacher'],
+      //   },
+      // ]
     }
   },
   // mounted() {
@@ -289,26 +545,7 @@ export default defineComponent({
   created(){
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
-  },
-  getall(){
-    axios.post("",{
-      page_size:this.pagesize,
-      pagenumber:this.pagenumber,
-    }).then(res=>{
-      this.data = res.data.data;
-      this.pagetotal = res.data.total;
-      if(res.status === 200)
-      {
-        message.success("获取数据成功");
-      }
-      else
-      {
-        message.error("获取数据失败");
-      }
-    }).catch(err=>{
-      console.log(err)
-      // message.error(err);
-    });
+      this.getall();
   },
   methods: {
     deleteclk(record){
@@ -357,8 +594,26 @@ export default defineComponent({
           }
         });
     },
-
-
+    getall(){
+      var params="http://43.143.73.132:8000/api/library/"+(this.pagenumber-1)+'/'+this.pagesize;
+      console.log(params)
+      axios.get(params).then(res=>{
+        console.log(res)
+        if(res.data.code === 200)
+        {
+          this.data = res.data.data.data;
+          this.pagetotal = res.data.data.page_total;
+          // message.success("获取数据成功");
+        }
+        else
+        {
+          message.error("获取数据失败");
+        }
+      }).catch(err=>{
+        console.log(err)
+        // message.error(err);
+      });
+  },
   },
 });
 </script>
