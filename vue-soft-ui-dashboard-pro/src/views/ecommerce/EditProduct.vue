@@ -14,8 +14,9 @@
         <button
           type="button"
           class="mt-2 mb-0 btn bg-gradient-success ms-lg-auto me-lg-0 me-auto mt-lg-0"
+          @click="submitmodifyclk"
         >
-          Save
+          保存
         </button>
       </div>
     </div>
@@ -62,14 +63,14 @@
               <div class="col-12 col-sm-6">
                 <label>名字</label>
                 <input
+                  v-model="library.title"
                   class="form-control"
                   type="text"
-                  value="Minimal Bar Stool"
                 />
               </div>
               <div class="mt-3 col-12 col-sm-6 mt-sm-0">
                 <label>主题</label>
-                <input class="form-control" type="number" value="2" />
+                <input  v-model="library.topic" class="form-control" type="number" />
               </div>
             </div>
             <div class="row">
@@ -89,19 +90,21 @@
             <div class="row">
               <div class="col-sm-6">
                 <label class="mt-4">描述</label>
-                <p class="text-xs form-text text-muted ms-1 d-inline">
+                <input  v-model="library.description" class="form-control" type="number" />
+                <!-- <p class="text-xs form-text text-muted ms-1 d-inline">
                   (optional)
                 </p>
                 <div id="edit-description-edit" class="h-50">
-                  <!-- Long sleeves black denim jacket with a twisted design.
+                  Long sleeves black denim jacket with a twisted design.
                   Contrast stitching. Button up closure. White arrow prints on
-                  the back. -->
-                </div>
+                  the back.
+                </div> -->
               </div>
               <div class="col-sm-6">
                 <label class="mt-4">是否公开</label>
                 <select
                   id="choices-category-edit"
+                  v-model="library.is_public"
                   class="form-control"
                   name="choices-category"
                 >
@@ -148,50 +151,6 @@
           <p>&nbsp;&nbsp;&nbsp;&nbsp;3.精细的分类和标签：为文献库中的文献添加精细的分类和标签，以便用户能够更轻松地浏览和检索相关文献。考虑使用学科分类、主题标签或关键词索引等方法。</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;4.强调核心文献：对于某个特定领域的文献库，将核心文献与其他文献区分开来，并给予其更高的权重和可见性。这有助于用户更快地找到最重要的研究成果。</p>
           <p>&nbsp;&nbsp;&nbsp;&nbsp;5.提供全文或链接：尽可能提供文献的全文内容或指向在线文献的链接。这使用户能够直接阅读或下载文献，提供更便利的访问体验。</p>
-          <!-- <div class="card-body">
-            <div class="row">
-              <h5 class="font-weight-bolder">Pricing</h5>
-              <div class="col-3">
-                <label>Price</label>
-                <input class="form-control" type="number" value="99.00" />
-              </div>
-              <div class="col-4">
-                <label>Currency</label>
-                <select
-                  id="choices-currency-edit"
-                  class="form-control"
-                  name="choices-sizes"
-                >
-                  <option value="Choice 1" selected="">USD</option>
-                  <option value="Choice 2">EUR</option>
-                  <option value="Choice 3">GBP</option>
-                  <option value="Choice 4">CNY</option>
-                  <option value="Choice 5">INR</option>
-                  <option value="Choice 6">BTC</option>
-                </select>
-              </div>
-              <div class="col-5">
-                <label>SKU</label>
-                <input class="form-control" type="text" value="71283476591" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <label class="mt-4">Tags</label>
-                <select
-                  id="choices-tags-edit"
-                  class="form-control"
-                  name="choices-tags"
-                  multiple
-                >
-                  <option value="Choice 1" selected>In Stock</option>
-                  <option value="Choice 2">Out of Stock</option>
-                  <option value="Choice 3">Sale</option>
-                  <option value="Choice 4">Black Friday</option>
-                </select>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
@@ -201,7 +160,8 @@
 <script>
 import Quill from "quill";
 import Choices from "choices.js";
-
+import axios from "axios";
+import message from "ant-design-vue";
 export default {
   name: "EditProduct",
   data(){
@@ -257,6 +217,25 @@ export default {
         });
       }
     },
+    submitmodifyclk(){
+      this.library.created_id=this.$store.state.user.id;
+      axios.modify("",this.library)
+      .then((res) => {
+        console.log(res);
+        if(res.status === 200)
+        {
+          message.success("修改成功");
+        }
+        else
+        {
+          message.error("修改失败");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      
+    }
   },
 };
 </script>

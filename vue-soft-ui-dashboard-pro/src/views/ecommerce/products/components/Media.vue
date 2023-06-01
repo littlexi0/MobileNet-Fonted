@@ -46,7 +46,7 @@
 <script>
 import SoftButton from "@/components/SoftButton.vue";
 import Dropzone from "dropzone";
-import { message } from 'ant-design-vue';
+import message from "ant-design-vue";
 import axios from 'axios';
 
 export default {

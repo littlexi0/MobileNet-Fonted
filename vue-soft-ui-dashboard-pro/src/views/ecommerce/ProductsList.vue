@@ -71,7 +71,7 @@
   </div>
 
   <div class="paginationcss">
-    <a-pagination v-model:current="current1" show-quick-jumper :total="50" @change="onChange" />
+    <a-pagination v-model:current="pagenumber" show-quick-jumper :total="pagetotal" @change="onChange" />
   </div>
 
   </div>
@@ -80,8 +80,9 @@
 <script>
 // import { DataTable } from "simple-datatables";
 // import setTooltip from "@/assets/js/tooltip.js";
+import axios from 'axios';
 import { ref, defineComponent } from 'vue';
-
+import message from 'ant-design-vue';
 export default defineComponent({
   name: "ProductsList",
   setup() {
@@ -110,11 +111,9 @@ export default defineComponent({
   },
   data(){
     return{
-      pagination: {
-      total: 200,
-      current1: 1,
-      pageSize: 10,
-      },
+      pagenumber: 1,
+      pagesize: 10,
+      pagetotal:50,
       loading: false,
       columns : [
         {
@@ -290,6 +289,26 @@ export default defineComponent({
   created(){
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
+  },
+  getall(){
+    axios.post("",{
+      page_size:this.pagesize,
+      pagenumber:this.pagenumber,
+    }).then(res=>{
+      this.data = res.data.data;
+      this.pagetotal = res.data.total;
+      if(res.status === 200)
+      {
+        message.success("获取数据成功");
+      }
+      else
+      {
+        message.error("获取数据失败");
+      }
+    }).catch(err=>{
+      console.log(err)
+      // message.error(err);
+    });
   },
   methods: {
     deleteclk(record){

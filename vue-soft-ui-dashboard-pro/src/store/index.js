@@ -17,7 +17,7 @@ export default createStore({
     showFooter: true,
     showMain: true,
     userid:0,
-    logined:false,
+    logined:true,
     user:{
       id:"",
       username: "littlexi",
@@ -41,7 +41,7 @@ export default createStore({
       description:"",
       is_public:true,
       cignificent:"",
-      orgnization_name:"复旦大学",
+      orgnization_name:"",
       orgnization_type:"",
       orgnization_url:"",
       clicktime:0,
