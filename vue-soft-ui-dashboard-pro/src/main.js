@@ -11,7 +11,7 @@ import SoftUIDashboard from "./soft-ui-dashboard";
 
 // import axios from "axios";
 // 引入ant-design-ui，在这里加入，然后在下面的行中use
-import { Button,Switch,Drawer,Table,Modal,List,Comment,Form ,Input,Upload,Select,Descriptions,Pagination } from 'ant-design-vue';
+import { Button,Switch,Drawer,Table,Modal,List,Comment,Form ,Input,Upload,Select,Descriptions,Pagination,Rate } from 'ant-design-vue';
 
 
 const appInstance = createApp(App);
@@ -36,6 +36,7 @@ appInstance.use(Upload);
 appInstance.use(Select);
 appInstance.use(Descriptions),
 appInstance.use(Pagination);
+appInstance.use(Rate);
 // appInstance.prototype.$http = axios;
 // appInstance.use(axios);
 appInstance.mount("#app");

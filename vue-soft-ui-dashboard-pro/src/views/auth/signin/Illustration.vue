@@ -180,6 +180,9 @@ export default {
         } else {
           message.error("登录失败");
         }
+      }).catch((err) => {
+        console.log(err);
+        message.error("登录失败");
       });
 
     }

@@ -108,7 +108,8 @@
           </template>
         </sidenav-collapse>
       </li>
-      <li class="mt-3 nav-item">
+      <div v-if="false">
+        <li class="mt-3 nav-item">
         <h6
           class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6"
           :class="isRTL ? 'me-4' : 'ms-2'"
@@ -254,7 +255,6 @@
           </template>
         </sidenav-collapse>
       </li>
-
       <li class="nav-item">
         <sidenav-collapse
           collapse-ref="applicationsExamples"
@@ -848,9 +848,11 @@
           </template>
         </sidenav-collapse>
       </li>
+      </div>
+
     </ul>
   </div>
-  <div class="pt-3 mx-3 mt-3 sidenav-footer">
+  <!-- <div class="pt-3 mx-3 mt-3 sidenav-footer">
     <sidenav-card
       :class="cardBg"
       text-primary="关于我们"
@@ -859,12 +861,12 @@
       label="Documentation"
       icon="ni ni-diamond"
     />
-  </div>
+  </div> -->
 </template>
 <script>
 import SidenavItem from "./SidenavItem.vue";
 import SidenavCollapse from "./SidenavCollapse.vue";
-import SidenavCard from "./SidenavCard.vue";
+// import SidenavCard from "./SidenavCard.vue";
 import SidenavCollapseItem from "./SidenavCollapseItem.vue";
 import Settings from "../../components/Icon/Settings.vue";
 import Basket from "../../components/Icon/Basket.vue";
@@ -881,7 +883,7 @@ export default {
   components: {
     SidenavItem,
     SidenavCollapse,
-    SidenavCard,
+    // SidenavCard,
     SidenavCollapseItem,
     Settings,
     Basket,

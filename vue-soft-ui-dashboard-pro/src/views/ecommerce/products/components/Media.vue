@@ -7,7 +7,7 @@
     <div class="multisteps-form__content">
       <!-- <div class="mt-3 row">
         <div class="col-12">
-          <label>cignificent</label>
+          <label>certificate</label>
           <form
             id="dropzone"
             action="/file-upload"
@@ -19,7 +19,8 @@
           </form>
         </div>
       </div> -->
-      <input name="file" type="file" multiple @click="handleFileUpload"  />
+      <input id="inputField" name="inputField" type="file" placeholder="ds" @change="handleFileUpload">
+      <!-- <input name="file" type="file" multiple @click="handleFileUpload"  /> -->
       <div class="mt-4 button-row d-flex col-12">
         <soft-button
           color="secondary"
@@ -46,7 +47,7 @@
 <script>
 import SoftButton from "@/components/SoftButton.vue";
 import Dropzone from "dropzone";
-import message from "ant-design-vue";
+import {message} from "ant-design-vue";
 import axios from 'axios';
 
 export default {
@@ -84,7 +85,7 @@ export default {
       formData.append('file', this.file);
       formData.append('token', this.token);
       console.log("upload")
-      
+      console.log(formData)
       axios
         .post(this.uploadUrl, formData, {
           headers: {
@@ -95,6 +96,7 @@ export default {
           // console.log
           message.success("文件上传成功");
           this.$store.state.library.certificate = "https://qny.littlexi.love/"+response.data.key;
+          console.log(this.$store.state.library.certificate)
           console.log('文件上传成功', response.data);
         })
         .catch(error => {

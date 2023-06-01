@@ -278,20 +278,38 @@
         @finish="onFinish"
       >
         <a-form-item label="论文标题">
-          <a-form-item name="input-number" no-style>
-            <a-input v-model="formState.title"/>
+          <a-form-item name="input-number" no-style >
+            <!-- <a-input v-model="formState.title"/> -->
+            <input
+              v-model=formState.title
+              class="form-control"
+              type="text"
+              placeholder=""
+            />
           </a-form-item>
         </a-form-item>
 
         <a-form-item label="所属文献库"  :rules="[{ required: true, message: '文献库不能非空!' }]"> 
           <a-form-item name="input-number" no-style>
-            <a-input v-model="formState.library"/>
+            <!-- <a-input v-model="formState.library"/> -->
+            <input
+              v-model=formState.library_title
+              class="form-control"
+              type="text"
+              placeholder=""
+            />
           </a-form-item>
         </a-form-item>
 
         <a-form-item label="论文作者">
           <a-form-item name="input-number" no-style>
-            <a-input v-model="formState.author"/>
+            <!-- <a-input v-model="formState.author"/> -->
+            <input
+              v-model=formState.author
+              class="form-control"
+              type="text"
+              placeholder=""
+            />
           </a-form-item>
         </a-form-item>
 
@@ -299,24 +317,37 @@
           name="select"
           label="国家"
           has-feedback
-          :rules="[{ required: true, message: '请选择所属国家!' }]"
+
         >
-          <a-select v-model:value="formState.country" placeholder="Please select a country">
-            <a-select-option value="china">China</a-select-option>
-            <a-select-option value="usa">U.S.A</a-select-option>
-            <a-select-option value="usa">Others</a-select-option>
-          </a-select>
+        <input
+            v-model=formState.country
+            class="form-control"
+            type="text"
+            placeholder=""
+          />
         </a-form-item>
 
         <a-form-item label="出版社">
           <a-form-item name="input-number" no-style>
-            <a-input v-model="formState.press"/>
+            <!-- <a-input v-model="formState.press"/> -->
+            <input
+              v-model=formState.press
+              class="form-control"
+              type="text"
+              placeholder=""
+            />
           </a-form-item>
         </a-form-item>
 
         <a-form-item label="发表日期">
           <a-form-item name="input-number" no-style>
-            <a-input v-model="formState.pressdata"/>
+            <!-- <a-input v-model="formState.pressdata"/> -->
+            <input
+              v-model=formState.pressdata
+              class="form-control"
+              type="text"
+              placeholder=""
+            />
           </a-form-item>
         </a-form-item>
 
@@ -342,7 +373,7 @@
           确认创建
         </a-button> -->
       </a-form>
-      <a-button type="primary" size="large" style="float: right;margin-right: 30vh;">
+      <a-button type="primary" size="large" style="float: right;margin-right: 30vh;" @click="submitcreate">
           <template #icon>
             <DownloadOutlined />
           </template>
@@ -412,12 +443,14 @@ export default defineComponent({
       avatar:this.$store.state.avatar,
       formState:{
         title:'',
-        library:'',
+        library_title:'',
+        creater_id:0,
         author:'',
         country:'',
         press:'',
-        pressdata:''
-      }
+        pressdate:'',
+        url:''
+      },
     };
   },
   created(){
@@ -454,7 +487,7 @@ export default defineComponent({
       formData.append('file', this.file);
       formData.append('token', this.token);
       console.log("upload")
-      
+      console.log(formData)
       axios
         .post(this.uploadUrl, formData, {
           headers: {
@@ -464,12 +497,36 @@ export default defineComponent({
         .then(response => {
           // console.log
           message.success("文件上传成功");
+          this.formState.url = "https://qny.littlexi.love/"+response.data.key;
+          // console.log(this.$store.state.library.certificate)
           console.log('文件上传成功', response.data);
         })
         .catch(error => {
           console.error('文件上传失败', error);
         });
     },
+    submitcreate(){
+      console.log(this.formState)
+      axios.post('http://43.143.73.132:8000/api/paper/',this.formState)
+      .then(resp=>{
+        console.log(resp)
+        if(resp.status == 200)
+        {
+          message.success("创建成功");
+          // this.$store.state.paper=this.formState;
+          this.$store.state.paper=resp.data.data;
+          this.$router.push({name:"Order Details"});
+        }
+        else
+        {
+          message.error("创建失败");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        message.error("请求失败，请稍后重试");
+      });
+    }
   }
 });
 </script>

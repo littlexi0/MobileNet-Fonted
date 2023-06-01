@@ -576,14 +576,14 @@
       @click="newpaperbutton()"
       >+&nbsp; 新建论文</a>
 
-  <a-table :columns="columns" :data-source="data">
+  <a-table :columns="columns" :data-source="data" :pagination="false">
     <template #name="{ text }">
       <a>{{ text }}</a>
     </template>
     <template #customTitle>
       <span>
         <smile-outlined />
-        文献库名称
+        论文标题
       </span>
     </template>
     <template #tags="{ text: tags }">
@@ -606,7 +606,7 @@
           class="mb-0 btn bg-gradient-success"
           @click="showModal(record)"
         >
-          编辑
+          详情
         </a-button>
         <a-button
           type="text"
@@ -621,6 +621,10 @@
     </template>
   </a-table>
 
+  <div class="paginationcss">
+    <a-pagination v-model:current="pagenumber" show-quick-jumper :total="pagetotal" @change="onChange" />
+  </div>
+
 </template>
 
 <script>
@@ -634,6 +638,8 @@ import img3 from "../../../assets/img/team-3.jpg";
 import img4 from "../../../assets/img/team-4.jpg";
 import img5 from "../../../assets/img/team-5.jpg";
 import img6 from "../../../assets/img/ivana-squares.jpg";
+import {message} from "ant-design-vue"
+import axios from "axios";
 
 export default {
   name: "OrderList",
@@ -650,31 +656,34 @@ export default {
       img4,
       img5,
       img6,
+      pagenumber: 1,
+      pagesize: 10,
+      pagetotal:50,
       columns : [
         {
-          dataIndex: 'name',
-          key: 'name',
+          dataIndex: 'title',
+          key: 'title',
           slots: {
             title: 'customTitle',
-            customRender: 'name',
+            customRender: 'title',
           },
         },
         {
-          title: '主题',
-          dataIndex: 'age',
-          key: 'age',
+          title: '作者',
+          dataIndex: 'author',
+          key: 'author',
         },
         {
-          title: '文章数量',
-          dataIndex: 'address',
-          key: 'address',
+          title: '出版',
+          dataIndex: 'press',
+          key: 'press',
         },
         {
-          title: '热度',
-          key: 'tags',
-          dataIndex: 'tags',
+          title: '创建时间',
+          key: 'pressdate',
+          dataIndex: 'pressdate',
           slots: {
-            customRender: 'tags',
+            customRender: 'pressdate',
           },
         },
         {
@@ -685,118 +694,25 @@ export default {
           },
         },
       ],
-      data : [
+      data:[
         {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-        {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-        {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-        {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-        {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-      ]
+          id:'',
+          title:'游戏环境下的中国文化输出探索——以《原神》为例',
+          library_title:0,
+          creater_id:0,
+          author:'刘姝秀',
+          country:'中国',
+          press:'中国传媒大学文化产业管理学院',
+          pressdate:'2021-10-01',
+          url:'https://qny.littlexi.love/FmgyW6rKjpbaA-jeCkpbLKlHgbjB'
+        }
+      ],
     };
   },
   created(){
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
+    this.getall();
   },
   mounted() {
     if (document.getElementById("order-list")) {
@@ -825,9 +741,118 @@ export default {
     }
   },
   methods:{
+    deleteclk(record){
+      // this.visible=true;
+      console.log(record)
+      axios.delete('http://43.143.73.132:8000/api/paper/'+record.id)
+        .then(resp=>{
+          if(resp.status === 200)
+          {
+            message.success("删除成功");
+            this.getall();
+          }
+          else
+            message.error("删除失败")
+        }).catch(err=>{
+          console.log(err)
+          message.error("删除失败")
+        })
+    },
+    showSwal(record){
+      // this.$store.state.showSidenav=false;
+      this.$swal({
+          title: "确定删除吗?",
+          text: "删除操作将无法撤销!",
+          showCancelButton: true,
+          confirmButtonText: "删除",
+          cancelButtonText: "取消",
+          reverseButtons: true,
+          customClass: {
+            confirmButton: "btn bg-gradient-success",
+            cancelButton: "btn bg-gradient-danger",
+          },
+          buttonsStyling: false,
+        }).then((result) => {
+          // this.$store.state.showSidenav=true;
+          if (result.isConfirmed) {
+
+            // 这里可以发送删除的axios请求
+            this.deleteclk(record);
+            this.$swal({
+              title: "删除成功!",
+              text: "你的论文已经成功删除！",
+              icon: "success",
+              customClass: {
+                confirmButton: "btn bg-gradient-success",
+              },
+              buttonsStyling: false,
+            });
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === this.$swal.DismissReason.cancel
+          ) {
+            this.$swal({
+              title: "取消!",
+              text: "你的论文未被删除",
+              icon: "error",
+              customClass: {
+                confirmButton: "btn bg-gradient-success",
+              },
+              buttonsStyling: false,
+            });
+          }
+        });
+
+    },
     newpaperbutton(){
       this.$router.push({ name: "New Paper" });
     },
+    getall(){
+      var params="http://43.143.73.132:8000/api/paper/"+this.$store.state.library.id+"/" +(this.pagenumber-1)+"/"+this.pagesize;
+      console.log(params)
+      axios.get(params).then(res=>{
+        console.log(res)
+        if(res.data.code === 200)
+        {
+          this.data = res.data.data.data;
+          this.pagetotal = res.data.data.page_total;
+          message.success("获取数据成功");
+        }
+        else
+        {
+          message.error("获取数据失败");
+        }
+      }).catch(err=>{
+        console.log(err)
+        // message.error(err);
+      });
+    },
+    showModal(record){
+      console.log(record)
+      this.addclick(record)
+      this.$store.state.paper=record;
+      this.$router.push({name:'Order Details'})
+    },
+    addclick(record)
+    {
+      console.log(record)
+      var params="http://43.143.73.132:8000/api/paper/click/"+record.id+"/"+this.$store.state.user.id;
+      console.log(params)
+      axios.get(params).then(res=>{
+        console.log(res)
+        this.$store.state.markscore=res.data.mark;
+      }).catch(err=>{
+        console.log(err)
+        // message.error(err);
+      });
+    }
   }
 };
 </script>
+
+<style scoped>
+.paginationcss{
+  display: flex;
+  justify-content: center;
+}
+</style>

@@ -150,37 +150,27 @@
     </div>
     <div class="card-body pt-0">
       <label class="form-label">当前密码</label>
-      <soft-input
+
+      <a-input v-model:value="currentpassword" type="password" />
+      <!-- <a-input
         id="currentPassword"
+        v-model="currentpassword"
+
         type="password"
         placeholder="Current Password"
-      />
+      /> -->
       <label class="form-label">新密码</label>
-      <soft-input id="newPassword" type="password" placeholder="New Password" />
+      <a-input v-model:value="password1" type="password"/>
+      <!-- <a-input id="newPassword" v-model="password1"  type="password" placeholder="New Password" /> -->
       <label class="form-label">确定新密码</label>
-      <soft-input
+      <a-input v-model:value="password2"   type="password" />
+      <!-- <a-input
         id="confirmPassword"
+        v-model="password2"
+
         type="password"
         placeholder="Confirm password"
-      />
-      <!-- <h5 class="mt-5">Password requirements</h5>
-      <p class="text-muted mb-2">
-        Please follow this guide for a strong password:
-      </p>
-      <ul class="text-muted ps-4 mb-0 float-start">
-        <li>
-          <span class="text-sm">One special characters</span>
-        </li>
-        <li>
-          <span class="text-sm">Min 6 characters</span>
-        </li>
-        <li>
-          <span class="text-sm">One number (2 are recommended)</span>
-        </li>
-        <li>
-          <span class="text-sm">Change it often</span>
-        </li>
-      </ul> -->
+      /> -->
       <a-button type="primary" style="float: right; margin-top: 10px;" @click="changepasswordsubmitclk">修改密码</a-button>
     </div>
   </div>
@@ -568,7 +558,7 @@ import * as Choices from "choices.js";
 import SoftSwitch from "@/components/SoftSwitch.vue";
 // import SoftBadge from "@/components/SoftBadge.vue";
 import SoftAvatar from "@/components/SoftAvatar.vue";
-import SoftInput from "@/components/SoftInput.vue";
+// import SoftInput from "@/components/SoftInput.vue";
 // import img from "../../../../assets/img/bruce-mars.jpg";
 import img1 from "../../../../assets/img/small-logos/logo-slack.svg";
 import img2 from "../../../../assets/img/small-logos/logo-spotify.svg";
@@ -584,7 +574,7 @@ export default {
     SoftSwitch,
     // SoftBadge,
     SoftAvatar,
-    SoftInput,
+    // SoftInput,
   },
   data() {
     return {
@@ -594,6 +584,9 @@ export default {
       img3,
       img4,
       user:this.$store.state.user,
+      currentpassword:'',
+      password1:'',
+      password2:'',
       uploadUrl: 'https://upload.qiniup.com',
       file:null,
       token:this.$store.state.token,
@@ -742,6 +735,38 @@ export default {
         }
       })
     },
+    changepasswordsubmitclk(){
+      // if(this.)
+      // console.log(this.currentpassword);
+      // console.log(this.password1);
+      // console.log(this.password2);
+      if(this.password1!=this.password2)
+      {
+        message.error("两次密码不一致");
+        return;
+      }
+      axios.put("http://43.143.73.132:8000/api/user/change",
+      {
+        id:this.$store.state.user.id,
+        oldpassword:this.currentpassword,
+        newpassword:this.password1,
+      }
+      )
+      .then(resp=>{
+        if(resp.status == 200)
+        {
+          message.success('修改成功');
+          this.$router.push({name:'Signin Illustration'});
+        }
+        else
+        {
+          message.error('修改失败');
+        }
+      }).catch(err=>{
+        console.log(err);
+        message.error('修改失败');
+      })
+    }
   }
 };
 </script>

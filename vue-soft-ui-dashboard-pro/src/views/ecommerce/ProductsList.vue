@@ -39,7 +39,17 @@
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
-          @click="showModal(record)"
+          @click="jumptopapers(record)"
+        >
+          详情
+        </a-button>
+        <a-button
+          v-if="record.is_public||record.creater_id === this.$store.state.user_id"
+          type="text"
+          size="small"
+          class="mb-0 btn bg-gradient-success"
+          style="margin-left: 5px;"
+          @click="modifyclick(record)"
         >
           编辑
         </a-button>
@@ -49,7 +59,7 @@
           size="small"
           class="mb-0 btn bg-gradient-success"
           style="margin-left: 5px;"
-          @click="deleteclk(record)"
+          @click="showSwal(record)"
         >
           删除
       </a-button>
@@ -84,7 +94,7 @@
 // import setTooltip from "@/assets/js/tooltip.js";
 import axios from 'axios';
 import { ref, defineComponent } from 'vue';
-import message from 'ant-design-vue';
+import {message} from 'ant-design-vue';
 export default defineComponent({
   name: "ProductsList",
   setup() {
@@ -154,7 +164,7 @@ export default defineComponent({
       ],
       data:[
         {
-            "cignificent": null,
+            "certificate": null,
             "clicktime": 0,
             "creater_id": 1066771571,
             "description": null,
@@ -165,354 +175,9 @@ export default defineComponent({
             "orgnization_url": null,
             "papernumber": 0,
             "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 1,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "ababa",
-            "topic": "impart"
-        },
-        {
-            "cignificent": null,
-            "clicktime": 0,
-            "creater_id": 1066771571,
-            "description": null,
-            "id": 2,
-            "is_public": false,
-            "orgnization_name": null,
-            "orgnization_type": null,
-            "orgnization_url": null,
-            "papernumber": 0,
-            "title": "accabca",
             "topic": "impart"
         }
-    ],
-      // data : [
-      //   {
-      //     key: '1',
-      //     name: 'John Brown',
-      //     age: 32,
-      //     address: 'New York No. 1 Lake Park',
-      //     tags: ['nice', 'developer'],
-      //   },
-      //   {
-      //     key: '2',
-      //     name: 'Jim Green',
-      //     age: 42,
-      //     address: 'London No. 1 Lake Park',
-      //     tags: ['loser'],
-      //   },
-      //   {
-      //     key: '3',
-      //     name: 'Joe Black',
-      //     age: 32,
-      //     address: 'Sidney No. 1 Lake Park',
-      //     tags: ['cool', 'teacher'],
-      //   },
-      //   {
-      //     key: '1',
-      //     name: 'John Brown',
-      //     age: 32,
-      //     address: 'New York No. 1 Lake Park',
-      //     tags: ['nice', 'developer'],
-      //   },
-      //   {
-      //     key: '2',
-      //     name: 'Jim Green',
-      //     age: 42,
-      //     address: 'London No. 1 Lake Park',
-      //     tags: ['loser'],
-      //   },
-      //   {
-      //     key: '3',
-      //     name: 'Joe Black',
-      //     age: 32,
-      //     address: 'Sidney No. 1 Lake Park',
-      //     tags: ['cool', 'teacher'],
-      //   },
-      //   {
-      //     key: '1',
-      //     name: 'John Brown',
-      //     age: 32,
-      //     address: 'New York No. 1 Lake Park',
-      //     tags: ['nice', 'developer'],
-      //   },
-      //   {
-      //     key: '2',
-      //     name: 'Jim Green',
-      //     age: 42,
-      //     address: 'London No. 1 Lake Park',
-      //     tags: ['loser'],
-      //   },
-      //   {
-      //     key: '3',
-      //     name: 'Joe Black',
-      //     age: 32,
-      //     address: 'Sidney No. 1 Lake Park',
-      //     tags: ['cool', 'teacher'],
-      //   },
-      //   {
-      //     key: '1',
-      //     name: 'John Brown',
-      //     age: 32,
-      //     address: 'New York No. 1 Lake Park',
-      //     tags: ['nice', 'developer'],
-      //   },
-      //   {
-      //     key: '2',
-      //     name: 'Jim Green',
-      //     age: 42,
-      //     address: 'London No. 1 Lake Park',
-      //     tags: ['loser'],
-      //   },
-      //   {
-      //     key: '3',
-      //     name: 'Joe Black',
-      //     age: 32,
-      //     address: 'Sidney No. 1 Lake Park',
-      //     tags: ['cool', 'teacher'],
-      //   },
-      //   {
-      //     key: '1',
-      //     name: 'John Brown',
-      //     age: 32,
-      //     address: 'New York No. 1 Lake Park',
-      //     tags: ['nice', 'developer'],
-      //   },
-      //   {
-      //     key: '2',
-      //     name: 'Jim Green',
-      //     age: 42,
-      //     address: 'London No. 1 Lake Park',
-      //     tags: ['loser'],
-      //   },
-      //   {
-      //     key: '3',
-      //     name: 'Joe Black',
-      //     age: 32,
-      //     address: 'Sidney No. 1 Lake Park',
-      //     tags: ['cool', 'teacher'],
-      //   },
-      // ]
+      ],
     }
   },
   // mounted() {
@@ -549,9 +214,24 @@ export default defineComponent({
   },
   methods: {
     deleteclk(record){
-      console.log(record);
+      // this.visible=true;
+      console.log(record)
+      axios.delete('http://43.143.73.132:8000/api/library/'+record.id)
+        .then(resp=>{
+          if(resp.status === 200)
+          {
+            message.success("删除成功");
+            this.getall();
+          }
+          else
+            message.error("删除失败")
+        }).catch(err=>{
+          console.log(err)
+          message.error("删除失败")
+        })
     },
-    showSwal(){
+    showSwal(record){
+      // this.$store.state.showSidenav=false;
       this.$swal({
           title: "确定删除吗?",
           text: "删除操作将无法撤销!",
@@ -565,10 +245,11 @@ export default defineComponent({
           },
           buttonsStyling: false,
         }).then((result) => {
+          // this.$store.state.showSidenav=true;
           if (result.isConfirmed) {
 
             // 这里可以发送删除的axios请求
-
+            this.deleteclk(record);
             this.$swal({
               title: "删除成功!",
               text: "你的文献库已经成功删除！",
@@ -593,6 +274,7 @@ export default defineComponent({
             });
           }
         });
+
     },
     getall(){
       var params="http://43.143.73.132:8000/api/library/"+(this.pagenumber-1)+'/'+this.pagesize;
@@ -613,7 +295,21 @@ export default defineComponent({
         console.log(err)
         // message.error(err);
       });
-  },
+    },
+    onChange(){
+      console.log(1)
+      this.getall();
+    },
+    modifyclick(record){
+      console.log(record)
+      this.$store.state.library = record;
+      //跳转路由
+      this.$router.push({ name: "Edit Product" });
+    },
+    jumptopapers(record){
+      this.$store.state.library = record;
+      this.$router.push({ name: "Order List" });
+    }
   },
 });
 </script>

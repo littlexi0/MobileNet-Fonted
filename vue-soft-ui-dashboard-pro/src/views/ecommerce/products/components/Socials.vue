@@ -8,31 +8,52 @@
       <div class="mt-3 row">
         <div class="col-12">
           <label>机构/组织名称</label>
-          <soft-input
-            v-model="library.orgnization_name"
-            class="multisteps-form__input"
+          <input
+            v-model=library.orgnization_name
+            class="form-control"
             type="text"
             placeholder="复旦大学"
           />
         </div>
-        <div class="mt-3 col-12">
+
+        <div class="col-12">
           <label>机构/组织类型</label>
-          <soft-input
-            v-model="library.orgnization_type"
-            class="multisteps-form__input"
+          <input
+            v-model=library.orgnization_type
+            class="form-control"
             type="text"
             placeholder="科研机构"
           />
         </div>
-        <div class="mt-3 col-12">
+
+        <div class="col-12">
           <label>机构/组织官网链接</label>
-          <soft-input
-            v-model="library.orgnization_url"
-            class="multisteps-form__input"
+          <input
+            v-model=library.orgnization_url
+            class="form-control"
             type="text"
             placeholder="https://..."
           />
         </div>
+
+        <!-- <div class="col-12">
+          <label>机构/组织类型</label>
+          <soft-input
+            v-model=library.orgnization_type
+            class="form-control"
+            type="text"
+            placeholder="科研机构"
+          />
+        </div> -->
+        <!-- <div class="col-12">
+          <label>机构/组织官网链接</label>
+          <soft-input
+            v-model="library.orgnization_url"
+            class="form-control"
+            type="text"
+            placeholder="https://..."
+          />
+        </div> -->
       </div>
       <div class="row">
         <div class="mt-4 button-row d-flex col-12">
@@ -60,15 +81,14 @@
 </template>
 
 <script>
-import SoftInput from "@/components/SoftInput.vue";
+// import SoftInput from "@/components/SoftInput.vue";
 import SoftButton from "@/components/SoftButton.vue";
 import axios from "axios";
-import message from "ant-design-vue";
-
+import {message} from "ant-design-vue";
 export default {
   name: "Socials",
   components: {
-    SoftInput,
+    // SoftInput,
     SoftButton,
   },
   data() {
@@ -82,7 +102,7 @@ export default {
       this.library.creater_id=this.$store.state.user.id;
       console.log(this.library)
       this.$store.state.library=this.library;
-
+      
       axios.post("http://43.143.73.132:8000/api/library/", this.library).then((res) => {
         console.log(res);
         if (res.data.code == 200) {

@@ -29,7 +29,7 @@
               <div class="col-12">
                 <img
                   class="mt-3 shadow-lg w-100 border-radius-lg"
-                  src="https://qny.littlexi.love/FiQ_Bqmwws98Zec24l2xbChbNx-k"
+                  :src=library.certificate
                   alt="product_image"
                 />
               </div>
@@ -70,7 +70,7 @@
               </div>
               <div class="mt-3 col-12 col-sm-6 mt-sm-0">
                 <label>主题</label>
-                <input  v-model="library.topic" class="form-control" type="number" />
+                <input  v-model="library.topic" class="form-control" type="text" />
               </div>
             </div>
             <div class="row">
@@ -90,7 +90,7 @@
             <div class="row">
               <div class="col-sm-6">
                 <label class="mt-4">描述</label>
-                <input  v-model="library.description" class="form-control" type="number" />
+                <input  v-model="library.description" class="form-control" type="text" />
                 <!-- <p class="text-xs form-text text-muted ms-1 d-inline">
                   (optional)
                 </p>
@@ -134,12 +134,13 @@
         <div class="card">
           <div class="card-body">
             <h5 class="font-weight-bolder">机构/组织</h5>
-            <label>组织名称</label>
-            <input class="form-control" type="text" :value=library.orgnization_name />
-            <label class="mt-4">组织类型</label>
-            <input class="form-control" type="text" :value=library.orgnization_type />
-            <label class="mt-4">组织官网链接</label>
-            <input class="form-control" type="text" :value=library.orgnization_url />
+            <label>机构/组织名称</label>
+            <input v-model="library.orgnization_name" class="form-control" type="text"  />
+            <label class="mt-4">机构/组织类型</label>
+            <input v-model="library.orgnization_type" class="form-control" type="text"  />
+            <label class="mt-4">机构/组织官网链接</label>
+            <input v-model="library.orgnization_url" class="form-control" type="text" />
+            <!-- <input class="form-control" type="text" :value=library.orgnization_url /> -->
           </div>
         </div>
       </div>
@@ -161,7 +162,7 @@
 import Quill from "quill";
 import Choices from "choices.js";
 import axios from "axios";
-import message from "ant-design-vue";
+import {message} from "ant-design-vue";
 export default {
   name: "EditProduct",
   data(){
@@ -207,6 +208,7 @@ export default {
   created(){
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
+      console.log(this.library)
   },
   methods: {
     getChoices(id) {
@@ -219,7 +221,8 @@ export default {
     },
     submitmodifyclk(){
       this.library.created_id=this.$store.state.user.id;
-      axios.modify("",this.library)
+      console.log(this.library);
+      axios.put("http://43.143.73.132:8000/api/library/"+this.library.id,this.library)
       .then((res) => {
         console.log(res);
         if(res.status === 200)

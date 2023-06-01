@@ -190,6 +190,8 @@ import US from "@/assets/img/icons/flags/US.png";
 import DE from "@/assets/img/icons/flags/DE.png";
 import GB from "@/assets/img/icons/flags/GB.png";
 import BR from "@/assets/img/icons/flags/BR.png";
+import { message } from "ant-design-vue";
+import axios from "axios";
 
 import Globe from "../../examples/Globe.vue";
 import {
@@ -253,6 +255,24 @@ export default {
   created(){
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
+    axios.post('http://43.143.73.132:8000/api/user/token',
+    {token:this.$store.state.user.token}
+    )
+    .then(res=>{
+      console.log(res);
+        if (res.data.code == 200) {
+          this.$store.state.logined = true;
+          this.$store.state.click_total = res.data.data.click_total;
+          this.$store.state.library_total = res.data.data.library_total;
+          this.$store.state.paper_total = res.data.data.paper_total;
+          this.$store.state.user_total = res.data.data.user_total;
+          this.$store.state.user = res.data.data.user_info;
+          message.success("查询成功");
+          // this.$router.push({ name: "Default" });
+        } else {
+          message.error("查询失败");
+        }
+    })
   },
 };
 </script>
