@@ -57,14 +57,14 @@
       </div>
       <div class="row">
         <div class="mt-4 button-row d-flex col-12">
-          <soft-button
+          <!-- <soft-button
             color="secondary"
             variant="gradient"
             class="mb-0 js-btn-prev"
             title="Prev"
             @click="this.$parent.prevStep"
             >上一步</soft-button
-          >
+          > -->
           <soft-button
             type="button"
             color="dark"
@@ -113,6 +113,9 @@ export default {
         } else {
           message.error("创建成功");
         }
+      }).catch((err) => {
+        message.error('创建失败');
+        console.log(err);
       });
       // axios
       //   .post("http://43.143.73.132:8000/api/library", this.library)

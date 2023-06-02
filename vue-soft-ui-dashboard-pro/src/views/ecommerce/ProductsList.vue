@@ -1,6 +1,12 @@
 <template>
 
   <div>
+    <a-select v-model:value="searchtype" style="width: 5%;float: left;">
+      <a-select-option value="title">标题</a-select-option>
+      <a-select-option value="topic">主题</a-select-option>
+    </a-select>
+      <a-input v-model:value="searchvalue" placeholder="Basic usage" style="width: 20%" />
+    <a-button type="primary" @click="searchclk">搜索</a-button>
 
     <a
       href="./new-product"
@@ -8,7 +14,6 @@
       style="float: right"
       >+&nbsp; 新建文献库</a
     >
-
   <a-table :columns="columns" :data-source="data" :pagination="false">
 
 
@@ -35,7 +40,7 @@
     <template #action="{ record }">
       <span>
         <a-button
-          v-if="record.is_public||record.creater_id === this.$store.state.user_id"
+          v-if="record.is_public"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
@@ -44,7 +49,7 @@
           详情
         </a-button>
         <a-button
-          v-if="record.is_public||record.creater_id === this.$store.state.user_id"
+          v-if="record.creater_id == this.$store.state.user.id"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
@@ -54,7 +59,7 @@
           编辑
         </a-button>
         <a-button
-          v-if="record.is_public||record.creater_id === this.$store.state.user_id"
+          v-if="record.creater_id == this.$store.state.user.id"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
@@ -127,6 +132,8 @@ export default defineComponent({
       pagesize: 10,
       pagetotal:50,
       loading: false,
+      searchtype: "",
+      searchvalue: "",
       columns : [
         {
           dataIndex: 'title',
@@ -309,6 +316,36 @@ export default defineComponent({
     jumptopapers(record){
       this.$store.state.library = record;
       this.$router.push({ name: "Order List" });
+    },
+    searchclk(){
+      // console.log(this.searchtype)
+      // console.log(this.searchvalue)
+      if(this.searchvalue=='')
+      {
+        this.getall();
+        return ;
+      }
+      var param='http://43.143.73.132:8000/api/library/search/'+this.searchtype;
+      axios.post(param,{
+        value:this.searchvalue,
+        page_num:this.pagenumber-1,
+        page_size:this.pagesize
+      }).then(res=>{
+        console.log(res)
+        if(res.data.code === 200)
+        {
+          this.data = res.data.data.data;
+          this.pagetotal = res.data.data.page_total;
+          // message.success("获取数据成功");
+        }
+        else
+        {
+          message.error("获取数据失败");
+        }
+      }).catch(err=>{
+        console.log(err)
+        // message.error(err);
+      });
     }
   },
 });

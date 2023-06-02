@@ -9,7 +9,7 @@
           textAlign:center,
         }"
       >
-        <h2 class="title">新建论文</h2>
+        <h2 class="title">修改论文</h2>
         <span class="mask bg-gradient-success opacity-6"></span>
       </div>
       <div v-if="false" class="mx-4 overflow-hidden card card-body blur shadow-blur mt-n6">
@@ -289,9 +289,8 @@
           </a-form-item>
         </a-form-item>
 
-        <a-form-item label="所属文献库"  :rules="[{ required: true, message: '文献库不能非空!' }]"> 
+        <!-- <a-form-item label="所属文献库"  :rules="[{ required: true, message: '文献库不能非空!' }]"> 
           <a-form-item name="input-number" no-style>
-            <!-- <a-input v-model="formState.library"/> -->
             <input
               v-model=formState.library_title
               class="form-control"
@@ -299,7 +298,7 @@
               placeholder=""
             />
           </a-form-item>
-        </a-form-item>
+        </a-form-item> -->
 
         <a-form-item label="论文作者">
           <a-form-item name="input-number" no-style>
@@ -364,7 +363,7 @@
               v-model=formState.reference
               class="form-control"
               type="text"
-              placeholder="[1]张妍,李金昊,赵宇翔.文旅融合背景下国产游戏创新与推广的模式探索：基于《原神》的案例分析[J].图书情报知识,2021,38(05):107-118.DOI:10.13366/j.dik.2021.05.107."
+              placeholder=""
             />
           </a-form-item>
         </a-form-item>
@@ -383,11 +382,11 @@
           确认创建
         </a-button> -->
       </a-form>
-      <a-button type="primary" size="large" style="float: right;margin-right: 30vh;" @click="submitcreate">
+      <a-button type="primary" size="large" style="float: right;margin-right: 30vh;" @click="submitmodify">
           <template #icon>
             <DownloadOutlined />
           </template>
-          确认创建
+          保存修改
         </a-button>
     </div>
 
@@ -406,7 +405,7 @@ import { defineComponent } from 'vue';
 import setNavPills from "@/assets/js/nav-pills.js";
 
 export default defineComponent({
-  name: "NewPaper",
+  name: "ModifyPaper",
   components: {
     ProductInfo,
     Media,
@@ -451,16 +450,17 @@ export default defineComponent({
       uploadUrl: 'https://upload.qiniup.com', // 替换为实际的上传地址
       token: this.$store.state.token, // 替换为实际的上传凭证
       avatar:this.$store.state.avatar,
-      formState:{
-        title:'',
-        library_title:'',
-        creater_id:0,
-        author:'',
-        country:'',
-        press:'',
-        pressdate:'',
-        url:''
-      },
+      formState: this.$store.state.paper,
+    //   formState:{
+    //     title:'',
+    //     library_title:'',
+    //     creater_id:0,
+    //     author:'',
+    //     country:'',
+    //     press:'',
+    //     pressdate:'',
+    //     url:''
+    //   },
     };
   },
   created(){
@@ -515,26 +515,26 @@ export default defineComponent({
           console.error('文件上传失败', error);
         });
     },
-    submitcreate(){
+    submitmodify(){
       console.log(this.formState)
-      axios.post('http://43.143.73.132:8000/api/paper/',this.formState)
+      axios.put('http://43.143.73.132:8000/api/paper/'+this.formState.id,this.formState)
       .then(resp=>{
         console.log(resp)
         if(resp.status == 200)
         {
-          message.success("创建成功");
+          message.success("修改成功");
           // this.$store.state.paper=this.formState;
           this.$store.state.paper=resp.data.data;
-          this.$router.push({name:"Order Details"});
+        //   this.$router.push({name:"Order Details"});
         }
         else
         {
-          message.error("创建失败");
+          message.error("修改失败");
         }
       })
       .catch(err => {
         console.log(err);
-        message.error("请求失败，请稍后重试");
+        message.error("修改失败，请稍后重试");
       });
     }
   }

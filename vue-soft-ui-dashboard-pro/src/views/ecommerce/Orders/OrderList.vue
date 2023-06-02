@@ -570,6 +570,14 @@
     </div>
   </div>
 
+  <a-select v-model:value="searchtype" style="width: 5%;float: left;">
+    <a-select-option value="title">标题</a-select-option>
+    <a-select-option value="author">作者</a-select-option>
+    <a-select-option value="press">出版</a-select-option>
+  </a-select>
+    <a-input v-model:value="searchvalue" placeholder="请输入内容" style="width: 20%" />
+  <a-button type="primary" @click="searchclk">搜索</a-button>
+
   <a
       class="mb-0 btn bg-gradient-success btn-sm"
       style="float: right;"
@@ -608,7 +616,20 @@
         >
           详情
         </a-button>
+
         <a-button
+          v-if="record.creater_id == this.$store.state.user.id"
+          type="text"
+          size="small"
+          class="mb-0 btn bg-gradient-success"
+          style="margin-left: 10px;"
+          @click="editorder(record)"
+        >
+          编辑
+        </a-button>
+
+        <a-button
+          v-if="record.creater_id == this.$store.state.user.id"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
@@ -617,6 +638,7 @@
         >
           删除
       </a-button>
+
       </span>
     </template>
   </a-table>
@@ -659,6 +681,8 @@ export default {
       pagenumber: 1,
       pagesize: 10,
       pagetotal:50,
+      searchtype:'',
+      searchvalue:'',
       columns : [
         {
           dataIndex: 'title',
@@ -679,7 +703,7 @@ export default {
           key: 'press',
         },
         {
-          title: '创建时间',
+          title: '出版时间',
           key: 'pressdate',
           dataIndex: 'pressdate',
           slots: {
@@ -840,11 +864,47 @@ export default {
       console.log(params)
       axios.get(params).then(res=>{
         console.log(res)
-        this.$store.state.markscore=res.data.mark;
+        console.log(res.data.data.mark);       
+        this.$store.state.markscore=res.data.data.mark;
       }).catch(err=>{
         console.log(err)
         // message.error(err);
       });
+    },
+    searchclk(){
+      // console.log(this.searchtype)
+      // console.log(this.searchvalue)
+      if(this.searchvalue=='')
+      {
+        this.getall();
+        return ;
+      }
+      var param='http://43.143.73.132:8000/api/paper/search/'+this.searchtype;
+      axios.post(param,{
+        value:this.searchvalue,
+        page_num:this.pagenumber-1,
+        page_size:this.pagesize
+      }).then(res=>{
+        console.log(res)
+        if(res.data.code === 200)
+        {
+          this.data = res.data.data.data;
+          this.pagetotal = res.data.data.page_total;
+          // message.success("获取数据成功");
+        }
+        else
+        {
+          message.error("获取数据失败");
+        }
+      }).catch(err=>{
+        console.log(err)
+        // message.error(err);
+      });
+    },
+    editorder(record){
+      this.$store.state.paper=record;
+
+      this.$router.push({name:"Modify Paper"})
     }
   }
 };

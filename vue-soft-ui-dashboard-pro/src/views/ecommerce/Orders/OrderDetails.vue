@@ -214,7 +214,7 @@
       <a-descriptions-item label="作者">{{ paper.author }}</a-descriptions-item>
       <a-descriptions-item label="国家">{{ paper.country }}</a-descriptions-item>
       <a-descriptions-item label="出版社">{{ paper.press }}</a-descriptions-item>
-      <a-descriptions-item label="日期">{{ paper.pressdata }}</a-descriptions-item>
+      <a-descriptions-item label="日期">{{ paper.pressdate }}</a-descriptions-item>
       <a-descriptions-item label="平均分"><a-rate v-model:value="avgscore" disabled  /></a-descriptions-item>
       <a-descriptions-item label="评分">
          <a-rate v-model:value="markscore" />
@@ -289,7 +289,7 @@ export default defineComponent({
   },
   data() {
     return {
-      markscore : ref(this.$store.state.markscore),
+      markscore : ref(0),
       avgscore : ref(this.$store.state.paper.mark),
       paper:this.$store.state.paper,
       page_num:0,
@@ -369,7 +369,9 @@ export default defineComponent({
     if(this.$store.state.logined === false)
       this.$router.push({ name: "Signin Illustration" });
       this.page_num=0;
+    this.markscore=this.$store.state.markscore;
     this.getcomment();
+
   },
   methods:{
     addcommentclk(){
@@ -443,7 +445,7 @@ export default defineComponent({
         console.log(res);
         if(res.status == 200)
         {
-          message.error("评分成功");
+          message.success("评分成功");
         }
         else
         {

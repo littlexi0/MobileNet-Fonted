@@ -24,12 +24,17 @@
       <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="font-weight-bolder">许可证书（不可修改）</h5>
+            <h5 class="font-weight-bolder">许可证书</h5>
             <div class="row">
               <div class="col-12">
+                <!-- <img
+                  class="mt-3 shadow-lg w-100 border-radius-lg"
+                  :src="library.certificate"
+                  alt="product_image"
+                /> -->
                 <img
                   class="mt-3 shadow-lg w-100 border-radius-lg"
-                  :src=library.certificate
+                  :src="library.certificate"
                   alt="product_image"
                 />
               </div>
@@ -108,8 +113,8 @@
                   class="form-control"
                   name="choices-category"
                 >
-                  <option value="Choice 1" selected="">Yes</option>
-                  <option value="Choice 2">No</option>
+                  <option value=true selected="">Yes</option>
+                  <option value=false>No</option>
                 </select>
                 <!-- <label>Color</label>
                 <select
@@ -222,6 +227,10 @@ export default {
     submitmodifyclk(){
       this.library.created_id=this.$store.state.user.id;
       console.log(this.library);
+      if(this.library.is_public === "true")
+        this.library.is_public = true;
+      else
+        this.library.is_public = false;
       axios.put("http://43.143.73.132:8000/api/library/"+this.library.id,this.library)
       .then((res) => {
         console.log(res);
@@ -235,6 +244,7 @@ export default {
         }
       })
       .catch((err) => {
+        message.error(err.message)
         console.log(err);
       });
       

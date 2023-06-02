@@ -29,6 +29,7 @@ import ProductsList from "../views/ecommerce/ProductsList.vue";
 import OrderDetails from "../views/ecommerce/Orders/OrderDetails";
 import OrderList from "../views/ecommerce/Orders/OrderList";
 import NewPaper from "../views/ecommerce/Orders/NewPaper";
+import ModifyPaper from "../views/ecommerce/Orders/ModifyPaper";
 import Referral from "../views/ecommerce/Referral";
 import Reports from "../views/pages/Users/Reports.vue";
 import NewUser from "../views/pages/Users/NewUser.vue";
@@ -215,6 +216,11 @@ const routes = [
     path: "/ecommerce/Orders/new-paper",
     name: "New Paper",
     component: NewPaper,
+  },
+  {
+    path: "/ecommerce/Orders/modify-paper",
+    name: "Modify Paper",
+    component: ModifyPaper,
   },
   {
     path: "/ecommerce/referral",

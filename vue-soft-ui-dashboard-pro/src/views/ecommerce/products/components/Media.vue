@@ -22,14 +22,14 @@
       <input id="inputField" name="inputField" type="file" placeholder="ds" @change="handleFileUpload">
       <!-- <input name="file" type="file" multiple @click="handleFileUpload"  /> -->
       <div class="mt-4 button-row d-flex col-12">
-        <soft-button
+        <!-- <soft-button
           color="secondary"
           variant="gradient"
           class="mb-0 js-btn-prev"
           title="Prev"
           @click="this.$parent.prevStep"
           >上一步</soft-button
-        >
+        > -->
         <soft-button
           type="button"
           color="dark"

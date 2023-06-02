@@ -43,7 +43,7 @@
           :class="isRTL ? 'me-md-auto' : 'ms-md-auto'"
         >
 
-          <div class="input-group">
+          <!-- <div class="input-group">
             <span class="input-group-text text-body serachcss" @click="searchclk"
               ><i class="fas fa-search" aria-hidden="true"></i
             ></span>
@@ -64,7 +64,7 @@
             class="form-control"
             :placeholder="isRTL ? 'أكتب هنا...' : '请输入...'"
           />
-        </div>
+        </div> -->
         </div>
         <ul class="navbar-nav justify-content-end">
           <li v-if=!logined class="nav-item d-flex align-items-center">

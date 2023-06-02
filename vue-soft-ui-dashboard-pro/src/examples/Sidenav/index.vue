@@ -11,7 +11,7 @@
         aria-hidden="true"
       ></i>
       <router-link class="m-0 navbar-brand" to="/">
-        <!-- <img :src="logo" class="navbar-brand-img h-100" alt="main_logo" /> -->
+        <img src="https://qny.littlexi.love/Fmw-Fk-A7NQfUnMwKEdch9Bma7I0" class="navbar-brand-img h-100" alt="main_logo" />
         <span class="ms-1 font-weight-bold">文渊</span>
       </router-link>
     </div>

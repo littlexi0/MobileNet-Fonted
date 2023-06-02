@@ -37,11 +37,11 @@
                     mini-icon="P"
                     text="文献库列表"
                   />
-                  <sidenav-item
+                  <!-- <sidenav-item
                     :to="{ name: 'Edit Product' }"
                     mini-icon="E"
                     text="编辑文献库"
-                  />
+                  /> -->
                   <!-- <sidenav-item
                     :to="{ name: 'Product Page' }"
                     mini-icon="P"
@@ -62,16 +62,16 @@
                     mini-icon="O"
                     text="新建论文"
                   />
-                  <sidenav-item
+                  <!-- <sidenav-item
                     :to="{ name: 'Order List' }"
                     mini-icon="O"
                     text="论文列表"
-                  />
-                  <sidenav-item
+                  /> -->
+                  <!-- <sidenav-item
                     :to="{ name: 'Order Details' }"
                     mini-icon="O"
                     text="论文详情"
-                  />
+                  /> -->
                 </template>
               </sidenav-collapse-item>
 

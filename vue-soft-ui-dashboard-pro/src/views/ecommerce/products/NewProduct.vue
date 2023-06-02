@@ -15,7 +15,7 @@
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
             <img
-              src="../../../assets/img/wenxian.png"
+              :src=avatar
               alt="profile_image"
               class="shadow-sm w-100 border-radius-lg"
             />
@@ -282,6 +282,7 @@ export default {
       activeClass: "js-active position-relative",
       activeStep: 0,
       formSteps: 3,
+      avatar:this.$store.state.user.avatar,
     };
   },
   created(){
