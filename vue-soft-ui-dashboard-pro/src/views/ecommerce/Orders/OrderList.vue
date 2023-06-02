@@ -616,9 +616,9 @@
         >
           详情
         </a-button>
-
+        <!-- v-if="record.creater_id == this.$store.state.user.id" -->
         <a-button
-          v-if="record.creater_id == this.$store.state.user.id"
+
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"
@@ -627,9 +627,9 @@
         >
           编辑
         </a-button>
-
+        <!-- v-if="record.creater_id == this.$store.state.user.id" -->
         <a-button
-          v-if="record.creater_id == this.$store.state.user.id"
+
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"

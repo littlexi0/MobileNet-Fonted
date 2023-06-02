@@ -7,7 +7,9 @@
       <i class="py-2 fa fa-cog"> </i>
     </a> -->
 
-    <div class="px-3 py-2 fixed-plugin-button  position-fixed aibtn"   @click="showDrawer"></div>
+    <div class="px-3 py-2 fixed-plugin-button  position-fixed aibtn"   @click="showDrawer">
+    <!-- <img src="https://qny.littlexi.love/FuxTGuZvg8kVCGnrP4NsD8CRfRvw"> -->
+    </div>
     <a-drawer
       title="珐露珊-机逐封秘"
       mask=false
@@ -275,7 +277,31 @@ export default defineComponent({
           avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
           content: "你好，我是小助理珐露珊，请问有什么需要帮助的吗？",
           datetime:""
-        }
+        },
+        {
+          author:"littlexi",
+          avatar: "https://qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
+          content: "你好呀",
+          datetime:""
+        },
+        {
+          author:"珐露珊",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "我是珐露珊请问有什么可以帮助你的吗？",
+          datetime:""
+        },
+        {
+          author:"littlexi",
+          avatar: "https://qny.littlexi.love/FjKDpNq_oZfD3-zDja5MdiBrsDly",
+          content: "文言文怎么写？",
+          datetime:""
+        },
+        {
+          author:"珐露珊",
+          avatar: "https://pchub.littlexi.love/avatar/fls.jpg",
+          content: "文言文是古代中国的一种文学语言，通常用于描述古代事件、文化、哲学思想等。以下是一些关于如何写文言文的基本指导：字词选择：文言文使用古代汉字和词语，所以要注意选择适当的字词。可以参考古代文献、诗词作品或字典来获取合适的词汇。语法结构：文言文的语法结构与现代汉语有所不同。句子的语序通常为主谓宾的顺序，修饰成分位于被修饰成分之前。需要注意的是，动词的使用也有一些特殊规则。文字表达：文言文的表达方式比较正式，通常使用较多的修辞手法，如比喻、夸张、对仗等。要注意修辞的使用要符合上下文的语境。",
+          datetime:""
+        },
       ]
     };
   },
@@ -419,8 +445,11 @@ export default defineComponent({
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-image: url("https://pchub.littlexi.love/avatar/fls.jpg");
-    background-repeat: no-repeat;
+    background-image: url("https://qny.littlexi.love/FuxTGuZvg8kVCGnrP4NsD8CRfRvw") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+        /* 设置背景图像的大小调整方式 */
+    background-size: cover !important;
     background-size: contain;
     border: 2px solid skyblue; 
   }

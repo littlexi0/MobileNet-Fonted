@@ -118,7 +118,11 @@ export default {
       this.$store.state.library.title = this.library.title;
       this.$store.state.library.topic = this.library.topic;
       this.$store.state.library.description = this.library.description;
-      this.$store.state.library.is_public = this.library.is_public;
+      if(this.library.is_public == "true")
+        this.$store.state.library.is_public = true;
+      else
+        this.$store.state.library.is_public = false;
+      // this.$store.state.library.is_public = this.library.is_public;
     }
   }
 };

@@ -21,7 +21,7 @@
               <div class="card card-plain">
                 <div class="card-header pb-0 text-left">
                   <h4 class="font-weight-bolder">注册</h4>
-                  <p class="mb-0">请输入用户名和密码登录</p>
+                  <p class="mb-0">请输入用户名和密码注册</p>
                   <p class="mb-0">Enter your username and password to register</p>
                 </div>
                 <div class="card-body pb-3">

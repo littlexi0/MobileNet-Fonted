@@ -40,7 +40,7 @@
     <template #action="{ record }">
       <span>
         <a-button
-          v-if="record.is_public"
+          v-if="record.is_public||(record.creater_id == this.$store.state.user.id)"
           type="text"
           size="small"
           class="mb-0 btn bg-gradient-success"

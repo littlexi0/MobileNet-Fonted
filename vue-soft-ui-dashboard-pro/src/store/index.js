@@ -17,7 +17,7 @@ export default createStore({
     showFooter: true,
     showMain: true,
     userid:0,
-    logined:false,
+    logined:true,
     click_total: 0,
     library_total: 0,
     paper_total: 0,
@@ -37,7 +37,7 @@ export default createStore({
     },
     wenyhub:"https://qny.littlexi.love/",
     token:"n0meldsLEp57rVsgOvp-NXq5pNLFDbwbHPXxkxpG:81vGyDsu-uMaXxCtunpBmkq53Lk=:eyJzY29wZSI6IndlbnlodWIiLCJkZWFkbGluZSI6MjY4NTM2MDk2MywiZGV0ZWN0TWltZSI6MX0=",
-    apikey:"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",
+    apikey:"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",
     library:{
       id:1,
       title:"",
